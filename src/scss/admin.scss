@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/*
+ * 管理画面で読み込むCSS
+ */
+
+// mixin
+@import "mixin/**";
+
+// 投稿一覧テーブル
+.wp-list-table {
+
+	img {
+		max-width: 100%;
+	}
+
+	th#post_id,
+	th#term_id {
+		width: 60px;
+	}
+
+	th#thumbnail {
+		width: 120px;
+	}
+}
