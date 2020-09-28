@@ -48,7 +48,7 @@ spl_autoload_register(
  */
 class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
-	use \Arkhe_Toolkit\Output_Field;
+	use \Arkhe_Toolkit\Output_Field, \Arkhe_Toolkit\Utility;
 
 	public function __construct() {
 
@@ -89,6 +89,9 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 		// ショートコード
 		require_once ARKHE_TOOLKIT_PATH . 'inc/shortcode.php';
+
+		// ショートコード
+		require_once ARKHE_TOOLKIT_PATH . 'inc/cache.php';
 
 		// ajax
 		// require_once ARKHE_TOOLKIT_PATH . 'inc/ajax.php';

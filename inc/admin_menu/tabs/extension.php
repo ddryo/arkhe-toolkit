@@ -2,15 +2,17 @@
 /**
  * 拡張機能タブの設定項目
  */
-$page_name = \Arkhe_Toolkit::MENU_PAGE_NAMES['extension'];
+
+// PAGE_NAME
+$page_name = 'arkhe_menu_page_extension';
 
 /**
  * テストセクション
  */
-$section_name = 'arkhe_section_test';
+$section_name = 'arkhe_section_cache';
 add_settings_section(
 	$section_name,
-	__( 'テストセクション', 'arkhe-toolkit' ),
+	__( 'キャッシュ機能', 'arkhe-toolkit' ),
 	'',
 	$page_name
 );
@@ -23,5 +25,5 @@ add_settings_field(
 	},
 	$page_name,
 	$section_name,
-	[ 'filename' => 'test' ]
+	[ 'filename' => 'cache' ]
 );

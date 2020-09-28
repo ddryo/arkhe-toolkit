@@ -18,22 +18,27 @@ class Data {
 		'remove'    => 'arkhe_toolkit_remove',
 	];
 
+	// キャッシュキー
+	const CACHE_KEYS = [
+		'header'  => [
+			'front' => 'arkhe_parts_cache_header_front',
+			'page'  => 'arkhe_parts_cache_header_page',
+			'other' => 'arkhe_parts_cache_header_other',
+		],
+		'sidebar' => [
+			'top'     => 'arkhe_parts_cache_sidebar_top',
+			'single'  => 'arkhe_parts_cache_sidebar_single',
+			'page'    => 'arkhe_parts_cache_sidebar_page',
+			'archive' => 'arkhe_parts_cache_sidebar_archive',
+		],
+		'footer'  => 'arkhe_parts_cache_footer',
+	];
+
 	// メニューのページスラッグ
 	const MENU_SLUG = 'arkhe_settings';
 
 	// メニューの設定タブ
 	public static $menu_tabs = [];
-
-	// 設定メニューのグループ名
-	const MENU_GROUPS = [
-		'options' => 'arkhe_menu_group_options',
-	];
-
-	// settings_field() と settings_section() で使う $page
-	const MENU_PAGE_NAMES = [
-		'extension' => 'arkhe_settings_extension',
-		'remove'    => 'arkhe_settings_remove',
-	];
 
 	// 外部からインスタンス化させない
 	private function __construct() {}
@@ -67,7 +72,8 @@ class Data {
 	private static function set_defaults() {
 
 		self::$defaults['extension'] = [
-			'test_setting'       => '',
+			'cache_header'       => '',
+			'cache_footer'       => '',
 		];
 
 		self::$defaults['remove'] = [

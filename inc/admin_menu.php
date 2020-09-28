@@ -31,8 +31,8 @@ add_action( 'admin_menu', function () {
 
 	// 「再利用ブロック」を追加
 	add_menu_page(
-		__( '再利用ブロック' ),
-		__( '再利用ブロック' ),
+		__( 'Reusable Block', 'arkhe-toolkit' ),
+		__( 'Reusable Block', 'arkhe-toolkit' ),
 		'manage_options',
 		'edit.php?post_type=wp_block',
 		'',
@@ -64,57 +64,11 @@ add_action( 'admin_init', function() {
 
 	\Arkhe_Toolkit::$menu_tabs = $menu_tabs;
 
-	// register_setting
 	foreach ( $menu_tabs as $key => $value ) {
+
 		register_setting( 'arkhe_menu_group_' . $key, \Arkhe_Toolkit::DB_NAMES[ $key ] );
-
 		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_menu/tabs/' . $key . '.php';
+
 	}
-
-	// 同じオプションに配列で値を保存するので、register_setting()は１つだけ
-	// register_setting( \Arkhe_Toolkit::MENU_GROUPS['options'], \Arkhe_Toolkit::DB_NAME_OPTIONS );
-
-	return;
-
-	/**
-	 * 機能停止タブ
-	 */
-	$page_name = \Arkhe_Toolkit::MENU_PAGE_NAMES['remove'];
-	$cb        = [ '\Arkhe_Toolkit', 'basic_cb' ];
-
-	$section_name = 'arkhe_section_remove';
-		add_settings_section(
-			$section_name,
-			'WordPressの機能',
-			'',
-			$page_name
-		);
-
-		$remove_settings = [
-			'remove_wpver'       => 'WordPressのバージョン情報を出力しない',
-			'remove_rel_link'    => 'rel="prev/next"を出力しない',
-			'remove_wlwmanifest' => 'Windows Live Writeの連携停止',
-			'remove_rsd_link'    => 'EditURI(RSD Link)の停止',
-			'remove_emoji'       => '絵文字用のスクリプトの読み込みをしない',
-			'remove_srcset'      => '画像のsrcsetを出力しない',
-			'remove_wptexturize' => '記号の自動変換を停止する(wptexturize無効化)',
-			'remove_feed_link'   => 'RSSフィードを停止する',
-		];
-
-		foreach ( $remove_settings as $key => $label ) {
-			add_settings_field(
-				$key,
-				'', // $label,
-				$cb,
-				$page_name,
-				$section_name,
-				[
-					'id'    => $key,
-					'type'  => 'checkbox',
-					'label' => $label,
-					// 'desc' => $data[1],
-				]
-			);
-		}
 
 } );

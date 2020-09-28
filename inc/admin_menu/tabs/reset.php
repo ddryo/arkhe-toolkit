@@ -1,1 +1,8 @@
-<?php  if ( ! defined( 'ABSPATH' ) ) exit;?>
+<?php
+/**
+ * リセットタブ
+ */
+
+?>
+
+<p>reset!</p>
