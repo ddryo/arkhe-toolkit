@@ -16,11 +16,11 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@babel/cli": "^7.11.6",
         "@babel/core": "^7.11.6",
         "@babel/polyfill": "^7.11.5",
         "@babel/preset-env": "^7.11.5",
-        "@wordpress/eslint-plugin": "^7.2.0",
-        "babel-core": "^6.26.3",
+        "@wordpress/eslint-plugin": "^7.2.1",
         "babel-loader": "^8.1.0",
         "classnames": "^2.2.6",
         "core-js": "^3.6.5",
@@ -36,12 +36,13 @@
         "gulp-rename": "^2.0.0",
         "gulp-sass": "^4.1.0",
         "gulp-sass-glob": "^1.1.0",
-        "gulp-uglify": "^3.0.2",
+        "gulp-uglify-es": "^2.0.0",
         "node-sass": "^4.14.1",
         "nodemon": "^2.0.4",
         "npm-check-updates": "^8.1.1",
         "npm-run-all": "^4.1.5",
         "po2json": "^1.0.0-beta-2",
+        "prettier": "^2.1.2",
         "regenerator-runtime": "^0.13.7",
         "stylelint": "^13.7.0",
         "stylelint-config-rational-order": "^0.1.2",
@@ -54,6 +55,18 @@
         "webpack-cli": "^3.3.12"
     },
     "dependencies": {},
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "modules": false,
+                    "useBuiltIns": "usage",
+                    "corejs": 3
+                }
+            ]
+        ]
+    },
     "browserslist": [
         "> 0.5%",
         "last 2 versions",

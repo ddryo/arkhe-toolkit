@@ -12,8 +12,8 @@ const gcmq = require('gulp-group-css-media-queries'); // media query整理
 const cleanCSS = require('gulp-clean-css');
 
 // JS Concat
-const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
+// const babel = require('gulp-babel');
+const uglify = require('gulp-uglify-es').default;
 
 /**
  * パス
@@ -52,22 +52,20 @@ const compileScss = () => {
 };
 
 /**
- * JSの単純なminify化（Babelは通す）
+ * JSの単純なminify化
  */
-const minifyJs = (cb) => {
-	return src(path.src.js)
-		.pipe(plumber({ errorHandler: notify.onError('<%= error.message %>') }))
-		.pipe(
-			babel({
-				presets: ['@babel/preset-env'],
+const minifyJs = () => {
+	return (
+		src(path.src.js)
+			.pipe(plumber({ errorHandler: notify.onError('<%= error.message %>') }))
+			// .pipe(babel())
+			.pipe(uglify())
+			.on('error', function (e) {
+				/* eslint no-console: 0 */
+				console.log(e);
 			})
-		)
-		.pipe(uglify())
-		.on('error', function (e) {
-			/* eslint no-console: 0 */
-			console.log(e);
-		})
-		.pipe(dest(path.dest.js));
+			.pipe(dest(path.dest.js))
+	);
 };
 
 exports.compileScss = compileScss;

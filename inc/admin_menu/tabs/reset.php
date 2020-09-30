@@ -1,4 +1,6 @@
 <?php
+namespace Arkhe_Toolkit;
+
 /**
  * リセットタブ
  */

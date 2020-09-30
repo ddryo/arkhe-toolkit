@@ -1,14 +1,18 @@
 <?php
+namespace Arkhe_Toolkit;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-$db = 'extension';
+$db = 'cache';
 
 ?>
 <!-- <h3 class="pcpp-setting__h3">キャッシュ</h3> -->
 <?php
 $remove_settings = [
-	'cache_header' => __( 'ヘッダーをキャッシュする', 'arkhe-toolkit' ),
-	'cache_footer' => __( 'フッターをキャッシュする', 'arkhe-toolkit' ),
+	'cache_header'  => __( 'ヘッダーをキャッシュする', 'arkhe-toolkit' ),
+	'cache_sidebar' => __( 'サイドバーをキャッシュする', 'arkhe-toolkit' ),
+	'cache_footer'  => __( 'フッターをキャッシュする', 'arkhe-toolkit' ),
+	'cache_sidebar' => __( 'サイドバーをキャッシュする', 'arkhe-toolkit' ),
 
 ];
 foreach ( $remove_settings as $key => $label ) {

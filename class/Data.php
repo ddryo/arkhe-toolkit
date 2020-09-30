@@ -12,26 +12,37 @@ class Data {
 	protected static $defaults = [];
 
 	// DB名
-	const DB_NAME_OPTIONS = 'arkhe_toolkit_options';
-	const DB_NAMES        = [
+	// const DB_NAME_OPTIONS = 'arkhe_toolkit_options';
+	const DB_NAMES = [
 		'extension' => 'arkhe_toolkit_extension',
+		'cache'     => 'arkhe_toolkit_cache',
 		'remove'    => 'arkhe_toolkit_remove',
 	];
 
 	// キャッシュキー
 	const CACHE_KEYS = [
 		'header'  => [
-			'front' => 'arkhe_parts_cache_header_front',
-			'page'  => 'arkhe_parts_cache_header_page',
-			'other' => 'arkhe_parts_cache_header_other',
+			'front'  => 'header_front',
+			'page'   => 'header_page',
+			'single' => 'header_single',
+			'other'  => 'header_other',
 		],
 		'sidebar' => [
-			'top'     => 'arkhe_parts_cache_sidebar_top',
-			'single'  => 'arkhe_parts_cache_sidebar_single',
-			'page'    => 'arkhe_parts_cache_sidebar_page',
-			'archive' => 'arkhe_parts_cache_sidebar_archive',
+			'front'   => 'sidebar_front',
+			'page'    => 'sidebar_page',
+			'single'  => 'sidebar_single',
+			'other'   => 'sidebar_other',
 		],
-		'footer'  => 'arkhe_parts_cache_footer',
+		'footer'  => [
+			'front'   => 'footer_front',
+			'page'    => 'footer_page',
+			'single'  => 'footer_single',
+			'other'   => 'footer_other',
+		],
+		// 'other' => [
+		// 	'hoge',
+		// ],
+
 	];
 
 	// メニューのページスラッグ
@@ -74,6 +85,12 @@ class Data {
 		self::$defaults['extension'] = [
 			'cache_header'       => '',
 			'cache_footer'       => '',
+		];
+
+		self::$defaults['cache'] = [
+			'cache_header'       => '',
+			'cache_footer'       => '',
+			'cache_sidebar'      => '',
 		];
 
 		self::$defaults['remove'] = [

@@ -58,6 +58,7 @@ add_action( 'admin_init', function() {
 
 	$menu_tabs = [
 		'extension' => __( '拡張機能', 'arkhe-toolkit' ),
+		'cache'     => __( 'キャッシュ機能', 'arkhe-toolkit' ),
 		'remove'    => __( '機能停止', 'arkhe-toolkit' ),
 		// 'reset'     => __( 'リセット', 'arkhe-toolkit' ),
 	];

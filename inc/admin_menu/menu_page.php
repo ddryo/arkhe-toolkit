@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 $setting_tabs = \Arkhe_Toolkit::$menu_tabs;
 
 // 特殊なタブを追加
-$setting_tabs['reset'] = __( 'リセット', 'arkhe-toolkit' );
+$setting_tabs['reset'] = __( 'Reset', 'arkhe-toolkit' );
 
 // 現在のタブを取得
 $now_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'extension';
@@ -14,7 +14,7 @@ $now_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'extension';
 // 設定保存完了時、$_REQUEST でデータが渡ってくる
 if ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] ) {
 	$green_message = __( 'Your settings have been saved.', 'arkhe-toolkit' ); // 設定を保存しました。
-	echo '<div class="notice updated is-dismissible"><p>' . $green_message . '</p></div>';
+	echo '<div class="notice updated is-dismissible"><p>' . esc_html( $green_message ) . '</p></div>';
 }
 
 ?>

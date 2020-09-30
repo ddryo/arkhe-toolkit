@@ -68,6 +68,7 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 		// 管理メニュー
 		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_menu.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_toolbar.php';
 
 		// ユーザーメタの追加
 		require_once ARKHE_TOOLKIT_PATH . 'inc/user_meta.php';
@@ -76,25 +77,25 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		require_once ARKHE_TOOLKIT_PATH . 'inc/enqueue_scripts.php';
 
 		// 管理画面の表示
-		require_once ARKHE_TOOLKIT_PATH . '/inc/wp_posts_table.php';
-		require_once ARKHE_TOOLKIT_PATH . '/inc/wp_term_table.php';
-		require_once ARKHE_TOOLKIT_PATH . '/inc/wp_toolbar.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/wp_posts_table.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/wp_term_table.php';
 
 		// 機能削除
-		require_once ARKHE_TOOLKIT_PATH . '/inc/remove.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/remove.php';
 
 		// その他、フック処理
 		// Hooks::init();
-		require_once ARKHE_TOOLKIT_PATH . '/inc/hooks.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
 
 		// ショートコード
 		require_once ARKHE_TOOLKIT_PATH . 'inc/shortcode.php';
 
-		// ショートコード
+		// キャッシュ
 		require_once ARKHE_TOOLKIT_PATH . 'inc/cache.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/cache_clear.php';
 
 		// ajax
-		// require_once ARKHE_TOOLKIT_PATH . 'inc/ajax.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/ajax.php';
 
 		// アップデート
 		// require_once ARKHE_TOOLKIT_PATH . 'inc/update.php';

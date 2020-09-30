@@ -4,26 +4,29 @@ namespace Arkhe_Toolkit;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * テンプレートのリセット
+ * 設定データリセット
  */
 add_action( 'wp_ajax_arkhe_toolkit_reset_data', function() {
-	if ( \Arkhe_Toolkit\check_ajax_nonce() ) {
+	if ( \Arkhe_Toolkit::check_ajax_nonce() ) {
 	}
 	wp_die( '失敗しました。' );
 } );
 
 
 /**
- * AJAXのNonceチェック
+ * キャッシュのクリア
  */
-function check_ajax_nonce( $request_key = 'nonce', $nonce_key = 'arkhe-toolkit-ajax-nonce' ) {
-	if ( ! isset( $_POST[ $request_key ] ) ) return false;
+add_action( 'wp_ajax_arkhe_toolkit_clear_cache', function() {
 
-	$nonce = $_POST[ $request_key ];
+	if ( \Arkhe_Toolkit::check_ajax_nonce() ) {
 
-	if ( wp_verify_nonce( $nonce, $nonce_key ) ) {
-		return true;
+		// キャッシュクリア
+		\Arkhe_Toolkit::clear_cache();
+
+		wp_die( wp_json_encode( __( 'キャッシュクリアに成功しました。', 'arkhe-toolkit' ) ) );
+
 	}
 
-	return false;
-}
+	wp_die( wp_json_encode( 'Nonce error.' ) );
+
+} );

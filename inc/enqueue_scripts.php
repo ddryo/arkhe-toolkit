@@ -15,6 +15,15 @@ add_action( 'admin_enqueue_scripts', '\Arkhe_Toolkit\enqueue_admin_scripts', 20 
  */
 function enqueue_front_scripts() {
 	wp_enqueue_style( 'arkhe-toolkit-front', ARKHE_TOOLKIT_URL . 'dist/css/front.css', [], ARKHE_TOOLKIT_VERSION );
+
+	if ( is_user_logged_in() ) {
+		// ajax関連処理
+		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
+		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
+			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
+			'ajaxNonce' => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
+		] );
+	}
 }
 
 
@@ -23,16 +32,19 @@ function enqueue_front_scripts() {
  */
 function enqueue_admin_scripts( $hook_suffix ) {
 
-	// 管理画面側で読み込むスタイル
-	wp_enqueue_style( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/css/admin.css', [], ARKHE_TOOLKIT_VERSION );
+	$is_arkhe_page = strpos( $hook_suffix, 'arkhe_' ) !== false;
 
-	// ページの種類で分岐
-	if ( strpos( $hook_suffix, 'arkhe_' ) !== false ) {
+	if ( $is_arkhe_page || 'edit.php' === $hook_suffix ) {
+		wp_enqueue_style( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/css/admin.css', [], ARKHE_TOOLKIT_VERSION );
+	}
+
+	// Arkhe設定ページのみ
+	if ( $is_arkhe_page ) {
 		wp_enqueue_script( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/js/admin.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
 
-		// 管理画面側に渡すグローバル変数
-		wp_localize_script( 'arkhe-toolkit-admin', 'arkheToolkitVars', [
-			// 'adminUrl' => admin_url(),
+		// ajax関連処理
+		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
+		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
 			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
 			'ajaxNonce' => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
 		] );
