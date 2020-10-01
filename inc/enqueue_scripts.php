@@ -34,7 +34,7 @@ function enqueue_admin_scripts( $hook_suffix ) {
 
 	$is_arkhe_page = strpos( $hook_suffix, 'arkhe_' ) !== false;
 
-	if ( $is_arkhe_page || 'edit.php' === $hook_suffix ) {
+	if ( $is_arkhe_page || 'edit.php' === $hook_suffix || 'edit-tags.php' === $hook_suffix ) {
 		wp_enqueue_style( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/css/admin.css', [], ARKHE_TOOLKIT_VERSION );
 	}
 
@@ -45,8 +45,9 @@ function enqueue_admin_scripts( $hook_suffix ) {
 		// ajax関連処理
 		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
 		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
-			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
-			'ajaxNonce' => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
+			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
+			'ajaxNonce'      => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
+			'confirmMessage' => __( 'Will you really reset it?', 'arkhe-toolkit' ),
 		] );
 	}
 

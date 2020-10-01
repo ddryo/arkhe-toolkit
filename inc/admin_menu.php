@@ -8,10 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 add_action( 'admin_menu', function () {
 
-	// 「Arkhe設定」を追加
+	// 「Arkhe設定」
+	$arkhe_menu_title = __( 'Arkhe Settings', 'arkhe-toolkit' );
+
+	// 設定ページを追加
 	add_menu_page(
-		'Arkhe設定', // ページタイトルタグ
-		'Arkhe設定', // メニュータイトル
+		$arkhe_menu_title, // ページタイトルタグ
+		$arkhe_menu_title, // メニュータイトル
 		'manage_options', // 必要な権限
 		\Arkhe_Toolkit::MENU_SLUG, // このメニューを参照するスラッグ名
 		'\Arkhe_Toolkit\display_setting_page', // 表示内容
@@ -20,14 +23,14 @@ add_action( 'admin_menu', function () {
 	);
 
 	// トップメニュー複製
-	add_submenu_page(
-		\Arkhe_Toolkit::MENU_SLUG,
-		'Arkhe設定',
-		__( 'Arkhe設定', 'arkhe-toolkit' ), // サブ側の名前
-		'manage_options',
-		\Arkhe_Toolkit::MENU_SLUG, // 親と同じに
-		'\Arkhe_Toolkit\display_setting_page'
-	);
+	// add_submenu_page(
+	// 	\Arkhe_Toolkit::MENU_SLUG,
+	// 	$arkhe_menu_title,
+	// 	$arkhe_menu_title,
+	// 	'manage_options',
+	// 	\Arkhe_Toolkit::MENU_SLUG,
+	// 	'\Arkhe_Toolkit\display_setting_page'
+	// );
 
 	// 「再利用ブロック」を追加
 	add_menu_page(

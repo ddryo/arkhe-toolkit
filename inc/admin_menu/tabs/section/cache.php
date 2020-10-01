@@ -5,14 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $db = 'cache';
 
-?>
-<!-- <h3 class="pcpp-setting__h3">キャッシュ</h3> -->
-<?php
 $remove_settings = [
-	'cache_header'  => __( 'ヘッダーをキャッシュする', 'arkhe-toolkit' ),
-	'cache_sidebar' => __( 'サイドバーをキャッシュする', 'arkhe-toolkit' ),
-	'cache_footer'  => __( 'フッターをキャッシュする', 'arkhe-toolkit' ),
-	'cache_sidebar' => __( 'サイドバーをキャッシュする', 'arkhe-toolkit' ),
+	'cache_header'  => __( 'Cache header', 'arkhe-toolkit' ),
+	'cache_sidebar' => __( 'Cache sidebar', 'arkhe-toolkit' ),
+	'cache_footer'  => __( 'Cache footer', 'arkhe-toolkit' ),
 
 ];
 foreach ( $remove_settings as $key => $label ) {
@@ -22,11 +18,3 @@ foreach ( $remove_settings as $key => $label ) {
 		'label' => $label,
 	]);
 }
-
-
-	// \Arkhe_Toolkit::output_text_field([
-	// 	'db'    => $db,
-	// 	'key'   => 'amazon_access_key',
-	// 	'label' => 'アクセスキー',
-	// ]);
-?>

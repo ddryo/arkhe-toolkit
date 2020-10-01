@@ -1,0 +1,60 @@
+/*
+    SNSのアイコンリスト用。
+    アイコンのリストを横に並べるというだけのスタイルを当てる。
+    justify-contentなどは個別に指定。
+*/
+.c-iconList {
+	display: flex;
+	flex-wrap: wrap;
+
+	.p-authorBox & {
+
+		@include mobile {
+			justify-content: center;
+		}
+	}
+}
+
+.c-iconList__item {
+
+	&:not(:last-child) {
+		margin-right: 4px;
+	}
+}
+
+.c-iconList__link {
+	display: block;
+	box-sizing: content-box;
+	width: 1em;
+	height: 1em;
+	color: inherit;
+
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	background: none;
+	border: none;
+	box-shadow: none;
+	transition: opacity 0.25s;
+
+	.p-authorBox & {
+
+		padding: 2px;
+		font-size: 18px;
+
+		@include mobile {
+			padding: 3px;
+			font-size: 20px;
+		}
+	}
+
+	&:hover {
+		opacity: 0.75;
+	}
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}

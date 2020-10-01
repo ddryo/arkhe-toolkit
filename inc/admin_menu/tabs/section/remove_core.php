@@ -3,18 +3,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $db = 'remove';
 
-?>
-<!-- <h3 class="pcpp-setting__h3">てすとお</h3> -->
-<?php
 $remove_settings = [
-	'remove_wpver'       => __( 'WordPressのバージョン情報を出力しない', 'arkhe-toolkit' ),
-	'remove_rel_link'    => __( 'rel="prev/next"を出力しない', 'arkhe-toolkit' ),
-	'remove_wlwmanifest' => __( 'Windows Live Writeの連携停止', 'arkhe-toolkit' ),
-	'remove_rsd_link'    => __( 'EditURI(RSD Link)の停止', 'arkhe-toolkit' ),
-	'remove_emoji'       => __( '絵文字用のスクリプトの読み込みをしない', 'arkhe-toolkit' ),
-	'remove_srcset'      => __( '画像のsrcsetを出力しない', 'arkhe-toolkit' ),
-	'remove_wptexturize' => __( '記号の自動変換を停止する(wptexturize無効化)', 'arkhe-toolkit' ),
-	'remove_feed_link'   => __( 'RSSフィードを停止する', 'arkhe-toolkit' ),
+	'remove_wpver'       => __( 'Stop outputting WordPress version', 'arkhe-toolkit' ),
+	'remove_wlwmanifest' => __( 'Stop linking with Windows Live Write', 'arkhe-toolkit' ),
+	'remove_rsd_link'    => __( 'Stop EditURI (RSD Link)', 'arkhe-toolkit' ),
+	'remove_emoji'       => __( 'Stop loading scripts for emoji', 'arkhe-toolkit' ),
+	'remove_self_ping'   => __( 'Stop self-pingback', 'arkhe-toolkit' ),
+	'remove_sitemap'     => __( 'Stop core sitemap functionality ', 'arkhe-toolkit' ),
+	'remove_rest_link'   => __( 'Stop outputting link tags for REST API', 'arkhe-toolkit' ),
+	'remove_srcset'      => __( 'Stop outputting srcset', 'arkhe-toolkit' ),
+	'remove_rel_link'    => __( 'Stop outputting  "rel = prev / next"', 'arkhe-toolkit' ),
+	'remove_wptexturize' => __( 'Stop automatic conversion of symbols (disable wptexturize)', 'arkhe-toolkit' ),
+	'remove_feed_link'   => __( 'Stop RSS feed', 'arkhe-toolkit' ),
 ];
 foreach ( $remove_settings as $key => $label ) {
 	\Arkhe_Toolkit::output_checkbox([

@@ -1,4 +1,5 @@
 <?php
+namespace Arkhe_Toolkit;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -21,7 +22,9 @@ if ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] ) {
 
 <div id="arkhe-menu" class="arkhe-menu wrap">
 
-	<h1 class="arkhe-menu__title">Arkhe設定</h1>
+	<h1 class="arkhe-menu__title">
+		<?=esc_html__( 'Arkhe Settings', 'arkhe-toolkit' )?>
+	</h1>
 
 	<?php
 		$data = \Arkhe_Toolkit::get_data();
@@ -44,7 +47,7 @@ if ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] ) {
 		<?php
 			// 特殊な設定のタブ
 			if ( 'reset' === $now_tab ) :
-				include __DIR__ . '/tabs/' . $now_tab . '.php';
+			include __DIR__ . '/tabs/' . $now_tab . '.php';
 			else :
 		?>
 			<form method="POST" action="options.php">

@@ -55,17 +55,32 @@ const ajaxToClearCache = function (actionName) {
 };
 
 /**
- * jQuery非依存処理
+ * クリックイベント
  */
 document.addEventListener('DOMContentLoaded', function () {
+	// 確認用メッセージ
+	const confirmMessage = window.arkheAjaxVars.confirmMessage || 'Will you really reset it?';
+
 	// キャッシュクリア
 	const clearCacheBtn = document.querySelectorAll('.arkhe-btn-clearCache');
 	if (0 < clearCacheBtn.length) {
 		clearCacheBtn.forEach((btn) => {
 			btn.addEventListener('click', function (e) {
 				e.preventDefault();
-				console.log('clearCache click');
 				ajaxToClearCache('arkhe_toolkit_clear_cache');
+			});
+		});
+	}
+
+	// 設定リセット
+	const resetDataBtn = document.querySelectorAll('.arkhe-btn-resetData');
+	if (0 < resetDataBtn.length) {
+		resetDataBtn.forEach((btn) => {
+			btn.addEventListener('click', function (e) {
+				e.preventDefault();
+				if (window.confirm(confirmMessage)) {
+					ajaxToClearCache('arkhe_toolkit_reset_data');
+				}
 			});
 		});
 	}

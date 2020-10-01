@@ -14,7 +14,7 @@ $page_name = 'arkhe_menu_page_cache';
  * キャッシュのオン・オフ
  */
 \Arkhe_Toolkit::add_menu_section( [
-	'title'     => __( 'キャッシュ機能の設定', 'arkhe-toolkit' ),
+	'title'     => __( 'Cache settings', 'arkhe-toolkit' ),
 	'key'       => 'cache',
 	'page_name' => $page_name,
 ] );
@@ -24,7 +24,7 @@ $page_name = 'arkhe_menu_page_cache';
  * キャッシュのリセットボタン
  */
 \Arkhe_Toolkit::add_menu_section( [
-	'title'     => __( 'キャッシュのリセット', 'arkhe-toolkit' ),
+	// 'title'     => __( 'Clear Cache', 'arkhe-toolkit' ),
 	'key'       => 'cache_reset',
 	'page_name' => $page_name,
 	'page_cb'   => '\Arkhe_Toolkit\cache_reset_cb',
@@ -32,8 +32,8 @@ $page_name = 'arkhe_menu_page_cache';
 
 function cache_reset_cb() {
 	?>
-	<button type="button" class="arkhe-btn-clearCache button button-primary button-large">
-		<?=esc_attr__( 'キャッシュクリア', 'arkhe-toolkit' )?>
+	<button type="button" class="arkhe-btn-clearCache button">
+		<?=esc_attr__( 'Clear Cache', 'arkhe-toolkit' )?>
 	</button>
 	<?php
 }

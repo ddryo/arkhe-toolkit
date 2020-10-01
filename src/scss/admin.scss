@@ -14,13 +14,18 @@
 		max-width: 100%;
 	}
 
-	#post_id,
-	#term_id {
+	.column-post_id,
+	.column-term_id {
 		width: 60px;
 	}
 
-	#thumbnail {
+	.column-thumbnail {
 		width: 120px;
+	}
+
+	// 「カウント」の ▼ が下にいくのを防ぐ
+	.column-posts {
+		width: 96px;
 	}
 }
 
@@ -103,4 +108,8 @@
 			padding: 4px 0;
 		}
 	}
+}
+
+.arkhe-reset-btns {
+	padding: 2em 0;
 }

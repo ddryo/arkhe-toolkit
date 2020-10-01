@@ -8,8 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 add_action( 'wp_ajax_arkhe_toolkit_reset_data', function() {
 	if ( \Arkhe_Toolkit::check_ajax_nonce() ) {
+
+		// All Clear
+		\Arkhe_Toolkit::reset_data();
+
+		wp_die( wp_json_encode( __( 'The reset is complete.', 'arkhe-toolkit' ) ) );
 	}
-	wp_die( '失敗しました。' );
+	wp_die( wp_json_encode( 'Nonce error.' ) );
 } );
 
 
@@ -23,7 +28,7 @@ add_action( 'wp_ajax_arkhe_toolkit_clear_cache', function() {
 		// キャッシュクリア
 		\Arkhe_Toolkit::clear_cache();
 
-		wp_die( wp_json_encode( __( 'キャッシュクリアに成功しました。', 'arkhe-toolkit' ) ) );
+		wp_die( wp_json_encode( __( 'The cache clear is complete.', 'arkhe-toolkit' ) ) );
 
 	}
 

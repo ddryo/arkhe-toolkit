@@ -48,7 +48,9 @@ spl_autoload_register(
  */
 class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
-	use \Arkhe_Toolkit\Output_Field, \Arkhe_Toolkit\Utility;
+	use \Arkhe_Toolkit\Output_Field,
+		\Arkhe_Toolkit\Utility,
+		\Arkhe_Toolkit\SVG_Icons;
 
 	public function __construct() {
 
@@ -83,10 +85,6 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		// 機能削除
 		require_once ARKHE_TOOLKIT_PATH . 'inc/remove.php';
 
-		// その他、フック処理
-		// Hooks::init();
-		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
-
 		// ショートコード
 		require_once ARKHE_TOOLKIT_PATH . 'inc/shortcode.php';
 
@@ -96,6 +94,9 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 		// ajax
 		require_once ARKHE_TOOLKIT_PATH . 'inc/ajax.php';
+
+		// その他、フック処理
+		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
 
 		// アップデート
 		// require_once ARKHE_TOOLKIT_PATH . 'inc/update.php';

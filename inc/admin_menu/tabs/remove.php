@@ -9,11 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // PAGE_NAME
 $page_name = 'arkhe_menu_page_remove';
 
-/**
- * テストセクション
- */
 \Arkhe_Toolkit::add_menu_section( [
-	'title'     => __( 'WordPress本体の機能', 'arkhe-toolkit' ),
+	'title'     => __( 'WordPress features', 'arkhe-toolkit' ),
 	'key'       => 'remove_core',
 	'page_name' => $page_name,
 ] );

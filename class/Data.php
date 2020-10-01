@@ -94,11 +94,14 @@ class Data {
 		];
 
 		self::$defaults['remove'] = [
-			'remove_wpver'       => '1',
-			'remove_rel_link'    => '1',
-			'remove_wlwmanifest' => '1',
-			'remove_rsd_link'    => '1',
-			'remove_emoji'       => '1',
+			'remove_wpver'       => '',
+			'remove_rel_link'    => '',
+			'remove_wlwmanifest' => '',
+			'remove_rsd_link'    => '',
+			'remove_emoji'       => '',
+			'remove_self_ping'   => '',
+			'remove_sitemap'     => '',
+			'remove_rest_link'   => '',
 			'remove_srcset'      => '',
 			'remove_wptexturize' => '',
 			'remove_feed_link'   => '',
@@ -111,55 +114,71 @@ class Data {
 	 * 設定データのデフォルト値を取得
 	 *   キーが指定されていればそれを、指定がなければ全てを返す。
 	 */
-	public static function get_default_data( $id = '', $key = '' ) {
+	public static function get_default_data( $name_key = '', $key = '' ) {
 
 		// DBのID名の指定なければ全部返す
-		if ( '' === $id ) return self::$defaults;
+		if ( '' === $name_key ) return self::$defaults;
 
 		// DBのID名が存在しない時
-		if ( ! isset( self::$defaults[ $id ] ) ) return null;
+		if ( ! isset( self::$defaults[ $name_key ] ) ) return null;
 
 		// ID指定のみでキーの指定がない時
-		if ( '' === $key ) return self::$defaults[ $id ];
+		if ( '' === $key ) return self::$defaults[ $name_key ];
 
 		// 指定されたIDのデータの中に指定されたキーが存在しない時
-		if ( ! isset( self::$defaults[ $id ][ $key ] ) ) return '';
+		if ( ! isset( self::$defaults[ $name_key ][ $key ] ) ) return '';
 
 		// id, key がちゃんとある時
-		return self::$defaults[ $id ][ $key ];
+		return self::$defaults[ $name_key ][ $key ];
 	}
 
 
 	/**
 	 * 設定データ取得
 	 */
-	public static function get_data( $id = '', $key = '' ) {
+	public static function get_data( $name_key = '', $key = '' ) {
 
 		// DBのID名の指定なければ全部返す
-		if ( '' === $id ) return self::$data;
+		if ( '' === $name_key ) return self::$data;
 
 		// DBのID名が存在しない時
-		if ( ! isset( self::$data[ $id ] ) ) return null;
+		if ( ! isset( self::$data[ $name_key ] ) ) return null;
 
 		// ID指定のみでキーの指定がない時
-		if ( '' === $key ) return self::$data[ $id ];
+		if ( '' === $key ) return self::$data[ $name_key ];
 
 		// 指定されたIDのデータの中に指定されたキーが存在しない時
-		if ( ! isset( self::$data[ $id ][ $key ] ) ) return '';
+		if ( ! isset( self::$data[ $name_key ][ $key ] ) ) return '';
 
 		// id, key がちゃんとある時
-		return self::$data[ $id ][ $key ];
+		return self::$data[ $name_key ][ $key ];
 	}
 
 
 	/**
 	 * 設定データを強制セット
 	 */
-	public static function set_option( $id = '', $key = '', $val = '' ) {
-		if ( '' === $id || '' === $key ) return;
+	public static function set_data( $name_key = '', $key = '', $val = '' ) {
+		if ( '' === $name_key || '' === $key ) return;
 
 		// データのセット
-		self::$data[ $id ][ $key ] = $val;
+		self::$data[ $name_key ][ $key ] = $val;
+
+	}
+
+	/**
+	 * 設定データをリセット
+	 */
+	public static function reset_data( $id = '' ) {
+		if ( $id ) {
+			// 指定されたものだけ削除
+			delete_option( \Arkhe_Toolkit::DB_NAMES[ $id ] );
+		} else {
+			// 全削除
+			foreach ( \Arkhe_Toolkit::DB_NAMES as $db_name ) {
+				delete_option( $db_name );
+			}
+		}
 
 	}
 }

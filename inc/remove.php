@@ -1,15 +1,17 @@
 <?php
+namespace Arkhe_Toolkit;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * 不要機能の削除
  */
-add_action( 'wp_loaded', 'arkhe_plus_hook__remove', 11 ); // wp_loaded なのは 設定値を受け取るため
+add_action( 'init', '\Arkhe_Toolkit\remove_functions', 20 );
 
 
 /**
  * 設定に合わせて不要な機能・出力を削除
  */
-function arkhe_plus_hook__remove() {
+function remove_functions() {
 
 	$data = \Arkhe_Toolkit::get_data( 'remove' );
 
@@ -59,13 +61,26 @@ function arkhe_plus_hook__remove() {
 		add_theme_support( 'automatic-feed-links' );
 	}
 
-	/**
-	 * script/styleタグで不要なtype属性を非表示
-	 */
-	// add_filter('script_loader_tag', function ($tag) {
-	//     return str_replace("type='text/javascript' ", "", $tag);
-	// });
-	// add_filter('style_loader_tag', function ($tag) {
-	//     return str_replace("type='text/css' ", "", $tag);
-	// });
+	// HTMLチェックで「Bad value」になるやつ https://api.w.org/ を消す
+	if ( $data['remove_rest_link'] ) {
+		remove_action( 'wp_head', 'rest_output_link_wp_head' );
+	}
+
+	// コアのサイトマップ機能
+	if ( $data['remove_sitemap'] ) {
+		add_filter( 'wp_sitemaps_enabled', '__return_false' );
+		// add_filter( 'wp_sitemaps_users_pre_url_list', '__return_false' );
+	}
+
+	// セルフピンバックの停止
+	if ( $data['remove_self_ping'] ) {
+		add_action( 'pre_ping', function( &$post_links ) {
+			$home = home_url();
+			foreach ( $post_links as $key => $link ) {
+				if ( 0 === strpos( $link, $home ) ) {
+					unset( $post_links[ $key ] );
+				}
+			}
+		} );
+	}
 }

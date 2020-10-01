@@ -1,0 +1,369 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Arkhe Toolkit\n"
+"POT-Creation-Date: 2020-10-01 09:52+0900\n"
+"PO-Revision-Date: 2020-10-01 09:52+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: arkhe-toolkit.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+
+#: inc/admin_menu.php:12 inc/admin_menu/menu_page.php:26
+#: inc/admin_toolbar.php:25
+msgid "Arkhe Settings"
+msgstr "Arkhe設定"
+
+#: inc/admin_menu.php:37 inc/admin_menu.php:38
+msgid "Reusable Block"
+msgstr "再利用ブロック"
+
+#: inc/admin_menu.php:63
+msgid "拡張機能"
+msgstr ""
+
+#: inc/admin_menu.php:64
+msgid "キャッシュ機能"
+msgstr ""
+
+#: inc/admin_menu.php:65
+msgid "機能停止"
+msgstr ""
+
+#: inc/admin_menu/menu_page.php:10
+msgid "Reset"
+msgstr "リセット"
+
+#: inc/admin_menu/menu_page.php:17
+msgid "Your settings have been saved."
+msgstr "設定を保存しました。"
+
+#: inc/admin_menu/tabs/cache.php:17
+msgid "Cache settings"
+msgstr "キャッシュ機能の設定"
+
+#: inc/admin_menu/tabs/cache.php:36 inc/admin_toolbar.php:50
+msgid "Clear Cache"
+msgstr "キャッシュをクリア"
+
+#: inc/admin_menu/tabs/remove.php:13
+msgid "WordPress features"
+msgstr "WordPressの機能"
+
+#: inc/admin_menu/tabs/reset.php:11
+msgid "Reset setting data"
+msgstr "設定データをリセット"
+
+#: inc/admin_menu/tabs/section/cache.php:9
+msgid "Cache header"
+msgstr "ヘッダーをキャッシュする"
+
+#: inc/admin_menu/tabs/section/cache.php:10
+msgid "Cache sidebar"
+msgstr "サイドバーをキャッシュする"
+
+#: inc/admin_menu/tabs/section/cache.php:11
+msgid "Cache footer"
+msgstr "フッターをキャッシュする"
+
+#: inc/admin_menu/tabs/section/remove_core.php:10
+msgid "Stop outputting WordPress version"
+msgstr "WordPressバージョンの出力を停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:12
+msgid "Stop linking with Windows Live Write"
+msgstr "Windows Live Writeとの連携を停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:13
+msgid "Stop EditURI (RSD Link)"
+msgstr "EditURI(RSD Link)の停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:14
+msgid "Stop loading scripts for emoji"
+msgstr "絵文字用のスクリプトの読み込みを停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:15
+msgid "Stop self-pingback"
+msgstr "セルフピンバックを停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:16
+msgid "Stop core sitemap functionality "
+msgstr "コアのサイトマップ機能を停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:17
+msgid "Stop outputting link tags for REST API"
+msgstr "REST API用linkタグの出力を停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:18
+msgid "Stop outputting srcset"
+msgstr "srcsetの出力を停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:19
+msgid "Stop outputting  \"rel = prev / next\""
+msgstr "「rel=prev/next」の出力を停止"
+
+#: inc/admin_menu/tabs/section/remove_core.php:20
+msgid "Stop automatic conversion of symbols (disable wptexturize)"
+msgstr "記号の自動変換を停止(wptexturize無効化)"
+
+#: inc/admin_menu/tabs/section/remove_core.php:21
+msgid "Stop RSS feed"
+msgstr "RSSフィードを停止"
+
+#: inc/admin_toolbar.php:13
+msgid "Customize"
+msgstr ""
+
+#: inc/admin_toolbar.php:39
+msgid "To setting page"
+msgstr "設定ページへ"
+
+#: inc/ajax.php:15
+msgid "The reset is complete."
+msgstr "リセット完了しました。"
+
+#: inc/ajax.php:31
+msgid "The cache clear is complete."
+msgstr "キャッシュクリアが完了しました。"
+
+#: inc/customizer/after_article.php:10
+msgid "Under the article"
+msgstr ""
+
+#: inc/customizer/after_article.php:21
+msgid "SNSアクションエリア設定"
+msgstr ""
+
+#: inc/customizer/after_article.php:30
+msgid "表示するボタン"
+msgstr ""
+
+#: inc/customizer/after_article.php:40
+msgid "Twitterフォローボタン"
+msgstr ""
+
+#: inc/customizer/after_article.php:51
+msgid "Facebookいいねボタン"
+msgstr ""
+
+#: inc/customizer/after_article.php:62
+msgid "Twitterフォローボタンの対象ユーザー名"
+msgstr ""
+
+#: inc/customizer/after_article.php:63
+msgid "@以降の文字列を指定してください。"
+msgstr ""
+
+#: inc/customizer/after_article.php:75
+msgid "Facebookいいねボタンの対象URL"
+msgstr ""
+
+#: inc/customizer/after_article.php:87
+msgid "Facebookいいねボタンに使用するappID"
+msgstr ""
+
+#: inc/customizer/after_article.php:99
+msgid "前後記事へのページリンク設定"
+msgstr ""
+
+#: inc/customizer/after_article.php:109
+msgid "前後記事へのページリンクを表示"
+msgstr ""
+
+#: inc/customizer/after_article.php:120
+msgid "同じカテゴリーの記事を取得する"
+msgstr ""
+
+#: inc/customizer/after_article.php:130
+msgid "著者情報エリアの設定"
+msgstr ""
+
+#: inc/customizer/after_article.php:140
+msgid "著者情報を表示"
+msgstr ""
+
+#: inc/customizer/after_article.php:141 inc/customizer/after_article.php:152
+#: inc/customizer/after_article.php:163 inc/customizer/after_article.php:177
+#: inc/customizer/after_article.php:181 inc/customizer/after_article.php:183
+#: inc/customizer/after_article.php:195 inc/customizer/after_article.php:197
+#: inc/customizer/after_article.php:201 inc/customizer/after_article.php:203
+msgid "loos"
+msgstr ""
+
+#: inc/customizer/after_article.php:151
+msgid "関連記事エリアの設定"
+msgstr ""
+
+#: inc/customizer/after_article.php:162
+msgid "関連記事を表示"
+msgstr ""
+
+#: inc/customizer/after_article.php:176
+msgid "関連記事のレイアウト"
+msgstr ""
+
+#: inc/customizer/after_article.php:180
+msgid "カード型"
+msgstr ""
+
+#: inc/customizer/after_article.php:182
+msgid "リスト型"
+msgstr ""
+
+#: inc/customizer/after_article.php:194
+msgid "関連記事の取得方法"
+msgstr ""
+
+#: inc/customizer/after_article.php:196
+msgid "どの情報から関連記事を取得するかどうか"
+msgstr ""
+
+#: inc/customizer/after_article.php:200
+msgid "カテゴリー"
+msgstr ""
+
+#: inc/customizer/after_article.php:202
+msgid "タグ"
+msgstr ""
+
+#: inc/customizer/after_article.php:214
+msgid "コメントエリアの設定"
+msgstr ""
+
+#: inc/customizer/after_article.php:224
+msgid "コメントエリアを表示"
+msgstr ""
+
+#: inc/customizer/share_btn.php:10
+msgid "SNS share button"
+msgstr ""
+
+#: inc/customizer/share_btn.php:21
+msgid "Display settings"
+msgstr ""
+
+#: inc/customizer/share_btn.php:30
+msgid "Display position"
+msgstr ""
+
+#: inc/customizer/share_btn.php:40
+msgid "Display at the top of the article"
+msgstr ""
+
+#: inc/customizer/share_btn.php:51
+msgid "Display at the bottom of the article"
+msgstr ""
+
+#: inc/customizer/share_btn.php:61
+msgid "Which button to display"
+msgstr ""
+
+#: inc/customizer/share_btn.php:137
+msgid "Design"
+msgstr ""
+
+#: inc/customizer/share_btn.php:140
+msgid "Block"
+msgstr ""
+
+#: inc/customizer/share_btn.php:141
+msgid "Icon"
+msgstr ""
+
+#: inc/customizer/share_btn.php:152
+msgid "Additional settings for Twitter"
+msgstr ""
+
+#: inc/customizer/share_btn.php:163
+msgid "Hashtag when shared"
+msgstr ""
+
+#: inc/customizer/share_btn.php:164
+msgid "Please do not include \"#\" and enter \",\" separated when multiple."
+msgstr ""
+
+#: inc/customizer/share_btn.php:176
+msgid "via setting (mention destination)"
+msgstr ""
+
+#: inc/customizer/share_btn.php:177
+msgid "Please enter your Twitter ID without the \"@\"."
+msgstr ""
+
+#: inc/enqueue_scripts.php:50
+msgid "Will you really reset it?"
+msgstr "本当にリセットしますか？"
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:54
+msgid "View details"
+msgstr ""
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr ""
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:213
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:215
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: inc/update/Puc/v4p5/Plugin/Ui.php:223
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: inc/update/Puc/v4p5/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Arkhe Toolkit"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://arkhe-theme.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Arkhe の機能拡張用プラグイン"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "了"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://twitter.com/ddryo_loos"
+msgstr ""
