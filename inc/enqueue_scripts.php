@@ -14,11 +14,11 @@ add_action( 'admin_enqueue_scripts', '\Arkhe_Toolkit\enqueue_admin_scripts', 20 
  * フロントで読み込むファイル
  */
 function enqueue_front_scripts() {
-	wp_enqueue_style( 'arkhe-toolkit-front', ARKHE_TOOLKIT_URL . 'dist/css/front.css', [], ARKHE_TOOLKIT_VERSION );
+	wp_enqueue_style( 'arkhe-toolkit-front', ARKHE_TOOLKIT_URL . 'dist/css/front.css', [], ARKHE_TOOLKIT_VER );
 
 	if ( is_user_logged_in() ) {
 		// ajax関連処理
-		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
+		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
 		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
 			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
 			'ajaxNonce' => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
@@ -35,20 +35,27 @@ function enqueue_admin_scripts( $hook_suffix ) {
 	$is_arkhe_page = strpos( $hook_suffix, 'arkhe_' ) !== false;
 
 	if ( $is_arkhe_page || 'edit.php' === $hook_suffix || 'edit-tags.php' === $hook_suffix ) {
-		wp_enqueue_style( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/css/admin.css', [], ARKHE_TOOLKIT_VERSION );
+		wp_enqueue_style( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/css/admin.css', [], ARKHE_TOOLKIT_VER );
 	}
 
 	// Arkhe設定ページのみ
 	if ( $is_arkhe_page ) {
-		wp_enqueue_script( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/js/admin.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
+
+		wp_enqueue_style( 'arkhe-toolkit-menu', ARKHE_TOOLKIT_URL . 'dist/css/menu.css', [], ARKHE_TOOLKIT_VER );
+		wp_enqueue_script( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/js/admin.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
 
 		// ajax関連処理
-		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VERSION, true );
+		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
 		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
 			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
 			'ajaxNonce'      => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
 			'confirmMessage' => __( 'Will you really reset it?', 'arkhe-toolkit' ),
 		] );
+	}
+
+	// カスタマイザー
+	if ( is_customize_preview() ) {
+		wp_enqueue_style( 'arkhe-toolkit-customizer', ARKHE_TOOLKIT_URL . 'dist/css/customizer.css', [], ARKHE_TOOLKIT_VER );
 	}
 
 }

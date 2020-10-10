@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+/*
+ * 管理画面で読み込むCSS
+ */
+
+// mixin
+@import "mixin/**";
+
+// 設定ページ
+
+$bg: #eff0f3;
+$main: #ff8e3c;
+$headline:#0d0d0d;
+$text: #2a2a2a;
+$tertiary: #d9376e;
+$white: #fffffe;
+
+#wpwrap {
+	color: $text;
+	background: $bg;
+}
+
+#wpcontent {
+	padding-left: 0;
+}
+
+#arkhe-menu {
+	margin: 0;
+
+	.notice {
+		margin: 1em 0;
+		padding: 0;
+		// color: $white;
+		background: none;
+		border: none;
+		box-shadow: none;
+	}
+
+	.nav-tab-wrapper {
+		border-bottom: none;
+	}
+
+	.nav-tab {
+		margin: 0;
+		padding: 0.5em 1.5em;
+		background: $white;
+		border: none;
+		border-radius: 3px;
+		opacity: 0.7;
+
+		&.nav-tab-active {
+			background: $bg;
+			opacity: 1;
+		}
+	}
+
+	.form-table {
+		padding: 1em;
+		background: $white;
+		box-shadow: 0 0 8px -2px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.arkhe-menu__head {
+	padding: 24px 24px 0;
+	color: $text;
+	// color: $white;
+	background: $white;
+	// border-top: 2px solid $main;
+}
+
+.arkhe-menu {
+	// color: $text;
+
+	h1.arkhe-menu__title {
+		// color: $headline;
+		color: $headline;
+		font-size: 2em;
+	}
+
+	h2 {
+		margin: 2em 0 1em;
+		padding: 8px 12px;
+		color: $headline;
+		font-size: 1.5em;
+		// border-bottom: 1px solid #000;
+		border-left: 4px solid;
+	}
+
+	// h3 {
+	// 	margin: 2em 0 1em;
+	// 	padding: 4px 12px;
+	// 	font-size: 1.25em;
+	// 	border-left: 4px solid #000;
+	// }
+
+	td > :first-child {
+		margin-top: 0 !important;
+	}
+
+	.form-table {
+		display: block;
+
+		th {
+			display: none;
+		}
+
+		tbody,
+		tr,
+		td {
+			display: block;
+		}
+	}
+
+}
+
+.arkhe-menu__body {
+	padding: 0 20px;
+}
+
+.arkhe-menu__field {
+
+	margin-top: 16px;
+
+	&.-text {
+		display: flex;
+
+		.arkhe-menu__label {
+			display: block;
+			min-width: 12em;
+		}
+	}
+
+
+	&.-radio {
+
+		.arkhe-menu__label {
+			display: block;
+			padding: 8px 0;
+		}
+	}
+
+	&.-checkbox {
+
+		.arkhe-menu__label {
+			display: block;
+			padding: 4px 0;
+		}
+	}
+}
+
+.arkhe-reset-btns {
+	padding: 2em 0;
+}

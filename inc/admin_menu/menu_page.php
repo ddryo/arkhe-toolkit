@@ -22,26 +22,28 @@ if ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] ) {
 
 <div id="arkhe-menu" class="arkhe-menu wrap">
 
-	<h1 class="arkhe-menu__title">
-		<?=esc_html__( 'Arkhe Settings', 'arkhe-toolkit' )?>
-	</h1>
+	<div class="arkhe-menu__head">
+		<h1 class="arkhe-menu__title">
+			<?=esc_html__( 'Arkhe Settings', 'arkhe-toolkit' )?>
+		</h1>
 
-	<?php
-		$data = \Arkhe_Toolkit::get_data();
-		// echo '<pre style="margin-left: 100px;">';
-		// var_dump( $data );
-		// echo '</pre>';
-	?>
-
-	<div class="nav-tab-wrapper">
 		<?php
-			foreach ( $setting_tabs as $key => $val ) :
-			$tab_url   = admin_url( 'admin.php?page=arkhe_settings' ) . '&tab=' . $key;
-			$nav_class = ( $now_tab === $key ) ? 'nav-tab nav-tab-active' : 'nav-tab';
-
-			echo '<a href="' . esc_url( $tab_url ) . '" class="' . esc_attr( $nav_class ) . '">' . esc_html( $val ) . '</a>';
-			endforeach;
+			$data = \Arkhe_Toolkit::get_data();
+			// echo '<pre style="margin-left: 100px;">';
+			// var_dump( $data );
+			// echo '</pre>';
 		?>
+
+		<div class="nav-tab-wrapper">
+			<?php
+				foreach ( $setting_tabs as $key => $val ) :
+				$tab_url   = admin_url( 'admin.php?page=arkhe_settings' ) . '&tab=' . $key;
+				$nav_class = ( $now_tab === $key ) ? 'nav-tab nav-tab-active' : 'nav-tab';
+
+				echo '<a href="' . esc_url( $tab_url ) . '" class="' . esc_attr( $nav_class ) . '">' . esc_html( $val ) . '</a>';
+				endforeach;
+			?>
+		</div>
 	</div>
 	<div class="arkhe-menu__body">
 		<?php

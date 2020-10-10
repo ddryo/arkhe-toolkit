@@ -2,6 +2,7 @@
 // ドロワーを左右から展開する
 [data-drawer-move="left"] {
 
+
 	.p-drawer {
 		z-index: 1; //ロゴなどより上に
 		padding-top: 0;
@@ -23,11 +24,14 @@
 	// }
 
 	.p-drawer__inner {
+
+		--ark-color_border: rgba(0, 0, 0, 0.1);
+
 		left: 0;
 		width: 88vw;
 		padding-top: var(--ark-header_height);
 		color: #333;
-		background: #fff;
+		background: #fdfdfd;
 		transform: translateX(-100%);
 		transition: transform 0.5s;
 		transition-delay: 0.1s;

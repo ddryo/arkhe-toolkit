@@ -14,9 +14,10 @@ class Data {
 	// DB名
 	// const DB_NAME_OPTIONS = 'arkhe_toolkit_options';
 	const DB_NAMES = [
-		'extension' => 'arkhe_toolkit_extension',
-		'cache'     => 'arkhe_toolkit_cache',
-		'remove'    => 'arkhe_toolkit_remove',
+		'customizer' => 'arkhe_toolkit_customizer',
+		'extension'  => 'arkhe_toolkit_extension',
+		'cache'      => 'arkhe_toolkit_cache',
+		'remove'     => 'arkhe_toolkit_remove',
 	];
 
 	// キャッシュキー
@@ -81,6 +82,10 @@ class Data {
 	 * デフォルト値をセット
 	 */
 	private static function set_defaults() {
+
+		self::$defaults['customizer'] = [
+			'drawer_move' => 'fade',
+		];
 
 		self::$defaults['extension'] = [
 			'cache_header'       => '',

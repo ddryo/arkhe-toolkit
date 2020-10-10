@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * 定数定義
  */
-define( 'ARKHE_TOOLKIT_VERSION', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date_i18n( 'mdGis' ) : '1.0.0' );
+define( 'ARKHE_TOOLKIT_VER', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date_i18n( 'mdGis' ) : '1.0.0' );
 define( 'ARKHE_TOOLKIT_URL', plugins_url( '/', __FILE__ ) );
 define( 'ARKHE_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -87,6 +87,12 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 		// ショートコード
 		require_once ARKHE_TOOLKIT_PATH . 'inc/shortcode.php';
+
+		// カスタマイザー
+		require_once ARKHE_TOOLKIT_PATH . 'inc/customizer.php';
+
+		// ウィジェット
+		require_once ARKHE_TOOLKIT_PATH . 'inc/widget.php';
 
 		// キャッシュ
 		require_once ARKHE_TOOLKIT_PATH . 'inc/cache.php';

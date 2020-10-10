@@ -11,55 +11,27 @@ remove_filter( 'pre_term_description', 'wp_filter_kses' );
 add_filter( 'pre_term_description', 'wp_kses_post' );
 
 
-add_action( 'arkhe_header_blocked_message', function() {
-	$tmplink = '<a href="' . esc_url( admin_url( 'edit.php?post_type=arkhe_template' ) ) . '" target="_blank" rel="noopener">' . __( 'テンプレート一覧ページ', 'arkhe' ) . '</a>';
-
-	// translators: %s is $tmplink.
-	$message = __( '現在、ヘッダーの内容はブロックで管理されています。', 'arkhe' ) . sprintf( __( '%sから編集してください。', 'arkhe' ), $tmplink );
-
-		$header_section = 'arkhe_section_header';
-
-	// ヘッダーの固定設定
-	\Arkhe_Theme\Customizer::big_title(
-		$header_section,
-		'is_header_block',
-		[
-			'label'       => __( 'ブロックで管理中...', 'arkhe' ),
-			'description' => $message,
-		]
-	);
-} );
-
-// add_action( 'customize_register', '\Arkhe_Toolkit\add_customizer_setttings', 99 );
-// function add_customizer_setttings( $wp_customize ) {
-
-// 	$header_section = 'arkhe_section_header';
-// 	\ARKHE_THEME\Customizer::big_title(
-// 		$header_section,
-// 		'header_test',
-// 		[
-// 			'label'       => __( 'OOOOOO', 'arkhe' ),
-// 			'description' => __( 'You can set the image to use from the "Site Identity" menu.', 'arkhe' ),
-// 		]
-// 	);
-// }
-
-
-
-// テーマ側で用意しているフックへの処理
-add_action( 'arkhe_author_links', '\Arkhe_Toolkit\author_links' );
+/**
+ * ドロワーメニューの拡張
+ */
 add_action( 'arkhe_root_attrs', '\Arkhe_Toolkit\hook_root_attrs' );
-
 function hook_root_attrs( $attrs ) {
 
-	// $attrs = str_replace( 'drawer-move="fade"', 'drawer-move="left"', $attrs );
+	$drawer_move = \Arkhe_Toolkit::get_data( 'customizer', 'drawer_move' );
+
+	// ドロワーを左から展開
+	if ( 'left' === $drawer_move ) {
+		$attrs = str_replace( 'drawer-move="fade"', 'drawer-move="left"', $attrs );
+	}
+
 	return $attrs;
 
 }
 
 /**
- * 抜粋文字数を変更する
+ * 著者情報にSNSアイコンリンク追加
  */
+add_action( 'arkhe_author_links', '\Arkhe_Toolkit\author_links' );
 function author_links( $author_id ) {
 	if ( ! $author_id ) return;
 

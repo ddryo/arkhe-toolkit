@@ -1,0 +1,33 @@
+// .wp-full-overlay-sidebar-content {
+// 	background: #eff0f3;
+// }
+
+// #customize-controls .control-section:hover > .accordion-section-title,
+// #customize-controls .control-section .accordion-section-title:hover,
+// #customize-controls .control-section.open .accordion-section-title,
+// #customize-controls .control-section .accordion-section-title:focus {
+// 	background: #eff0f3;
+// }
+
+$tertiary: #d9376e;
+
+.customize-control.-toolkit {
+
+	.customize-control-title.-big {
+		position: relative;
+
+		&::before {
+			display: inline-block;
+			margin-right: 0.5em;
+			padding: 0 0.5em;
+			color: #fff;
+			font-size: 12px;
+			background: $tertiary;
+			border-radius: 2px;
+			content: "Toolkit";
+		}
+	}
+}
+
+
+
