@@ -1,9 +1,6 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-
 /**
  * カスタマイザーの設定項目を追加
  */

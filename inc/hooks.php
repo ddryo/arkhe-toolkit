@@ -1,9 +1,6 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-
 /**
  * カテゴリーの説明文に対するフィルター処理を緩める ( wp_filter_kses -> wp_kses_post )
  */
@@ -17,26 +14,57 @@ add_filter( 'pre_term_description', 'wp_kses_post' );
 add_action( 'arkhe_root_attrs', '\Arkhe_Toolkit\hook_root_attrs' );
 function hook_root_attrs( $attrs ) {
 
-	$drawer_move = \Arkhe_Toolkit::get_data( 'customizer', 'drawer_move' );
+	// ドロワーの展開方法
+	$attrs['data-drawer-move'] = \Arkhe_Toolkit::get_data( 'customizer', 'drawer_move' );
 
-	// ドロワーを左から展開
-	if ( 'left' === $drawer_move ) {
-		$attrs = str_replace( 'drawer-move="fade"', 'drawer-move="left"', $attrs );
+	if ( \Arkhe_Toolkit::get_data( 'customizer', 'header_above_drawer' ) ) {
+		$attrs['data-header-above'] = '1';
 	}
 
 	return $attrs;
-
 }
+
+
+/**
+ * ヘッダーの属性
+ */
+add_action( 'arkhe_header_attrs', '\Arkhe_Toolkit\hook_header_attrs' );
+function hook_header_attrs( $attrs ) {
+
+	// ヘッダーがブロック化されていなければカスタマイザーデータ反映
+	if ( ! \Arkhe::get_plugin_data( 'use_temlate_block' ) ) {
+		// ボタンレイアウト
+		$attrs['data-btns'] = \Arkhe_Toolkit::get_data( 'customizer', 'header_btn_layout' );
+	}
+
+	return $attrs;
+}
+
+
+/**
+ * 著者情報に「役職」追加
+ */
+add_action( 'arkhe_after_author_name', function( $author_id = 0 ) {
+	if ( ! $author_id ) return;
+	if ( ! \Arkhe_Toolkit::get_data( 'extension', 'use_user_position' ) ) return;
+
+	$position = get_the_author_meta( 'position', $author_id ) ?: '';
+
+	if ( ! $position ) return;
+	?>
+		<span class="p-authorBox__position u-color-thin"><?php echo esc_html( $position ); ?></span>
+	<?php
+} );
+
 
 /**
  * 著者情報にSNSアイコンリンク追加
  */
-add_action( 'arkhe_author_links', '\Arkhe_Toolkit\author_links' );
-function author_links( $author_id ) {
+add_action( 'arkhe_author_links', function ( $author_id = 0 ) {
 	if ( ! $author_id ) return;
+	if ( ! \Arkhe_Toolkit::get_data( 'extension', 'use_user_urls' ) ) return;
 
 	$icon_links              = [];
-	$icon_links['home2']     = get_the_author_meta( 'site2', $author_id ) ?: '';
 	$icon_links['facebook']  = get_the_author_meta( 'facebook_url', $author_id ) ?: '';
 	$icon_links['twitter']   = get_the_author_meta( 'twitter_url', $author_id ) ?: '';
 	$icon_links['instagram'] = get_the_author_meta( 'instagram_url', $author_id ) ?: '';
@@ -68,4 +96,4 @@ function author_links( $author_id ) {
 		</ul>
 	</div>
 	<?php
-}
+} );

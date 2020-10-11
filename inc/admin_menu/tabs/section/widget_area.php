@@ -1,0 +1,16 @@
+<?php
+/**
+ * 「拡張機能」タブ > ウィジェットエリアセクション
+ */
+$remove_settings = [
+	'use_page_widget'  => __( 'Add widget area for the "Page"', 'arkhe-toolkit' ),
+	'use_post_widget'  => __( 'Add widget area for the "Post"', 'arkhe-toolkit' ),
+	'use_home_widget'  => __( 'Add widget area for the "Home"', 'arkhe-toolkit' ),
+];
+foreach ( $remove_settings as $key => $label ) {
+	\Arkhe_Toolkit::output_checkbox([
+		'db'    => $cb_args['db'],
+		'key'   => $key,
+		'label' => $label,
+	]);
+}

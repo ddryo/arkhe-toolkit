@@ -1,8 +1,6 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 /**
  * カスタマイザーの設定変更後、キャッシュを削除
  */

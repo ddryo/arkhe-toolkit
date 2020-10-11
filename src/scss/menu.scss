@@ -143,6 +143,10 @@ $white: #fffffe;
 
 	&.-checkbox {
 
+		[type="checkbox"] {
+			margin: 0 4px 0 0;
+		}
+
 		.arkhe-menu__label {
 			display: block;
 			padding: 4px 0;

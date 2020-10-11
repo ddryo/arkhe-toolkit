@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 $setting_tabs = \Arkhe_Toolkit::$menu_tabs;
 
 // 特殊なタブを追加
-$setting_tabs['reset'] = __( 'Reset', 'arkhe-toolkit' );
+// $setting_tabs['reset'] = __( 'Reset', 'arkhe-toolkit' );
 
 // 現在のタブを取得
 $now_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'extension';
@@ -26,13 +26,6 @@ if ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] ) {
 		<h1 class="arkhe-menu__title">
 			<?=esc_html__( 'Arkhe Settings', 'arkhe-toolkit' )?>
 		</h1>
-
-		<?php
-			$data = \Arkhe_Toolkit::get_data();
-			// echo '<pre style="margin-left: 100px;">';
-			// var_dump( $data );
-			// echo '</pre>';
-		?>
 
 		<div class="nav-tab-wrapper">
 			<?php

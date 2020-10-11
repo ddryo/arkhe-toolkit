@@ -1,16 +1,36 @@
 
-// ドロワーを左右から展開する
-[data-drawer-move="left"] {
 
+.p-drawer::before,
+.p-drawerUnderlayer::before {
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	display: block;
+	width: 88vw;
+	max-width: 480px;
+	height: 100%;
+	background: #fff;
+	// transform: translateX(-100%);
+	transition: transform 0.5s;
+	transition-delay: 0.1s;
+	// content: "";
+}
+
+// ドロワーを左右から展開する
+html:not([data-drawer-move="fade"]) {
 
 	.p-drawer {
 		z-index: 1; //ロゴなどより上に
-		padding-top: 0;
 		background: rgba(#000, 0.5);
 		transition: opacity 0.1s, visibility 0.1s;
 		transition-delay: 0s;
 		pointer-events: none; //.c-overlayをクリックできるように
 	}
+
+	.p-drawer::before {
+		content: "";
+	}
+
 
 	&[data-drawer="closed"] {
 
@@ -19,36 +39,98 @@
 		}
 	}
 
-	// .l-header__menuBtn {
-	//     z-index: 2; //メニューボタンだけ押せるように
-	// }
-
 	.p-drawer__inner {
-
 		--ark-color_border: rgba(0, 0, 0, 0.1);
 
-		left: 0;
 		width: 88vw;
-		padding-top: var(--ark-header_height);
+		max-width: 480px;
 		color: #333;
-		background: #fdfdfd;
-		transform: translateX(-100%);
 		transition: transform 0.5s;
 		transition-delay: 0.1s;
 		pointer-events: auto;
+	}
 
-		@include pc {
-			width: 480px;
+
+	&[data-drawer="opened"] {
+
+		.l-header__menuBtn {
+			color: #333;
+		}
+
+		.p-drawer__inner,
+		.p-drawer::before,
+		.p-drawerUnderlayer::before {
+			transform: translateX(0);
 		}
 	}
+}
 
+[data-drawer-move="left"] {
 
-	&[data-drawer="opened"] .l-header__menuBtn {
-		color: #333;
+	.p-drawer__inner,
+	.p-drawer::before,
+	.p-drawerUnderlayer::before {
+		left: 0;
+		transform: translateX(-100%);
+	}
+}
+
+[data-drawer-move="right"] {
+
+	.p-drawer__inner {
+		margin-left: auto;
 	}
 
-	&[data-drawer="opened"] .p-drawer__inner {
-		transform: translateX(0);
+	.p-drawer__inner,
+	.p-drawer::before,
+	.p-drawerUnderlayer::before {
+		right: 0;
+		transform: translateX(100%);
+	}
+}
+
+
+[data-header-above] {
+
+	.p-drawer {
+		// color: #fff;
+		background: none !important;
 	}
 
+	.l-header__drawerBtn {
+		color: inherit !important;
+	}
+
+	.p-drawerUnderlayer {
+		background: rgba(#000, 0.92);
+	}
+
+	.l-header__left,
+	.l-header__center,
+	.l-header__right,
+	.l-header__searchBtn {
+		z-index: 2;
+		pointer-events: auto;
+	}
+
+	&:not([data-drawer-move="fade"]) {
+
+		.p-drawer::before,
+		.p-drawer__inner {
+			width: 100%;
+		}
+
+
+		// 背景色つける要素を変える
+		.p-drawer::before {
+			display: none;
+		}
+
+		.p-drawerUnderlayer {
+
+			&::before {
+				content: "";
+			}
+		}
+	}
 }

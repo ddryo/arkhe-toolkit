@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Arkhe Toolkit
  * Plugin URI: https://arkhe-theme.com
- * Description: Arkhe の機能拡張用プラグイン
- * Version: 1.0.0
- * Author: 了
- * Author URI: https://twitter.com/ddryo_loos
+ * Description: Arkhe A plugin that extends Arkhe more conveniently
+ * Version: 0.1.0
+ * Author: LOOS,Inc.
+ * Author URI: https://loos.co.jp/
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: arkhe-toolkit
@@ -95,7 +95,7 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		require_once ARKHE_TOOLKIT_PATH . 'inc/widget.php';
 
 		// キャッシュ
-		require_once ARKHE_TOOLKIT_PATH . 'inc/cache.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/cache_create.php';
 		require_once ARKHE_TOOLKIT_PATH . 'inc/cache_clear.php';
 
 		// ajax
@@ -104,8 +104,11 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		// その他、フック処理
 		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
 
-		// アップデート
-		// require_once ARKHE_TOOLKIT_PATH . 'inc/update.php';
+		// アップデートチェック
+		if ( is_admin() ) {
+			require_once ARKHE_TOOLKIT_PATH . 'inc/update.php';
+		}
+
 	}
 }
 

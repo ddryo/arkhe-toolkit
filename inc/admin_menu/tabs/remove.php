@@ -13,4 +13,5 @@ $page_name = 'arkhe_menu_page_remove';
 	'title'     => __( 'WordPress features', 'arkhe-toolkit' ),
 	'key'       => 'remove_core',
 	'page_name' => $page_name,
+	'db'        => 'remove',
 ] );

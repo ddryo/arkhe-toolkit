@@ -11,6 +11,9 @@ class Data {
 	protected static $data     = [];
 	protected static $defaults = [];
 
+	// ページ種別判定用のスラッグ(キャッシュキーの取得などに使う)
+	public static $page_type_slug = '';
+
 	// DB名
 	// const DB_NAME_OPTIONS = 'arkhe_toolkit_options';
 	const DB_NAMES = [
@@ -23,22 +26,22 @@ class Data {
 	// キャッシュキー
 	const CACHE_KEYS = [
 		'header'  => [
-			'front'  => 'header_front',
-			'page'   => 'header_page',
-			'single' => 'header_single',
-			'other'  => 'header_other',
+			'front'  => 'arkhe_parts_header_front',
+			'page'   => 'arkhe_parts_header_page',
+			'single' => 'arkhe_parts_header_single',
+			'other'  => 'arkhe_parts_header_other',
 		],
 		'sidebar' => [
-			'front'   => 'sidebar_front',
-			'page'    => 'sidebar_page',
-			'single'  => 'sidebar_single',
-			'other'   => 'sidebar_other',
+			'front'   => 'arkhe_parts_sidebar_front',
+			'page'    => 'arkhe_parts_sidebar_page',
+			'single'  => 'arkhe_parts_sidebar_single',
+			'other'   => 'arkhe_parts_sidebar_other',
 		],
 		'footer'  => [
-			'front'   => 'footer_front',
-			'page'    => 'footer_page',
-			'single'  => 'footer_single',
-			'other'   => 'footer_other',
+			'front'   => 'arkhe_parts_footer_front',
+			'page'    => 'arkhe_parts_footer_page',
+			'single'  => 'arkhe_parts_footer_single',
+			'other'   => 'arkhe_parts_footer_other',
 		],
 		// 'other' => [
 		// 	'hoge',
@@ -59,7 +62,11 @@ class Data {
 	// init()
 	public static function init() {
 
-		add_action( 'init', [ '\Arkhe_Toolkit', 'data_init' ], 9 ); // テーマ側の set_settings よりも前で。
+		// 設定データセット
+		add_action( 'after_setup_theme', [ '\Arkhe_Toolkit', 'data_init' ], 9 );
+		add_action( 'wp', [ '\Arkhe_Toolkit', 'set_page_type_slug' ] );
+		add_action( 'wp_loaded', [ '\Arkhe_Toolkit', 'customizer_data_init' ] );
+
 	}
 
 
@@ -72,9 +79,33 @@ class Data {
 		self::set_defaults();
 
 		foreach ( self::DB_NAMES as $key => $db_name ) {
+			if ( 'customizer' === $key ) continue;
 			$db_data            = get_option( $db_name ) ?: [];
 			self::$data[ $key ] = array_merge( self::$defaults[ $key ], $db_data );
 		}
+	}
+
+	/**
+	 * ページ種別判定用のスラッグをセット
+	 */
+	public static function set_page_type_slug() {
+		if ( is_front_page() ) {
+			self::$page_type_slug = 'front';
+		} elseif ( is_page() || is_home() ) {
+			self::$page_type_slug = 'page';
+		} elseif ( is_single() ) {
+			self::$page_type_slug = 'single';
+		} else {
+			self::$page_type_slug = 'other';
+		}
+	}
+
+	/**
+	 * カスタマイザーデータの初期セット
+	 */
+	public static function customizer_data_init() {
+		$db_data                  = get_option( self::DB_NAMES['customizer'] ) ?: [];
+		self::$data['customizer'] = array_merge( self::$defaults['customizer'], $db_data );
 	}
 
 
@@ -84,12 +115,18 @@ class Data {
 	private static function set_defaults() {
 
 		self::$defaults['customizer'] = [
-			'drawer_move' => 'fade',
+			'drawer_move'         => 'fade',
+			'header_btn_layout'   => 'l-r',
+			'header_above_drawer' => false,
 		];
 
 		self::$defaults['extension'] = [
-			'cache_header'       => '',
-			'cache_footer'       => '',
+			'use_page_widget'   => '1',
+			'use_post_widget'   => '1',
+			'use_home_widget'   => '1',
+
+			'use_user_urls'     => '1',
+			'use_user_position' => '1',
 		];
 
 		self::$defaults['cache'] = [
@@ -99,11 +136,11 @@ class Data {
 		];
 
 		self::$defaults['remove'] = [
-			'remove_wpver'       => '',
+			'remove_wpver'       => '1',
+			'remove_emoji'       => '1',
 			'remove_rel_link'    => '',
 			'remove_wlwmanifest' => '',
 			'remove_rsd_link'    => '',
-			'remove_emoji'       => '',
 			'remove_self_ping'   => '',
 			'remove_sitemap'     => '',
 			'remove_rest_link'   => '',
@@ -111,7 +148,6 @@ class Data {
 			'remove_wptexturize' => '',
 			'remove_feed_link'   => '',
 		];
-
 	}
 
 
@@ -179,8 +215,9 @@ class Data {
 			// 指定されたものだけ削除
 			delete_option( \Arkhe_Toolkit::DB_NAMES[ $id ] );
 		} else {
-			// 全削除
-			foreach ( \Arkhe_Toolkit::DB_NAMES as $db_name ) {
+			// カスタマイザー以外全削除
+			foreach ( \Arkhe_Toolkit::DB_NAMES as $key => $db_name ) {
+				if ( 'customizer' === $key ) continue;
 				delete_option( $db_name );
 			}
 		}

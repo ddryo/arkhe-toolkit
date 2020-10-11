@@ -1,8 +1,6 @@
 <?php
 namespace Arkhe_Toolkit\Shortcode;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 /**
  * ショートコードを登録する
  */

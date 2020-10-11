@@ -1,8 +1,6 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 /**
  * ファイルの読み込み
  */

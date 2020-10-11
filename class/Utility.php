@@ -16,6 +16,7 @@ trait Utility {
 			'section_cb' => '',
 			'page_name'  => '',
 			'page_cb'    => '',
+			'db'         => '',
 		], $args ) );
 
 		$section_name = 'arkhe_' . $key . '_section';
@@ -28,8 +29,8 @@ trait Utility {
 		);
 
 		// コールバック関数の指定が特になければ、ファイルを読み込む
-		$page_cb = $page_cb ?: function( $args ) {
-			include ARKHE_TOOLKIT_PATH . 'inc/admin_menu/tabs/section/' . $args['filename'] . '.php';
+		$page_cb = $page_cb ?: function( $cb_args ) {
+			include ARKHE_TOOLKIT_PATH . 'inc/admin_menu/tabs/section/' . $cb_args['filename'] . '.php';
 		};
 
 		add_settings_field(
@@ -38,7 +39,10 @@ trait Utility {
 			$page_cb,
 			$page_name,
 			$section_name,
-			[ 'filename' => $key ]
+			[
+				'db'       => $db,
+				'filename' => $key,
+			]
 		);
 	}
 
@@ -58,7 +62,7 @@ trait Utility {
 
 		// キャッシュが消えていれば生成
 		ob_start();
-		\ARKHE_THEME::the_parts_content( $path_key, $include_path, $args );
+		\Arkhe::the_parts_content( $path_key, $include_path, $args );
 		$cache_data = \Arkhe_Toolkit::minify_html_code( ob_get_clean() );
 
 		// キャッシュ保存期間
@@ -75,18 +79,20 @@ trait Utility {
 	/**
 	 * キャッシュのクリア
 	 */
-	public static function clear_cache( $cache_keys = [], $prefix = 'arkhe_parts_' ) {
+	public static function clear_cache( $cache_keys = [] ) {
 
 		// キャッシュキーの指定がなければ全てのキーを取得
 		if ( [] === $cache_keys ) {
 			foreach ( \Arkhe_Toolkit::CACHE_KEYS as $type => $keys ) {
-				$cache_keys = array_merge( $cache_keys, $keys );
+				foreach ( $keys as $key ) {
+					$cache_keys[] = $key;
+				}
 			}
 		}
 
 		// 指定されたキャッシュキーを順に削除
-		foreach ( $cache_keys as $index => $key ) {
-			delete_transient( $prefix . $key );
+		foreach ( $cache_keys as $key ) {
+			delete_transient( $key );
 		}
 	}
 

@@ -1,8 +1,6 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 /**
  * 管理画面に独自メニューを追加
  */
@@ -60,10 +58,10 @@ function display_setting_page() {
 add_action( 'admin_init', function() {
 
 	$menu_tabs = [
-		'extension' => __( '拡張機能', 'arkhe-toolkit' ),
-		'cache'     => __( 'キャッシュ機能', 'arkhe-toolkit' ),
-		'remove'    => __( '機能停止', 'arkhe-toolkit' ),
-		// 'reset'     => __( 'リセット', 'arkhe-toolkit' ),
+		'extension' => __( 'Extensions', 'arkhe-toolkit' ),
+		'cache'     => __( 'Cache settings', 'arkhe-toolkit' ),
+		'remove'    => __( 'Stop functions', 'arkhe-toolkit' ),
+		// 'reset'     => __( 'Reset settings', 'arkhe-toolkit' ),
 	];
 
 	\Arkhe_Toolkit::$menu_tabs = $menu_tabs;

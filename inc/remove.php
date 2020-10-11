@@ -1,7 +1,6 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * 不要機能の削除
  */
