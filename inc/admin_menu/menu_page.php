@@ -1,7 +1,7 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 // 設定タブのリスト
 $setting_tabs = \Arkhe_Toolkit::$menu_tabs;

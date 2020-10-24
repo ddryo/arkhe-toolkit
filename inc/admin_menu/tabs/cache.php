@@ -4,7 +4,7 @@ namespace Arkhe_Toolkit;
 /**
  * 「キャッシュ」タブの設定を登録
  */
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 // PAGE_NAME
 $page_name = 'arkhe_menu_page_cache';

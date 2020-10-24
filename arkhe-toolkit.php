@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Arkhe Toolkit
  * Plugin URI: https://arkhe-theme.com
- * Description: Arkhe A plugin that extends Arkhe more conveniently
- * Version: 0.1.0
+ * Description: A plugin that extends Arkhe more conveniently
+ * Version: 1.0.0
  * Author: LOOS,Inc.
  * Author URI: https://loos.co.jp/
  * License: GPL2 or later
@@ -11,10 +11,10 @@
  * Text Domain: arkhe-toolkit
  * Domain Path: /languages
  *
- * @package Arkhe Plus
+ * @package Arkhe Toolkit
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * 定数定義
@@ -54,12 +54,17 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 	public function __construct() {
 
-		// テーマチェック
-		$theme_data     = wp_get_theme();
-		$theme_name     = $theme_data->get( 'Name' );
-		$theme_template = $theme_data->get( 'Template' ); // 子テーマが使われている時、'arkhe' になる
+		// テーマチェック : IS_ARKHE_THEME は Arkheプラグインで共通
+		if ( ! defined( 'IS_ARKHE_THEME' ) ) {
+			$theme_data     = wp_get_theme();
+			$theme_name     = $theme_data->get( 'Name' );
+			$theme_template = $theme_data->get( 'Template' ); // 子テーマが使われている時、'arkhe' になる
 
-		if ( 'Arkhe' !== $theme_name && 'arkhe' !== $theme_template ) return;
+			$is_arkhe_theme = ( 'Arkhe' === $theme_name || 'arkhe' === $theme_template );
+			define( 'IS_ARKHE_THEME', $is_arkhe_theme );
+		}
+
+		if ( ! IS_ARKHE_THEME ) return;
 
 		// 翻訳ファイルを登録
 		$locale = apply_filters( 'plugin_locale', determine_locale(), 'arkhe-toolkit' );
@@ -67,6 +72,9 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 		// データセット
 		self::init();
+
+		// setup
+		require_once ARKHE_TOOLKIT_PATH . 'inc/setup.php';
 
 		// 管理メニュー
 		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_menu.php';
@@ -110,6 +118,7 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		}
 
 	}
+
 }
 
 

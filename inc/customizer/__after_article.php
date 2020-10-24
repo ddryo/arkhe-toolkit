@@ -1,6 +1,6 @@
 <?php
 use \Arkhe_Theme\Customizer;
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 // セクション : 記事下
 $section = 'loos_section_after_article';

@@ -9,10 +9,10 @@ version=$1
 cd ..
 
 #zプラグインファイルをip化
-zip -r useful-blocks-pro.zip useful-blocks-pro -x "*._*" "*__MACOSX*" "*.DS_Store" "*.git*" "*.vscode*" "*/_nouse/*" "*/src/*" "*/bin/*" "*gulpfile.js" "*webpack.config.js" "*/node_modules/*" "*package.json" "*package-lock.json" "*composer.json" "*README.md"
+zip -r arkhe-toolkit.zip arkhe-toolkit -x "*/.*" "*/__*" "*/bin*" "*/node_modules*" "*/vendor*" "*/src/*" "*gulpfile.js" "*phpcs.xml" "*README.md"
 
 #設定ファイル系削除
-zip --delete useful-blocks-pro.zip  "useful-blocks-pro/.*"
+zip --delete arkhe-toolkit.zip  "arkhe-toolkit/composer*" "arkhe-toolkit/webpack*" "arkhe-toolkit/package*"
 
 #zipファイルを移動
-mv useful-blocks-pro.zip ./Versions/pro/zip/useful-blocks-pro-${version}.zip
+mv arkhe-toolkit.zip ./_version/arkhe-toolkit/arkhe-toolkit-${version}.zip

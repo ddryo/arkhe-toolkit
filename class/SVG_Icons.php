@@ -1,7 +1,7 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 trait SVG_Icons {
 

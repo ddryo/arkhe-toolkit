@@ -1,7 +1,7 @@
 <?php
 namespace Arkhe_Toolkit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 /**
  * 管理画面の投稿一覧テーブルの表示をカスタマイズする
  */

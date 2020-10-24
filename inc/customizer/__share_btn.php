@@ -1,6 +1,6 @@
 <?php
 use \Arkhe_Theme\Customizer;
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 // セクション : SNSシェアボタン
 $section = 'loos_section_share_btn';

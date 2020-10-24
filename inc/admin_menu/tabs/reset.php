@@ -4,7 +4,7 @@ namespace Arkhe_Toolkit;
 /**
  * 「リセット」タブの中身
  */
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 ?>
 <div class="arkhe-reset-btns">
 	<button type="button" class="arkhe-btn-resetData button button-primary button-large">

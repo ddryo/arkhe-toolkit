@@ -6,8 +6,7 @@ namespace Arkhe_Toolkit;
  */
 add_action( 'admin_menu', function () {
 
-	// 「Arkhe設定」
-	$arkhe_menu_title = 'Arkhe';
+	$arkhe_menu_title = 'Arkhe Toolkit';
 
 	// 設定ページを追加
 	add_menu_page(

@@ -4,7 +4,7 @@ namespace Arkhe_Toolkit;
 /**
  * 「機能停止」タブの設定項目
  */
-if ( ! defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
 // PAGE_NAME
 $page_name = 'arkhe_menu_page_remove';
