@@ -5,6 +5,7 @@
 defined( 'ABSPATH' ) || exit;
 
 add_action( 'after_setup_theme', function() {
+
 	if ( ! class_exists( 'Arkhe' ) ) return;
 	if ( ! \Arkhe::$has_pro_licence || ! \Arkhe::$ex_update_path ) return;
 
@@ -31,6 +32,6 @@ add_action( 'admin_head', function() {
 	'.plugin-title .dashicons-admin-plugins{' .
 		'padding-right: 0;margin-right: 10px;' .
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		'background:url(' . ARKHE_WOO_URL . 'thumbnail.jpg) no-repeat center / cover;}' .
+		'background:url(' . ARKHE_TOOLKIT_URL . 'thumbnail.jpg) no-repeat center / cover;}' .
 	'</style>' . PHP_EOL;
 });
