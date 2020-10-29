@@ -1,0 +1,72 @@
+/**
+ * SWELL METABOX
+ */
+
+#arkhe_meta_for_post {
+
+	h2.ui-sortable-handle {
+		border-bottom: none !important;
+	}
+}
+
+.ark-meta {
+
+	.ark-meta__item {
+		padding: 12px 0;
+
+		input,
+		textarea,
+		select {
+			max-width: 100%;
+		}
+	}
+
+	&.-code {
+
+		.ark-meta__item {
+			padding: 12px;
+		}
+	}
+
+	// .swell_meta_subttl,
+	.ark-meta__subttl {
+
+		display: block;
+		margin: 0 0 1em;
+		padding-left: 8px;
+		font-weight: bold;
+		border-left: solid 2px #04384c;
+
+	}
+
+	.ark-meta__field {
+		margin: 0;
+		padding: 8px 0;
+
+		[type="checkbox"] {
+			margin: 0 4px 0 0;
+		}
+
+		&.-select {
+
+			.ark-meta__label {
+				display: inline-block;
+				min-width: 5em;
+			}
+		}
+
+		// &.-radio{}
+		.ark-meta__radio {
+			margin-right: 8px;
+			padding: 2px 0;
+		}
+	}
+
+	.ark-meta__desc {
+		margin: 0;
+		margin-top: 4px;
+		color: #666;
+		font-size: 12px;
+		line-height: 1.5;
+	}
+}

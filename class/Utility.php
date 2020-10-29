@@ -131,4 +131,27 @@ trait Utility {
 		];
 		return preg_replace( $search, $replace, $src );
 	}
+
+	/**
+	 * meta保存時のチェック
+	 */
+	public static function save_meta_check( $post_id, $nonce = '' ) {
+		// @codingStandardsIgnoreStart
+
+		if ( empty( $_POST ) || ! isset( $_POST[ $nonce ] ) ) return false;
+
+		// nonceキーチェック
+		if ( ! wp_verify_nonce( $_POST[ $nonce ], $nonce ) ) return false;
+
+		// 自動保存時には保存しないように
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return false;
+
+		// 現在のユーザーに投稿の編集権限があるかのチェック （投稿 : 'edit_post' / 固定ページ : 'edit_page')
+		$post_type = isset( $_POST['post_type'] ) ? $_POST['post_type'] : '';
+		$check_can = ( 'post' === $post_type ) ? 'edit_post' : 'edit_page';
+		if ( ! current_user_can( $check_can, $post_id ) ) return false;
+
+		// OK
+		return true;
+	}
 }

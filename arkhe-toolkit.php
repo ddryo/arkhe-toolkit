@@ -48,9 +48,10 @@ spl_autoload_register(
  */
 class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
-	use \Arkhe_Toolkit\Output_Field,
-		\Arkhe_Toolkit\Utility,
-		\Arkhe_Toolkit\SVG_Icons;
+	use \Arkhe_Toolkit\Utility,
+		\Arkhe_Toolkit\SVG_Icons,
+		\Arkhe_Toolkit\Output_Menu_Field,
+		\Arkhe_Toolkit\Output_Meta_Field;
 
 	public function __construct() {
 
@@ -109,8 +110,12 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		// ajax
 		require_once ARKHE_TOOLKIT_PATH . 'inc/ajax.php';
 
+		// カスタムフィールド
+		require_once ARKHE_TOOLKIT_PATH . 'inc/post_meta.php';
+
 		// その他、フック処理
 		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/overwrite.php';
 
 		// アップデートチェック
 		if ( is_admin() ) {

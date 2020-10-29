@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+// mixin
+@import "mixin/**";
+
+// meta
+@import "inc/meta";
+
+.editor-post-title__block {
+	position: relative;
+	padding: 16px 0;
+
+	&::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+		padding: 0 10px;
+		color: #333;
+		font-size: 12px;
+		line-height: 2;
+		background: #eee;
+		content: "文字数 : " attr(data-txtct);
+	}
+
+	&[data-focus="on"]::after {
+		display: block;
+	}
+}

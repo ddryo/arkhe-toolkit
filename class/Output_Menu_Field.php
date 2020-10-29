@@ -3,7 +3,7 @@ namespace Arkhe_Toolkit;
 
 defined( 'ABSPATH' ) || exit;
 
-trait Output_Field {
+trait Output_Menu_Field {
 
 	/**
 	 * チェックボックス

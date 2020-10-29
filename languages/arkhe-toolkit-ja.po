@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-10-24 15:41+0900\n"
-"PO-Revision-Date: 2020-10-24 15:41+0900\n"
+"POT-Creation-Date: 2020-10-29 11:43+0900\n"
+"PO-Revision-Date: 2020-10-29 11:55+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -25,19 +25,35 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: *__*\n"
 "X-Poedit-SearchPathExcluded-4: inc/update\n"
 
-#: inc/admin_menu.php:35 inc/admin_menu.php:36
+#: class/Output_Meta_Field.php:18
+msgid "Show"
+msgstr "表示"
+
+#: class/Output_Meta_Field.php:19
+msgid "Don't show"
+msgstr "非表示"
+
+#: class/Output_Meta_Field.php:46
+msgid "Select image"
+msgstr "画像を選択"
+
+#: class/Output_Meta_Field.php:47
+msgid "Delete image"
+msgstr "画像を削除"
+
+#: inc/admin_menu.php:34 inc/admin_menu.php:35
 msgid "Reusable Block"
 msgstr "再利用ブロック"
 
-#: inc/admin_menu.php:61
+#: inc/admin_menu.php:60
 msgid "Extensions"
 msgstr "拡張機能"
 
-#: inc/admin_menu.php:62
+#: inc/admin_menu.php:61
 msgid "Cache settings"
 msgstr "キャッシュ設定"
 
-#: inc/admin_menu.php:63
+#: inc/admin_menu.php:62
 msgid "Stop functions"
 msgstr "停止させる機能"
 
@@ -46,6 +62,7 @@ msgid "Your settings have been saved."
 msgstr "設定を保存しました。"
 
 #: inc/admin_menu/menu_page.php:27 inc/admin_toolbar.php:23
+#: inc/post_meta.php:18
 msgid "Arkhe Settings"
 msgstr "Arkhe設定"
 
@@ -157,11 +174,11 @@ msgstr ""
 msgid "To setting page"
 msgstr "設定ページへ"
 
-#: inc/admin_toolbar.php:60
+#: inc/admin_toolbar.php:63
 msgid "Get license"
 msgstr "ライセンス取得"
 
-#: inc/admin_toolbar.php:74
+#: inc/admin_toolbar.php:77
 msgid "License key registration"
 msgstr "ライセンスキー登録"
 
@@ -197,9 +214,71 @@ msgstr "右からスライド"
 msgid "Display below the header"
 msgstr "ヘッダーより下に表示する"
 
-#: inc/enqueue_scripts.php:50
+#: inc/enqueue_scripts.php:52
 msgid "Will you really reset it?"
 msgstr "本当にリセットしますか？"
+
+#: inc/post_meta.php:44
+msgid "Subtitle"
+msgstr "サブタイトル"
+
+#: inc/post_meta.php:56
+msgid "Display settings"
+msgstr "表示設定"
+
+#: inc/post_meta.php:60
+msgctxt "show"
+msgid "Show"
+msgstr "表示"
+
+#: inc/post_meta.php:61
+msgctxt "show"
+msgid "Hide"
+msgstr "非表示"
+
+#: inc/post_meta.php:68
+msgid "Title position"
+msgstr "タイトル位置"
+
+#: inc/post_meta.php:70
+msgid "Above the content"
+msgstr "コンテンツ上部"
+
+#: inc/post_meta.php:71
+msgid "Inside the content"
+msgstr "コンテンツ内部"
+
+#: inc/post_meta.php:76 inc/wp_posts_table.php:24
+msgid "Featured image"
+msgstr "アイキャッチ画像"
+
+#: inc/post_meta.php:80
+msgid "Author data"
+msgstr "著者情報"
+
+#: inc/post_meta.php:84
+msgid "Related posts"
+msgstr "関連記事"
+
+#: inc/post_meta.php:90
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: inc/post_meta.php:92
+msgid "Only valid with the default template."
+msgstr "デフォルトテンプレートでのみ有効です。"
+
+#: inc/post_meta.php:116
+msgid "Hide top-widget"
+msgstr "上部ウィジェットを非表示にする"
+
+#: inc/post_meta.php:117
+msgid "Hide bottom-widget"
+msgstr "下部ウィジェットを非表示にする"
+
+#: inc/post_meta.php:121
+msgid "Hide share buttons"
+msgstr ""
 
 #: inc/user_meta.php:10
 msgid "Job title / position"
@@ -209,38 +288,34 @@ msgstr "役職・肩書き"
 msgid "Amazon wish list"
 msgstr "Amazon欲しいものリスト"
 
-#: inc/widget.php:89
+#: inc/widget.php:93
 #, php-format
 msgid "Widgets in this area will be displayed in the %s"
 msgstr "このエリアのウィジェットは%sに表示されます"
 
-#: inc/widget.php:93
+#: inc/widget.php:97
 msgid "Top of \"Page\" content"
 msgstr "「固定ページ」のコンテンツ上部"
 
-#: inc/widget.php:105 inc/widget.php:108
+#: inc/widget.php:109 inc/widget.php:112
 msgid "Bottom of \"Page\" content"
 msgstr "「固定ページ」のコンテンツ下部"
 
-#: inc/widget.php:121 inc/widget.php:124
+#: inc/widget.php:125 inc/widget.php:128
 msgid "Top of \"Post\" content"
 msgstr "「投稿」のコンテンツ上部"
 
-#: inc/widget.php:133 inc/widget.php:136
+#: inc/widget.php:137 inc/widget.php:140
 msgid "Bottom of \"Post\" content"
 msgstr "「投稿」のコンテンツ下部"
 
-#: inc/widget.php:149 inc/widget.php:152
+#: inc/widget.php:153 inc/widget.php:156
 msgid "Top of \"Home\" content"
 msgstr "「最新の投稿」のコンテンツ上部"
 
-#: inc/widget.php:161 inc/widget.php:164
+#: inc/widget.php:165 inc/widget.php:168
 msgid "Bottom of \"Home\" content"
 msgstr "「最新の投稿」のコンテンツ下部"
-
-#: inc/wp_posts_table.php:24
-msgid "Featured image"
-msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Arkhe Toolkit"

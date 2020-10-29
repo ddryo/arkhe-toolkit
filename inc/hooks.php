@@ -42,9 +42,30 @@ function hook_header_attrs( $attrs ) {
 
 
 /**
+ * ページタイトルにサブタイトル追加
+ */
+add_action( 'arkhe_page_subtitle', function ( $page_id ) {
+	$subtitle = get_post_meta( $page_id, 'ark_meta_subttl', true );
+	if ( ! $subtitle ) return;
+
+	echo '<span class="c-pageTitle__subtitle">' . esc_html( $subtitle ) . '</span>';
+} );
+
+
+/**
+ * タイトル背景画像
+ */
+add_filter( 'arkhe_ttlbg_img_id', function ( $img_id, $page_id ) {
+	$meta = get_post_meta( $page_id, 'ark_meta_ttlbg', true );
+	if ( ! $meta ) return $img_id;
+	return $meta;
+}, 10, 2 );
+
+
+/**
  * 著者情報に「役職」追加
  */
-add_action( 'arkhe_after_author_name', function( $author_id = 0 ) {
+add_action( 'arkhe_after_author_name', function( $author_id ) {
 	if ( ! $author_id ) return;
 	if ( ! \Arkhe_Toolkit::get_data( 'extension', 'use_user_position' ) ) return;
 
@@ -60,7 +81,7 @@ add_action( 'arkhe_after_author_name', function( $author_id = 0 ) {
 /**
  * 著者情報にSNSアイコンリンク追加
  */
-add_action( 'arkhe_author_links', function ( $author_id = 0 ) {
+add_action( 'arkhe_author_links', function ( $author_id ) {
 	if ( ! $author_id ) return;
 	if ( ! \Arkhe_Toolkit::get_data( 'extension', 'use_user_urls' ) ) return;
 

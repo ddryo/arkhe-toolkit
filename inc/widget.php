@@ -34,41 +34,45 @@ function add_ex_widgets() {
 	} elseif ( is_page() && \Arkhe_Toolkit::get_data( 'extension', 'use_page_widget' ) ) {
 
 		// 固定ページ上部
-		add_action( 'arkhe_before_page_content', function () {
-			if ( is_active_sidebar( 'page-top' ) ) {
-				echo '<div class="w-page-top">';
-				dynamic_sidebar( 'page-top' );
-				echo '</div>';
-			}
+		add_action( 'arkhe_before_page_content', function ( $page_id ) {
+			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_top', true );
+			if ( '1' === $is_hide || ! is_active_sidebar( 'page-top' ) ) return;
+
+			echo '<div class="w-page-top">';
+			dynamic_sidebar( 'page-top' );
+			echo '</div>';
 		} );
 
 		// 固定ページ下部
-		add_action( 'arkhe_after_page_content', function () {
-			if ( is_active_sidebar( 'page-bottom' ) ) {
-				echo '<div class="w-page-bottom">';
-				dynamic_sidebar( 'page-bottom' );
-				echo '</div>';
-			}
+		add_action( 'arkhe_after_page_content', function ( $page_id ) {
+			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_bottom', true );
+			if ( '1' === $is_hide || ! is_active_sidebar( 'page-bottom' ) ) return;
+
+			echo '<div class="w-page-bottom">';
+			dynamic_sidebar( 'page-bottom' );
+			echo '</div>';
 		} );
 
 	} elseif ( is_single() && \Arkhe_Toolkit::get_data( 'extension', 'use_post_widget' ) ) {
 
 		// 投稿ページ上部
-		add_action( 'arkhe_before_single_content', function () {
-			if ( is_active_sidebar( 'single-top' ) ) {
-				echo '<div class="w-single-top">';
-				dynamic_sidebar( 'single-top' );
-				echo '</div>';
-			}
+		add_action( 'arkhe_before_single_content', function ( $page_id ) {
+			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_top', true );
+			if ( '1' === $is_hide || ! is_active_sidebar( 'single-top' ) ) return;
+
+			echo '<div class="w-single-top">';
+			dynamic_sidebar( 'single-top' );
+			echo '</div>';
 		} );
 
 		// 投稿ページ下部
-		add_action( 'arkhe_after_single_content', function () {
-			if ( is_active_sidebar( 'single-bottom' ) ) {
-				echo '<div class="w-single-bottom">';
-				dynamic_sidebar( 'single-bottom' );
-				echo '</div>';
-			}
+		add_action( 'arkhe_after_single_content', function ( $page_id ) {
+			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_bottom', true );
+			if ( '1' === $is_hide || ! is_active_sidebar( 'single-bottom' ) ) return;
+
+			echo '<div class="w-single-bottom">';
+			dynamic_sidebar( 'single-bottom' );
+			echo '</div>';
 		} );
 
 	}
