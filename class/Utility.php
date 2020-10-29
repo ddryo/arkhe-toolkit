@@ -154,4 +154,33 @@ trait Utility {
 		// OK
 		return true;
 	}
+
+
+	/**
+	 * ファイルURLから縦横サイズを取得
+	 */
+	public static function get_media_px_size( $file_url ) {
+		
+		// ファイル名にサイズがあればそれを返す
+		preg_match('/-([0-9]*)x([0-9]*)\./', $file_url, $matches );
+		if ( ! empty( $matches ) ) {
+			 return [
+				'width' => $matches[1],
+				'height' => $matches[2],
+			];
+		}
+		
+		// フルサイズの時
+		$file_id = attachment_url_to_postid( $file_url );
+		$file_data = wp_get_attachment_metadata( $file_id );
+		if ( ! empty( $file_data ) ) {
+			return [
+				'width' => $file_data['width'],
+				'height' => $file_data['height'],
+			];
+		}
+		
+		// サイズが取得できなかった場合
+		return false;
+	}
 }

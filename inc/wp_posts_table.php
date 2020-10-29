@@ -24,7 +24,9 @@ function add_post_columns( $columns ) {
 		$columns['thumbnail'] = __( 'Featured image', 'arkhe' );
 		$columns['post_id']   = 'ID';
 
-		}
+	} elseif ( 'wp_block' === $post_type ) {
+		$columns['reuse_shortcode'] = __( 'shortcode', 'arkhe-toolkit' );
+	}
 	return $columns;
 }
 
@@ -44,5 +46,9 @@ function output_post_columns( $column_name, $the_id ) {
 		}
 	} elseif ( 'post_id' === $column_name ) {
 		echo esc_html( $the_id );
+	} elseif ( 'reuse_shortcode' === $column_name ) {
+		$tag = '[reuse_block id="' . $the_id . '"]';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<input class="ark-shortcode" type="text" onClick="this.select();" value=\'' . $tag . '\' readonly />';
 	}
 }

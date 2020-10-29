@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-10-29 11:43+0900\n"
-"PO-Revision-Date: 2020-10-29 11:55+0900\n"
+"POT-Creation-Date: 2020-10-29 16:40+0900\n"
+"PO-Revision-Date: 2020-10-29 16:41+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -33,11 +33,11 @@ msgstr "表示"
 msgid "Don't show"
 msgstr "非表示"
 
-#: class/Output_Meta_Field.php:46
+#: class/Output_Meta_Field.php:51
 msgid "Select image"
 msgstr "画像を選択"
 
-#: class/Output_Meta_Field.php:47
+#: class/Output_Meta_Field.php:52
 msgid "Delete image"
 msgstr "画像を削除"
 
@@ -75,6 +75,10 @@ msgid "Extension of widget area"
 msgstr "ウィジェットエリアの拡張"
 
 #: inc/admin_menu/tabs/extension.php:22
+msgid "Additional processing to the content"
+msgstr "コンテンツへの追加処理"
+
+#: inc/admin_menu/tabs/extension.php:30
 msgid "Extension of user profile information"
 msgstr "ユーザープロフィール情報の拡張"
 
@@ -102,6 +106,18 @@ msgstr "フッターをキャッシュする"
 msgid "Clear Cache"
 msgstr "キャッシュをクリア"
 
+#: inc/admin_menu/tabs/section/content.php:6
+msgid "Allow the image to be enlarged by clicking"
+msgstr "画像をクリックで拡大表示できるようにする"
+
+#: inc/admin_menu/tabs/section/content.php:7
+msgid "Lazy loading of images / videos / iframes with scripts"
+msgstr "画像・動画・iframeをスクリプトで遅延読み込みさせる"
+
+#: inc/admin_menu/tabs/section/content.php:8
+msgid "Automatically remove empty p tags"
+msgstr "空のpタグを自動除去する"
+
 #: inc/admin_menu/tabs/section/remove_core.php:6
 msgid "Stop outputting WordPress version"
 msgstr "WordPressバージョンの出力を停止"
@@ -111,38 +127,42 @@ msgid "Stop loading scripts for emoji"
 msgstr "絵文字用のスクリプトの読み込みを停止"
 
 #: inc/admin_menu/tabs/section/remove_core.php:8
+msgid "Unregister all core block patterns"
+msgstr "コアのブロックパターンの登録を全て解除"
+
+#: inc/admin_menu/tabs/section/remove_core.php:9
 msgid "Stop linking with Windows Live Write"
 msgstr "Windows Live Writeとの連携を停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:9
+#: inc/admin_menu/tabs/section/remove_core.php:10
 msgid "Stop EditURI (RSD Link)"
 msgstr "EditURI(RSD Link)の停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:10
+#: inc/admin_menu/tabs/section/remove_core.php:11
 msgid "Stop self-pingback"
 msgstr "セルフピンバックを停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:11
+#: inc/admin_menu/tabs/section/remove_core.php:12
 msgid "Stop core sitemap functionality"
 msgstr "コアのサイトマップ機能を停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:12
+#: inc/admin_menu/tabs/section/remove_core.php:13
 msgid "Stop outputting link tags for REST API"
 msgstr "REST API用linkタグの出力を停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:13
+#: inc/admin_menu/tabs/section/remove_core.php:14
 msgid "Stop outputting \"srcset\""
 msgstr "“srcset”の出力を停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:14
+#: inc/admin_menu/tabs/section/remove_core.php:15
 msgid "Stop outputting  \"rel = prev / next\""
 msgstr "「rel=prev/next」の出力を停止"
 
-#: inc/admin_menu/tabs/section/remove_core.php:15
+#: inc/admin_menu/tabs/section/remove_core.php:16
 msgid "Stop automatic conversion of symbols (disable wptexturize)"
 msgstr "記号の自動変換を停止(wptexturize無効化)"
 
-#: inc/admin_menu/tabs/section/remove_core.php:16
+#: inc/admin_menu/tabs/section/remove_core.php:17
 msgid "Stop RSS feed"
 msgstr "RSSフィードを停止"
 
@@ -214,71 +234,75 @@ msgstr "右からスライド"
 msgid "Display below the header"
 msgstr "ヘッダーより下に表示する"
 
-#: inc/enqueue_scripts.php:52
+#: inc/enqueue_scripts.php:58
 msgid "Will you really reset it?"
 msgstr "本当にリセットしますか？"
 
 #: inc/post_meta.php:44
+msgid "Background image for title"
+msgstr "タイトル背景画像"
+
+#: inc/post_meta.php:50
+msgid "This is valid only when the title position is \"Above the content\"."
+msgstr "この設定はタイトル位置が「コンテンツ上部」の時のみ有効です。"
+
+#: inc/post_meta.php:56
 msgid "Subtitle"
 msgstr "サブタイトル"
 
-#: inc/post_meta.php:56
+#: inc/post_meta.php:73
 msgid "Display settings"
 msgstr "表示設定"
 
-#: inc/post_meta.php:60
+#: inc/post_meta.php:77
 msgctxt "show"
 msgid "Show"
 msgstr "表示"
 
-#: inc/post_meta.php:61
+#: inc/post_meta.php:78
 msgctxt "show"
 msgid "Hide"
 msgstr "非表示"
 
-#: inc/post_meta.php:68
+#: inc/post_meta.php:85
 msgid "Title position"
 msgstr "タイトル位置"
 
-#: inc/post_meta.php:70
+#: inc/post_meta.php:87
 msgid "Above the content"
 msgstr "コンテンツ上部"
 
-#: inc/post_meta.php:71
+#: inc/post_meta.php:88
 msgid "Inside the content"
 msgstr "コンテンツ内部"
 
-#: inc/post_meta.php:76 inc/wp_posts_table.php:24
+#: inc/post_meta.php:93 inc/wp_posts_table.php:24
 msgid "Featured image"
 msgstr "アイキャッチ画像"
 
-#: inc/post_meta.php:80
+#: inc/post_meta.php:97
 msgid "Author data"
 msgstr "著者情報"
 
-#: inc/post_meta.php:84
+#: inc/post_meta.php:101
 msgid "Related posts"
 msgstr "関連記事"
 
-#: inc/post_meta.php:90
+#: inc/post_meta.php:107
 msgid "Sidebar"
 msgstr "サイドバー"
 
-#: inc/post_meta.php:92
+#: inc/post_meta.php:109
 msgid "Only valid with the default template."
 msgstr "デフォルトテンプレートでのみ有効です。"
 
-#: inc/post_meta.php:116
+#: inc/post_meta.php:133
 msgid "Hide top-widget"
 msgstr "上部ウィジェットを非表示にする"
 
-#: inc/post_meta.php:117
+#: inc/post_meta.php:134
 msgid "Hide bottom-widget"
 msgstr "下部ウィジェットを非表示にする"
-
-#: inc/post_meta.php:121
-msgid "Hide share buttons"
-msgstr ""
 
 #: inc/user_meta.php:10
 msgid "Job title / position"
@@ -316,6 +340,10 @@ msgstr "「最新の投稿」のコンテンツ上部"
 #: inc/widget.php:165 inc/widget.php:168
 msgid "Bottom of \"Home\" content"
 msgstr "「最新の投稿」のコンテンツ下部"
+
+#: inc/wp_posts_table.php:28
+msgid "shortcode"
+msgstr "ショートコード"
 
 #. Plugin Name of the plugin/theme
 msgid "Arkhe Toolkit"

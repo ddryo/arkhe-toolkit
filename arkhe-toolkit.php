@@ -113,6 +113,9 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		// カスタムフィールド
 		require_once ARKHE_TOOLKIT_PATH . 'inc/post_meta.php';
 
+		// コンテンツフック
+		require_once ARKHE_TOOLKIT_PATH . 'inc/the_content.php';
+
 		// その他、フック処理
 		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
 		require_once ARKHE_TOOLKIT_PATH . 'inc/overwrite.php';

@@ -124,6 +124,9 @@ class Data {
 			'use_page_widget'   => '1',
 			'use_post_widget'   => '1',
 			'use_home_widget'   => '1',
+			'use_luminous'      => '1',
+			'use_lazysizes'     => '1',
+			'remove_emp_p'      => '1',
 
 			'use_user_urls'     => '1',
 			'use_user_position' => '1',
@@ -136,17 +139,18 @@ class Data {
 		];
 
 		self::$defaults['remove'] = [
-			'remove_wpver'       => '1',
-			'remove_emoji'       => '1',
-			'remove_rel_link'    => '',
-			'remove_wlwmanifest' => '',
-			'remove_rsd_link'    => '',
-			'remove_self_ping'   => '',
-			'remove_sitemap'     => '',
-			'remove_rest_link'   => '',
-			'remove_srcset'      => '',
-			'remove_wptexturize' => '',
-			'remove_feed_link'   => '',
+			'remove_wpver'         => '1',
+			'remove_emoji'         => '1',
+			'remove_core_patterns' => '',
+			'remove_rel_link'      => '',
+			'remove_wlwmanifest'   => '',
+			'remove_rsd_link'      => '',
+			'remove_self_ping'     => '',
+			'remove_sitemap'       => '',
+			'remove_rest_link'     => '',
+			'remove_srcset'        => '',
+			'remove_wptexturize'   => '',
+			'remove_feed_link'     => '',
 		];
 	}
 

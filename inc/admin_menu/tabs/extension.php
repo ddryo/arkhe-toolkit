@@ -17,6 +17,14 @@ $page_name = 'arkhe_menu_page_extension';
 	'db'        => 'extension',
 ] );
 
+// コンテンツへの追加処理
+\Arkhe_Toolkit::add_menu_section( [
+	'title'     => __( 'Additional processing to the content', 'arkhe-toolkit' ),
+	'key'       => 'content',
+	'page_name' => $page_name,
+	'db'        => 'extension',
+] );
+
 // ユーザー情報の追加
 \Arkhe_Toolkit::add_menu_section( [
 	'title'     => __( 'Extension of user profile information', 'arkhe-toolkit' ),

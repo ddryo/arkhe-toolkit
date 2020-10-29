@@ -37,7 +37,7 @@ add_action( 'admin_menu', function () {
 		'edit.php?post_type=wp_block',
 		'',
 		'dashicons-image-rotate',
-		81 // 「設定」 の下
+		50 // 「外観」より上
 	);
 
 } );

@@ -134,11 +134,9 @@ function cb_post_meta( $post ) {
 					$meta_checkboxes['ark_meta_show_widget_bottom'] = __( 'Hide bottom-widget', 'arkhe-toolkit' );
 				endif;
 
-				if ( 'post' === $post_type ) :
-					$meta_checkboxes['ark_meta_hide_sharebtn'] = __( 'Hide share buttons', 'arkhe-toolkit' );
-				// elseif ( 'page' === $post_type ) :
-					// $meta_checkboxes['ark_meta_no_mb'] = __( 'Eliminate the margins under the content', 'arkhe-toolkit' );
-				endif;
+				// if ( 'post' === $post_type ) :
+				// 	$meta_checkboxes['ark_meta_hide_sharebtn'] = __( 'Hide share buttons', 'arkhe-toolkit' );
+				// endif;
 
 				foreach ( $meta_checkboxes as $key => $label ) :
 					$meta_val = get_post_meta( $the_id, $key, true );
@@ -164,25 +162,16 @@ function hook_save_post( $post_id ) {
 
 	$meta_keys = [
 		'ark_meta_subttl',
-		// 'ark_meta_related_posts',
-		// 'ark_meta_youtube',
-		// 'ark_meta_thumb_caption',
 		'ark_meta_ttlbg',
 		'ark_meta_ttlpos',
-		// 'ark_meta_show_pickbnr',
 		'ark_meta_show_sidebar',
-		// 'ark_meta_show_index',
 		'ark_meta_show_thumb',
 		'ark_meta_show_related',
 		'ark_meta_show_author',
-		// 'ark_meta_show_comments',
 		'ark_meta_show_widget_top',
 		'ark_meta_show_widget_bottom',
-		// 'ark_meta_hide_widget_cta',
-		// 'ark_meta_hide_before_index',
-		// 'ark_meta_hide_autoad',
-		'ark_meta_hide_sharebtn',
-		// 'ark_meta_no_mb',
+		// 'ark_meta_hide_sharebtn',
+		// 'ark_meta_show_toc',
 	];
 
 	// 値の保存

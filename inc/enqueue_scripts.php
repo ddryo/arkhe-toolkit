@@ -14,9 +14,15 @@ add_action( 'admin_enqueue_scripts', '\Arkhe_Toolkit\enqueue_admin_scripts', 20 
 function enqueue_front_scripts() {
 	wp_enqueue_style( 'arkhe-toolkit-front', ARKHE_TOOLKIT_URL . 'dist/css/front.css', [], ARKHE_TOOLKIT_VER );
 
+	$use_luminous = apply_filters( 'arkhe_toolkit_use_luminous', \Arkhe_Toolkit::get_data( 'extension', 'use_luminous' ) );
+	if ( $use_luminous ) {
+		wp_enqueue_style( 'arkhe-luminous', ARKHE_TOOLKIT_URL . 'dist/css/luminous.css', [], ARKHE_TOOLKIT_VER );
+		wp_enqueue_script( 'arkhe-luminous', ARKHE_TOOLKIT_URL . 'dist/js/luminous.js', [], ARKHE_TOOLKIT_VER, true );
+	}
+
 	if ( is_user_logged_in() ) {
 		// ajax関連処理
-		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
+		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/admin/ajax.js', [ 'jquery' ], ARKHE_TOOLKIT_VER, true );
 		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
 			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
 			'ajaxNonce' => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
@@ -42,10 +48,10 @@ function enqueue_admin_scripts( $hook_suffix ) {
 	if ( $is_arkhe_page ) {
 
 		wp_enqueue_style( 'arkhe-toolkit-menu', ARKHE_TOOLKIT_URL . 'dist/css/menu.css', [], ARKHE_TOOLKIT_VER );
-		wp_enqueue_script( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/js/admin.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
+		wp_enqueue_script( 'arkhe-toolkit-admin', ARKHE_TOOLKIT_URL . 'dist/js/admin/admin.js', [ 'jquery' ], ARKHE_TOOLKIT_VER, true );
 
 		// ajax関連処理
-		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/ajax.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
+		wp_enqueue_script( 'arkhe-toolkit-ajax', ARKHE_TOOLKIT_URL . 'dist/js/admin/ajax.js', [ 'jquery' ], ARKHE_TOOLKIT_VER, true );
 		wp_localize_script( 'arkhe-toolkit-ajax', 'arkheAjaxVars', [
 			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
 			'ajaxNonce'      => wp_create_nonce( 'arkhe-toolkit-ajax-nonce' ),
@@ -55,9 +61,9 @@ function enqueue_admin_scripts( $hook_suffix ) {
 
 		// メディアアップローダー
 		wp_enqueue_media();
-		wp_enqueue_script( 'arkhe-mediauploader', ARKHE_TOOLKIT_URL . 'dist/js/media.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
+		wp_enqueue_script( 'arkhe-mediauploader', ARKHE_TOOLKIT_URL . 'dist/js/admin/media.js', [ 'jquery' ], ARKHE_TOOLKIT_VER, true );
 
-		wp_enqueue_script( 'arkhe-toolkit-editor', ARKHE_TOOLKIT_URL . 'dist/js/editor.js', ['jquery' ], ARKHE_TOOLKIT_VER, true );
+		wp_enqueue_script( 'arkhe-toolkit-editor', ARKHE_TOOLKIT_URL . 'dist/js/admin/editor.js', [ 'jquery' ], ARKHE_TOOLKIT_VER, true );
 		wp_enqueue_style( 'arkhe-toolkit-editor', ARKHE_TOOLKIT_URL . 'dist/css/editor.css', [], ARKHE_TOOLKIT_VER );
 	}
 

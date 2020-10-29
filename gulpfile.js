@@ -21,11 +21,11 @@ const uglify = require('gulp-uglify-es').default;
 const path = {
 	src: {
 		scss: 'src/scss/**/*.scss',
-		js: 'src/js/**/*.js',
+		js: 'src/js/admin/**/*.js',
 	},
 	dest: {
 		css: 'dist/css',
-		js: 'dist/js',
+		js: 'dist/js/admin',
 	},
 };
 

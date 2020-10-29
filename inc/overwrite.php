@@ -100,19 +100,3 @@ function set_show_ttlpos( $page_id ) {
 		add_filter( 'arkhe_is_show_ttltop', '__return_false' );
 	}
 }
-
-
-/**
- * 目次の表示設定
- */
-function set_show_index( $page_id ) {
-
-	if ( IS_SINGLE || IS_PAGE ) {
-		$meta = get_post_meta( $page_id, 'ark_meta_show_index', true );
-		if ( $meta === 'show' ) {
-			add_filter( 'ark_is_show_index', '__return_true' );
-		} elseif ( $meta === 'hide' ) {
-			add_filter( 'ark_is_show_index', '__return_false' );
-		}
-	}
-}
