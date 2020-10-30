@@ -19,6 +19,7 @@ Customizer::add(
 	$arkhe_section,
 	'header_btn_layout',
 	[
+		'classname'   => '-toolkit -btn-layout',
 		'type'        => 'radio',
 		'choices'     => [
 			'l-r'    => 'L-R',

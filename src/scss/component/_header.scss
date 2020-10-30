@@ -116,6 +116,7 @@ html:not([data-drawer-move="fade"]) {
 	&:not([data-drawer-move="fade"]) {
 
 		.p-drawer::before,
+		.p-drawerUnderlayer::before,
 		.p-drawer__inner {
 			width: 100%;
 		}
