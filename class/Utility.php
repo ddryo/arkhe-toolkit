@@ -50,7 +50,7 @@ trait Utility {
 	/**
 	 * キャッシュの取得 & 生成
 	 */
-	public static function get_parts_cache( $path_key, $include_path, $args, $cache_key = '', $days = 30 ) {
+	public static function get_part_cache( $path_key, $include_path, $args, $cache_key = '', $days = 30 ) {
 
 		if ( '' === $cache_key || is_customize_preview() ) return '';
 
@@ -62,7 +62,7 @@ trait Utility {
 
 		// キャッシュが消えていれば生成
 		ob_start();
-		\Arkhe::the_parts_content( $path_key, $include_path, $args );
+		\Arkhe::the_part_content( $path_key, $include_path, $args );
 		$cache_data = \Arkhe_Toolkit::minify_html_code( ob_get_clean() );
 
 		// キャッシュ保存期間
