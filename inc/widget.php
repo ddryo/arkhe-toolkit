@@ -56,7 +56,7 @@ function add_ex_widgets() {
 	} elseif ( is_single() && \Arkhe_Toolkit::get_data( 'extension', 'use_post_widget' ) ) {
 
 		// 投稿ページ上部
-		add_action( 'arkhe_before_single_content', function ( $page_id ) {
+		add_action( 'arkhe_before_entry_content', function ( $page_id ) {
 			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_top', true );
 			if ( '1' === $is_hide || ! is_active_sidebar( 'single-top' ) ) return;
 
@@ -66,7 +66,7 @@ function add_ex_widgets() {
 		} );
 
 		// 投稿ページ下部
-		add_action( 'arkhe_after_single_content', function ( $page_id ) {
+		add_action( 'arkhe_after_entry_content', function ( $page_id ) {
 			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_bottom', true );
 			if ( '1' === $is_hide || ! is_active_sidebar( 'single-bottom' ) ) return;
 
