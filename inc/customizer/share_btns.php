@@ -15,7 +15,6 @@ Customizer::big_title(
 	]
 );
 
-
 // 記事の上部に表示
 Customizer::add(
 	$arkhe_section,
@@ -42,7 +41,6 @@ Customizer::add(
 	]
 );
 
-
 // どのボタンを表示するか
 Customizer::sub_title(
 	$arkhe_section,
@@ -51,7 +49,6 @@ Customizer::sub_title(
 		'label' => __( 'Which button to display', 'arkhe-toolkit' ),
 	]
 );
-
 
 // Facebook
 Customizer::add(
