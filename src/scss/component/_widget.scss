@@ -12,3 +12,20 @@
 .w-single-bottom {
 	margin: 4rem 0;
 }
+
+.w-fix-sidebar {
+	// top: 0;
+	top: var(--ark-offset_y, 8px);
+	margin-top: 2em;
+
+	@include pc {
+		position: sticky;
+		max-height: calc(100vh - 16px);
+		margin-top: 2.5rem;
+		overflow-y: auto;
+	}
+
+	// @include sp {
+	// 	max-height: unset !important;
+	// }
+}

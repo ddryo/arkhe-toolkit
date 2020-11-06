@@ -138,6 +138,7 @@ class Data {
 			'use_page_widget'       => '1',
 			'use_post_widget'       => '1',
 			'use_home_widget'       => '1',
+			'use_fix_sidebar'       => '1',
 			'use_luminous'          => '1',
 			'use_lazysizes'         => '1',
 			'remove_emp_p'          => '1',

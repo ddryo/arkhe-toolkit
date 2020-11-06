@@ -78,7 +78,16 @@ function add_ex_widgets() {
 	}
 
 	// 追尾サイドバー
-	// arkhe_after_sidebar_content
+	$use_fix_sidebar = apply_filters( 'arkhe_toolkit_use_fix_sidebar', \Arkhe_Toolkit::get_data( 'extension', 'use_fix_sidebar' ) );
+	if ( $use_fix_sidebar ) {
+		add_action( 'arkhe_after_sidebar_content', function () {
+			if ( ! is_active_sidebar( 'fix-sidebar' ) ) return;
+
+			echo '<div id="fix_sidebar" class="w-fix-sidebar">';
+			dynamic_sidebar( 'fix-sidebar' );
+			echo '</div>';
+		} );
+	}
 }
 
 
@@ -171,6 +180,22 @@ function setup_widgets() {
 				'before_widget' => '<div id="%1$s" class="c-widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<div class="c-widget__title -home">',
+				'after_title'   => '</div>',
+			]
+		);
+	}
+
+	// 追尾ウィジェット
+	if ( \Arkhe_Toolkit::get_data( 'extension', 'use_fix_sidebar' ) ) {
+		$widget_position = __( 'bottom of sidebar', 'arkhe-toolkit' );
+		register_sidebar(
+			[
+				'name'          => __( 'Fix sidebar', 'arkhe-toolkit' ),
+				'id'            => 'fix-sidebar',
+				'description'   => sprintf( $widget_desc, $widget_position ),
+				'before_widget' => '<div id="%1$s" class="c-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<div class="c-widget__title -fix-sidebar">',
 				'after_title'   => '</div>',
 			]
 		);
