@@ -9,6 +9,7 @@ module.exports = {
 	entry: {
 		// main: './src/js/main.js',
 		luminous: './src/js/luminous.js',
+		clipboard: './src/js/clipboard.js',
 	},
 
 	// ファイルの出力設定

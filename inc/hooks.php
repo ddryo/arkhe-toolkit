@@ -118,3 +118,31 @@ add_action( 'arkhe_author_links', function ( $author_id ) {
 	</div>
 	<?php
 } );
+
+
+/**
+ * シェアボタン追加
+ */
+add_action( 'arkhe_before_entry_content', function( $the_id ) {
+	if ( ! $the_id ) return;
+	if ( ! \Arkhe_Toolkit::get_data( 'customizer', 'show_sharebtns_top' ) ) return;
+
+	\Arkhe::$ex_parts_path = ARKHE_TOOLKIT_PATH;
+	\Arkhe::get_part( 'share_btns', [
+		'post_id'  => $the_id,
+		'position' => 'top',
+	] );
+	\Arkhe::$ex_parts_path = '';
+}, 9 );
+
+add_action( 'arkhe_after_entry_content', function( $the_id ) {
+	if ( ! $the_id ) return;
+	if ( ! \Arkhe_Toolkit::get_data( 'customizer', 'show_sharebtns_bottom' ) ) return;
+
+	\Arkhe::$ex_parts_path = ARKHE_TOOLKIT_PATH;
+	\Arkhe::get_part( 'share_btns', [
+		'post_id'  => $the_id,
+		'position' => 'bottom',
+	] );
+	\Arkhe::$ex_parts_path = '';
+}, 9 );

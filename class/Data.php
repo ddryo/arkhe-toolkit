@@ -46,8 +46,11 @@ class Data {
 		// 'other' => [
 		// 	'hoge',
 		// ],
-
 	];
+
+	// JSの読み込みを制御する変数
+	public static $use_pinterest    = false;
+	public static $use_clipboard_js = false;
 
 	// メニューのページスラッグ
 	const MENU_SLUG = 'arkhe_settings';
@@ -115,9 +118,20 @@ class Data {
 	private static function set_defaults() {
 
 		self::$defaults['customizer'] = [
-			'drawer_move'         => 'fade',
-			'header_btn_layout'   => 'l-r',
-			'header_above_drawer' => false,
+			'drawer_move'           => 'fade',
+			'header_btn_layout'     => 'l-r',
+			'header_above_drawer'   => false,
+
+			// シェアボタン
+			'show_sharebtns_top'    => false,
+			'show_sharebtns_bottom' => true,
+			'show_share_fb'         => true,
+			'show_share_tw'         => true,
+			'show_share_hatebu'     => true,
+			'show_share_pocket'     => true,
+			'show_share_pin'        => true,
+			'show_share_line'       => true,
+			'show_share_urlcopy'    => true,
 		];
 
 		self::$defaults['extension'] = [

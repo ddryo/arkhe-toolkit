@@ -6,7 +6,7 @@ namespace Arkhe_Toolkit;
  */
 add_action( 'wp_enqueue_scripts', '\Arkhe_Toolkit\enqueue_front_scripts', 20 );
 add_action( 'admin_enqueue_scripts', '\Arkhe_Toolkit\enqueue_admin_scripts', 20 );
-
+add_action( 'wp_footer', '\Arkhe_Toolkit\hook_wp_footer_1', 1 );
 
 /**
  * フロントで読み込むファイル
@@ -72,4 +72,26 @@ function enqueue_admin_scripts( $hook_suffix ) {
 		wp_enqueue_style( 'arkhe-toolkit-customizer', ARKHE_TOOLKIT_URL . 'dist/css/customizer.css', [], ARKHE_TOOLKIT_VER );
 	}
 
+}
+
+
+/**
+ * wp_footerフック 優先度:1
+ */
+function hook_wp_footer_1() {
+	if ( \Arkhe_Toolkit::$use_clipboard_js ) {
+		wp_enqueue_script( 'clipboard' );
+		wp_enqueue_script(
+			'arkhe-toolkit-clipboard',
+			ARKHE_TOOLKIT_URL . 'dist/js/clipboard.js',
+			[ 'clipboard' ],
+			ARKHE_TOOLKIT_VER,
+			true
+		);
+	}
+
+	if ( \Arkhe_Toolkit::$use_pinterest ) {
+		// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
+		echo '<script async defer src="//assets.pinterest.com/js/pinit.js"></script>';
+	}
 }

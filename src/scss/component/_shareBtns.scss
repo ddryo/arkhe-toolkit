@@ -1,25 +1,18 @@
 .c-shareBtns {
-
-	// @extend %postParts_margin;
-
-	&[data-sharebtn="icon"] {
-		padding: 8px 0;
-		border-top: solid 1px var(--ark-color_border);
-		border-bottom: solid 1px var(--ark-color_border);
-	}
-
+	margin: 2rem 0;
 }
 
 .c-shareBtns__list {
 	display: flex;
+	padding: 8px 0;
+	border-top: 1px solid var(--ark-color_border);
+	border-bottom: 1px solid var(--ark-color_border);
 }
 
 .c-shareBtns__item {
+	position: relative;
 	flex: 1;
-
-	&:not(:last-child) {
-		margin-right: 4px;
-	}
+	color: inherit;
 
 	&.-facebook {
 		color: #3b5998;
@@ -47,44 +40,37 @@
 }
 
 .c-shareBtns__btn {
-	display: block;
+	// display: block;
 	padding: 8px 0;
 	color: inherit;
 	text-align: center;
 	text-decoration: none;
-	background-color: currentColor;
 	cursor: pointer;
 
-	[data-sharebtn="icon"] & {
-		transition: background-color 0.25s;
+	&:hover {
+		background-color: currentColor;
 
-		&:not(:hover) {
-			background: none;
-		}
-
-		&:not(:hover) .c-shareBtns__icon {
-			color: inherit;
-		}
-	}
-
-	[data-sharebtn="block"] & {
-		transition: opacity 0.25s;
-
-		&:hover {
-			opacity: 0.75;
+		.c-shareBtns__icon {
+			color: #fff;
 		}
 	}
 }
 
 .c-shareBtns__icon {
 	display: block;
-	color: #fff;
-	font-size: 4.5vw;
+	width: 4.5vw;
+	height: 4.5vw;
 	line-height: 1;
 	transition: color 0.25s;
+	fill: currentColor;
+
+	// path{
+	// 	fill: inherit;
+	// }
 
 	@include tab {
-		font-size: 18px;
+		width: 20px;
+		height: 20px;
 	}
 
 	&::before {
@@ -93,10 +79,74 @@
 	}
 }
 
-[data-style="block"]{
 
+// コピーボタン
+.c-urlcopy {
+	position: relative;
+	display: block;
+	width: 100%;
+	border: none;
+
+	.-copied {
+		position: absolute;
+		top: 8px;
+		opacity: 0;
+	}
+
+	.-to-copy {
+		top: 0;
+		opacity: 1;
+		// transition-duration: 0s;
+	}
+
+	&.-done {
+
+		.-to-copy {
+			top: 8px;
+			opacity: 0;
+			transition-duration: 0s;
+		}
+
+		.-copied {
+			top: 0;
+			opacity: 1;
+			transition-duration: 0.25s;
+		}
+
+		& + .c-copyedPoppup {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	.c-shareBtns__icon {
+		transition: opacity 0.25s, top 0.25s;
+	}
 }
 
-[data-style="icon"]{
+.c-urlcopy__content {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
 
+.c-copyedPoppup {
+	position: absolute;
+	right: 0;
+	bottom: calc(100% + 12px);
+	color: #777;
+	font-size: 10px;
+	white-space: nowrap;
+	text-align: right;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.25s, visibility 0.25s;
+
+	@include tab {
+		right: 50%;
+		font-size: 11px;
+		transform: translateX(50%);
+	}
 }

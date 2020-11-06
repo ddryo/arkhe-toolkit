@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-10-29 16:40+0900\n"
-"PO-Revision-Date: 2020-10-29 16:41+0900\n"
+"POT-Creation-Date: 2020-11-06 19:53+0900\n"
+"PO-Revision-Date: 2020-11-06 19:53+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -214,25 +214,49 @@ msgstr "キャッシュクリアが完了しました。"
 msgid "Button layout in the header"
 msgstr "ヘッダーのボタン配置"
 
-#: inc/customizer/ex_header.php:40
+#: inc/customizer/ex_header.php:41
 msgid "How to expand the drawer menu"
 msgstr "ドロワーメニューの展開方式"
 
-#: inc/customizer/ex_header.php:51
+#: inc/customizer/ex_header.php:52
 msgid "Fade-in"
 msgstr "フェードイン"
 
-#: inc/customizer/ex_header.php:52
+#: inc/customizer/ex_header.php:53
 msgid "Slide from left"
 msgstr "左からスライド"
 
-#: inc/customizer/ex_header.php:53
+#: inc/customizer/ex_header.php:54
 msgid "Slide from right"
 msgstr "右からスライド"
 
-#: inc/customizer/ex_header.php:66
+#: inc/customizer/ex_header.php:67
 msgid "Display below the header"
 msgstr "ヘッダーより下に表示する"
+
+#: inc/customizer/share_btns.php:13
+msgid "Share buttons"
+msgstr "シェアボタン"
+
+#: inc/customizer/share_btns.php:25
+msgid "Display on the article"
+msgstr "記事上に表示する"
+
+#: inc/customizer/share_btns.php:38
+msgid "Display below the article"
+msgstr "記事下に表示する"
+
+#: inc/customizer/share_btns.php:51
+msgid "Which button to display"
+msgstr "どのボタンを表示するか"
+
+#: inc/customizer/share_btns.php:88
+msgid "Hatebu"
+msgstr "はてブ"
+
+#: inc/customizer/share_btns.php:140
+msgid "URL copy button"
+msgstr "URLコピーボタン"
 
 #: inc/enqueue_scripts.php:58
 msgid "Will you really reset it?"
@@ -345,6 +369,34 @@ msgstr "「最新の投稿」のコンテンツ下部"
 msgid "shortcode"
 msgstr "ショートコード"
 
+#: template-parts/share_btns.php:23
+msgid "Share on Facebook"
+msgstr "Facebookでシェア"
+
+#: template-parts/share_btns.php:29
+msgid "Share on Twitter"
+msgstr "Twitterでシェア"
+
+#: template-parts/share_btns.php:39
+msgid "Register in Hatena Bookmark"
+msgstr "はてなブックマークに登録"
+
+#: template-parts/share_btns.php:45
+msgid "Save to Pocket"
+msgstr "Pocketに保存"
+
+#: template-parts/share_btns.php:54
+msgid "Save pin"
+msgstr "ピンを保存"
+
+#: template-parts/share_btns.php:60
+msgid "Send to LINE"
+msgstr "LINEに送る"
+
+#: template-parts/share_btns.php:116
+msgid "Copy the URL"
+msgstr "URLをコピー"
+
 #. Plugin Name of the plugin/theme
 msgid "Arkhe Toolkit"
 msgstr ""
@@ -364,6 +416,11 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://loos.co.jp/"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Show"
+#~ msgid "Show top"
+#~ msgstr "表示"
 
 #~ msgid "Add user position"
 #~ msgstr "ユーザーの役職を追加"
