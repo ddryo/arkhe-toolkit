@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-11-06 19:53+0900\n"
-"PO-Revision-Date: 2020-11-06 19:53+0900\n"
+"POT-Creation-Date: 2020-11-06 21:36+0900\n"
+"PO-Revision-Date: 2020-11-06 21:36+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -24,6 +24,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 "X-Poedit-SearchPathExcluded-3: *__*\n"
 "X-Poedit-SearchPathExcluded-4: inc/update\n"
+"X-Poedit-SearchPathExcluded-5: src/js/prefetch.js\n"
 
 #: class/Output_Meta_Field.php:18
 msgid "Show"
@@ -79,6 +80,10 @@ msgid "Additional processing to the content"
 msgstr "コンテンツへの追加処理"
 
 #: inc/admin_menu/tabs/extension.php:30
+msgid "Speed-up function"
+msgstr "高速化機能"
+
+#: inc/admin_menu/tabs/extension.php:38
 msgid "Extension of user profile information"
 msgstr "ユーザープロフィール情報の拡張"
 
@@ -166,6 +171,24 @@ msgstr "記号の自動変換を停止(wptexturize無効化)"
 msgid "Stop RSS feed"
 msgstr "RSSフィードを停止"
 
+#: inc/admin_menu/tabs/section/speed.php:9
+msgid "Enable the Prefetch function"
+msgstr "Prefetch機能を有効化する"
+
+#: inc/admin_menu/tabs/section/speed.php:15
+msgid "Keywords for pages not to be prefetched"
+msgstr "Prefetchさせないページのキーワード"
+
+#: inc/admin_menu/tabs/section/speed.php:16
+msgid "If there are multiple, separate them with \",\"."
+msgstr "複数の場合は「,」で区切ってください。"
+
+#: inc/admin_menu/tabs/section/speed.php:17
+msgid ""
+"All pages containing the specified character string will not be subject to "
+"Prefetch."
+msgstr "指定した文字列を含む全ページが Prefetch の対象外となります。"
+
 #: inc/admin_menu/tabs/section/user_meta.php:6
 msgid "Add user position setting field"
 msgstr "役職の設定欄を追加"
@@ -238,27 +261,27 @@ msgstr "ヘッダーより下に表示する"
 msgid "Share buttons"
 msgstr "シェアボタン"
 
-#: inc/customizer/share_btns.php:25
+#: inc/customizer/share_btns.php:24
 msgid "Display on the article"
 msgstr "記事上に表示する"
 
-#: inc/customizer/share_btns.php:38
+#: inc/customizer/share_btns.php:37
 msgid "Display below the article"
 msgstr "記事下に表示する"
 
-#: inc/customizer/share_btns.php:51
+#: inc/customizer/share_btns.php:49
 msgid "Which button to display"
 msgstr "どのボタンを表示するか"
 
-#: inc/customizer/share_btns.php:88
+#: inc/customizer/share_btns.php:85
 msgid "Hatebu"
 msgstr "はてブ"
 
-#: inc/customizer/share_btns.php:140
+#: inc/customizer/share_btns.php:137
 msgid "URL copy button"
 msgstr "URLコピーボタン"
 
-#: inc/enqueue_scripts.php:58
+#: inc/enqueue_scripts.php:71
 msgid "Will you really reset it?"
 msgstr "本当にリセットしますか？"
 

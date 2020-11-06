@@ -135,15 +135,18 @@ class Data {
 		];
 
 		self::$defaults['extension'] = [
-			'use_page_widget'   => '1',
-			'use_post_widget'   => '1',
-			'use_home_widget'   => '1',
-			'use_luminous'      => '1',
-			'use_lazysizes'     => '1',
-			'remove_emp_p'      => '1',
+			'use_page_widget'       => '1',
+			'use_post_widget'       => '1',
+			'use_home_widget'       => '1',
+			'use_luminous'          => '1',
+			'use_lazysizes'         => '1',
+			'remove_emp_p'          => '1',
 
-			'use_user_urls'     => '1',
-			'use_user_position' => '1',
+			'use_user_urls'         => '1',
+			'use_user_position'     => '1',
+
+			'use_prefetch'          => '',
+			'prefetch_prevent_keys' => '',
 		];
 
 		self::$defaults['cache'] = [

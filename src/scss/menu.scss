@@ -121,7 +121,22 @@ $white: #fffffe;
 
 .arkhe-menu__field {
 
-	margin-top: 16px;
+	margin-top: 24px;
+
+	// .arkhe-menu__label {
+	// 	font-weight: bold;
+	// }
+
+	&.-checkbox + &.-checkbox {
+		margin-top: 16px;
+	}
+
+	.arkhe-menu__description {
+		margin-top: 8px;
+		margin-left: 8px;
+		font-style: italic;
+		opacity: 0.8;
+	}
 
 	&.-text {
 		display: flex;
@@ -129,6 +144,19 @@ $white: #fffffe;
 		.arkhe-menu__label {
 			display: block;
 			min-width: 12em;
+		}
+	}
+
+
+	&.-textarea {
+
+		textarea {
+			margin-left: 8px;
+		}
+
+		.arkhe-menu__label {
+			display: block;
+			margin-bottom: 8px;
 		}
 	}
 

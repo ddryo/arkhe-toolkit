@@ -10,6 +10,7 @@ module.exports = {
 		// main: './src/js/main.js',
 		luminous: './src/js/luminous.js',
 		clipboard: './src/js/clipboard.js',
+		prefetch: './src/js/prefetch.js',
 	},
 
 	// ファイルの出力設定

@@ -14,10 +14,23 @@ add_action( 'wp_footer', '\Arkhe_Toolkit\hook_wp_footer_1', 1 );
 function enqueue_front_scripts() {
 	wp_enqueue_style( 'arkhe-toolkit-front', ARKHE_TOOLKIT_URL . 'dist/css/front.css', [], ARKHE_TOOLKIT_VER );
 
+	// Luminous 使用するかどうか
 	$use_luminous = apply_filters( 'arkhe_toolkit_use_luminous', \Arkhe_Toolkit::get_data( 'extension', 'use_luminous' ) );
 	if ( $use_luminous ) {
-		wp_enqueue_style( 'arkhe-luminous', ARKHE_TOOLKIT_URL . 'dist/css/luminous.css', [], ARKHE_TOOLKIT_VER );
-		wp_enqueue_script( 'arkhe-luminous', ARKHE_TOOLKIT_URL . 'dist/js/luminous.js', [], ARKHE_TOOLKIT_VER, true );
+		wp_enqueue_style( 'arkhe-toolkit-luminous', ARKHE_TOOLKIT_URL . 'dist/css/luminous.css', [], ARKHE_TOOLKIT_VER );
+		wp_enqueue_script( 'arkhe-toolkit-luminous', ARKHE_TOOLKIT_URL . 'dist/js/luminous.js', [], ARKHE_TOOLKIT_VER, true );
+	}
+
+	// Prefetch 使用するかどうか
+	if ( \Arkhe_Toolkit::get_data( 'extension', 'use_prefetch' ) ) {
+		wp_enqueue_script( 'arkhe-toolkit-prefetch', ARKHE_TOOLKIT_URL . 'dist/js/prefetch.js', [], ARKHE_TOOLKIT_VER, true );
+
+		$prefetch_prevent_keys = \Arkhe_Toolkit::get_data( 'extension', 'prefetch_prevent_keys' );
+		$prefetch_prevent_keys = str_replace( ["\r", "\n" ], '', $prefetch_prevent_keys );
+
+		wp_localize_script( 'arkhe-toolkit-prefetch', 'arkhePrefetchVars', [
+			'ignorePrefetchKeys' => $prefetch_prevent_keys,
+		] );
 	}
 
 	if ( is_user_logged_in() ) {

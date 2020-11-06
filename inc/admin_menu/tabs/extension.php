@@ -25,6 +25,14 @@ $page_name = 'arkhe_menu_page_extension';
 	'db'        => 'extension',
 ] );
 
+// 高速化機能
+\Arkhe_Toolkit::add_menu_section( [
+	'title'     => __( 'Speed-up function', 'arkhe-toolkit' ),
+	'key'       => 'speed',
+	'page_name' => $page_name,
+	'db'        => 'extension',
+] );
+
 // ユーザー情報の追加
 \Arkhe_Toolkit::add_menu_section( [
 	'title'     => __( 'Extension of user profile information', 'arkhe-toolkit' ),
