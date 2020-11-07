@@ -2,5 +2,5 @@
 # shファイルを実行する
 
 ```
-bash ./bin/update.sh 1-1-0
+bash ./bin/update.sh 1-2-0
 ```
