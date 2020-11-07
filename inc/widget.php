@@ -91,7 +91,6 @@ function add_ex_widgets() {
 }
 
 
-
 /**
  * ウィジェット登録
  */
@@ -185,12 +184,12 @@ function setup_widgets() {
 		);
 	}
 
-	// 追尾ウィジェット
+	// 追尾サイドバー
 	if ( \Arkhe_Toolkit::get_data( 'extension', 'use_fix_sidebar' ) ) {
-		$widget_position = __( 'bottom of sidebar', 'arkhe-toolkit' );
+		$widget_position = __( 'bottom of the sidebar', 'arkhe-toolkit' );
 		register_sidebar(
 			[
-				'name'          => __( 'Fix sidebar', 'arkhe-toolkit' ),
+				'name'          => __( 'Sticky sidebar', 'arkhe-toolkit' ),
 				'id'            => 'fix-sidebar',
 				'description'   => sprintf( $widget_desc, $widget_position ),
 				'before_widget' => '<div id="%1$s" class="c-widget %2$s">',

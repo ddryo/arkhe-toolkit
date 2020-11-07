@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-11-06 21:36+0900\n"
-"PO-Revision-Date: 2020-11-06 21:36+0900\n"
+"POT-Creation-Date: 2020-11-07 11:22+0900\n"
+"PO-Revision-Date: 2020-11-07 11:22+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -62,8 +62,7 @@ msgstr "停止させる機能"
 msgid "Your settings have been saved."
 msgstr "設定を保存しました。"
 
-#: inc/admin_menu/menu_page.php:27 inc/admin_toolbar.php:23
-#: inc/post_meta.php:18
+#: inc/admin_menu/menu_page.php:27 inc/post_meta.php:18
 msgid "Arkhe Settings"
 msgstr "Arkhe設定"
 
@@ -107,7 +106,7 @@ msgstr "サイドバーをキャッシュする"
 msgid "Cache footer"
 msgstr "フッターをキャッシュする"
 
-#: inc/admin_menu/tabs/section/cache.php:20 inc/admin_toolbar.php:48
+#: inc/admin_menu/tabs/section/cache.php:20 inc/admin_toolbar.php:57
 msgid "Clear Cache"
 msgstr "キャッシュをクリア"
 
@@ -198,30 +197,43 @@ msgid "Add SNS URL information"
 msgstr "SNSのURL情報を追加"
 
 #: inc/admin_menu/tabs/section/widget_area.php:6
-msgid "Add widget area for the \"Page\""
+msgid "Add widget area for \"Page\""
 msgstr "「固定ページ」用のウィジェットエリアを追加"
 
 #: inc/admin_menu/tabs/section/widget_area.php:7
-msgid "Add widget area for the \"Post\""
+msgid "Add widget area for \"Post\""
 msgstr "「投稿」用のウィジェットエリアを追加"
 
 #: inc/admin_menu/tabs/section/widget_area.php:8
-msgid "Add widget area for the \"Home\""
+msgid "Add widget area for \"Home\""
 msgstr "「最新の投稿」用のウィジェットエリアを追加"
+
+#: inc/admin_menu/tabs/section/widget_area.php:9
+msgid "Add widget area for \"Sticky sidebar\""
+msgstr "「追尾サイドバー」用のウィジェットエリアを追加"
 
 #: inc/admin_toolbar.php:11
 msgid "Customize"
 msgstr ""
 
+#. Plugin Name of the plugin/theme
+#: inc/admin_toolbar.php:23
+msgid "Arkhe Toolkit"
+msgstr "Arkhe Toolkit"
+
 #: inc/admin_toolbar.php:37
 msgid "To setting page"
 msgstr "設定ページへ"
 
-#: inc/admin_toolbar.php:63
+#: inc/admin_toolbar.php:46
+msgid "To theme page"
+msgstr "テーマページへ"
+
+#: inc/admin_toolbar.php:72
 msgid "Get license"
 msgstr "ライセンス取得"
 
-#: inc/admin_toolbar.php:77
+#: inc/admin_toolbar.php:86
 msgid "License key registration"
 msgstr "ライセンスキー登録"
 
@@ -359,34 +371,42 @@ msgstr "役職・肩書き"
 msgid "Amazon wish list"
 msgstr "Amazon欲しいものリスト"
 
-#: inc/widget.php:93
+#: inc/widget.php:102
 #, php-format
 msgid "Widgets in this area will be displayed in the %s"
 msgstr "このエリアのウィジェットは%sに表示されます"
 
-#: inc/widget.php:97
+#: inc/widget.php:106
 msgid "Top of \"Page\" content"
 msgstr "「固定ページ」のコンテンツ上部"
 
-#: inc/widget.php:109 inc/widget.php:112
+#: inc/widget.php:118 inc/widget.php:121
 msgid "Bottom of \"Page\" content"
 msgstr "「固定ページ」のコンテンツ下部"
 
-#: inc/widget.php:125 inc/widget.php:128
+#: inc/widget.php:134 inc/widget.php:137
 msgid "Top of \"Post\" content"
 msgstr "「投稿」のコンテンツ上部"
 
-#: inc/widget.php:137 inc/widget.php:140
+#: inc/widget.php:146 inc/widget.php:149
 msgid "Bottom of \"Post\" content"
 msgstr "「投稿」のコンテンツ下部"
 
-#: inc/widget.php:153 inc/widget.php:156
+#: inc/widget.php:162 inc/widget.php:165
 msgid "Top of \"Home\" content"
 msgstr "「最新の投稿」のコンテンツ上部"
 
-#: inc/widget.php:165 inc/widget.php:168
+#: inc/widget.php:174 inc/widget.php:177
 msgid "Bottom of \"Home\" content"
 msgstr "「最新の投稿」のコンテンツ下部"
+
+#: inc/widget.php:190
+msgid "bottom of the sidebar"
+msgstr "サイドバー下部"
+
+#: inc/widget.php:193
+msgid "Sticky sidebar"
+msgstr "追尾サイドバー"
 
 #: inc/wp_posts_table.php:28
 msgid "shortcode"
@@ -419,10 +439,6 @@ msgstr "LINEに送る"
 #: template-parts/share_btns.php:116
 msgid "Copy the URL"
 msgstr "URLをコピー"
-
-#. Plugin Name of the plugin/theme
-msgid "Arkhe Toolkit"
-msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "https://arkhe-theme.com"

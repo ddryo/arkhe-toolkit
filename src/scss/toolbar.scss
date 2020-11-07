@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+/*
+ * ツールバー用のCSS
+ */
+
+// mixin
+@import "mixin/**";
+
+#wpadminbar .ab-icon.-arkhe {
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	height: 100%;
+
+	svg {
+		width: 20px !important;
+		fill: currentColor;
+	}
+}

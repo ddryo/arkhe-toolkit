@@ -15,7 +15,7 @@ add_action( 'admin_menu', function () {
 		'manage_options', // 必要な権限
 		\Arkhe_Toolkit::MENU_SLUG, // このメニューを参照するスラッグ名
 		'\Arkhe_Toolkit\display_setting_page', // 表示内容
-		'', // アイコン
+		ARKHE_TOOLKIT_URL . 'assets/img/arkhe-menu-icon.png', // アイコン
 		29 // 管理画面での表示位置
 	);
 

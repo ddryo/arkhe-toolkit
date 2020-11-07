@@ -1,18 +1,21 @@
 <?php
 namespace Arkhe_Toolkit;
 
+// 「カスタマイズ」を管理画面側にも追加
 add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
-	// 「カスタマイズ」
-	if ( is_admin() ) {
-		$wp_admin_bar->add_menu(
-			[
-				'id'    => 'customize',
-				// phpcs:ignore WordPress.WP.I18n.MissingArgDomain
-				'title' => '<span class="ab-icon"></span><span class="ab-label">' . __( 'Customize' ) . '</span>',
-				'href'  => admin_url( 'customize.php' ),
-			]
-		);
-	}
+	if ( ! is_admin() ) return;
+	$wp_admin_bar->add_menu(
+		[
+			'id'    => 'customize',
+			// phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+			'title' => '<span class="ab-label">' . __( 'Customize' ) . '</span>',
+			'href'  => admin_url( 'customize.php' ),
+		]
+	);
+}, 50);
+
+// Toolkitツールバー
+add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 
 	$arkhe_menu_id = 'arkhe_settings';
 
@@ -20,7 +23,7 @@ add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 	$wp_admin_bar->add_menu(
 		[
 			'id'    => $arkhe_menu_id,
-			'title' => '<span class="ab-icon "></span><span class="ab-label">' . __( 'Arkhe Settings', 'arkhe-toolkit' ) . '</span>',
+			'title' => '<span class="ab-icon -arkhe">' . \Arkhe_Toolkit::get_svg_icon( 'arkhe' ) . '</span><span class="ab-label">' . __( 'Arkhe Toolkit', 'arkhe-toolkit' ) . '</span>',
 			'href'  => admin_url( 'admin.php?page=arkhe_settings' ),
 			'meta'  => [
 				'class' => 'arkhe-menu',
@@ -36,6 +39,15 @@ add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 			'meta'   => [],
 			'title'  => __( 'To setting page', 'arkhe-toolkit' ),
 			'href'   => admin_url( 'admin.php?page=arkhe_settings' ),
+		]
+	);
+	$wp_admin_bar->add_menu(
+		[
+			'parent' => $arkhe_menu_id,
+			'id'     => $arkhe_menu_id . '_theme_page',
+			'meta'   => [],
+			'title'  => __( 'To theme page', 'arkhe-toolkit' ),
+			'href'   => admin_url( 'themes.php?page=arkhe' ),
 		]
 	);
 	$wp_admin_bar->add_menu(
