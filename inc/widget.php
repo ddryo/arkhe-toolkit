@@ -35,7 +35,7 @@ function add_ex_widgets() {
 
 		// 固定ページ上部
 		add_action( 'arkhe_before_page_content', function ( $page_id ) {
-			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_top', true );
+			$is_hide = get_post_meta( $page_id, 'ark_meta_hide_widget_top', true );
 			if ( '1' === $is_hide || ! is_active_sidebar( 'page-top' ) ) return;
 
 			echo '<div class="w-page-top">';
@@ -45,7 +45,7 @@ function add_ex_widgets() {
 
 		// 固定ページ下部
 		add_action( 'arkhe_after_page_content', function ( $page_id ) {
-			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_bottom', true );
+			$is_hide = get_post_meta( $page_id, 'ark_meta_hide_widget_bottom', true );
 			if ( '1' === $is_hide || ! is_active_sidebar( 'page-bottom' ) ) return;
 
 			echo '<div class="w-page-bottom">';
@@ -57,7 +57,7 @@ function add_ex_widgets() {
 
 		// 投稿ページ上部
 		add_action( 'arkhe_before_entry_content', function ( $page_id ) {
-			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_top', true );
+			$is_hide = get_post_meta( $page_id, 'ark_meta_hide_widget_top', true );
 			if ( '1' === $is_hide || ! is_active_sidebar( 'single-top' ) ) return;
 
 			echo '<div class="w-single-top">';
@@ -67,7 +67,7 @@ function add_ex_widgets() {
 
 		// 投稿ページ下部
 		add_action( 'arkhe_after_entry_content', function ( $page_id ) {
-			$is_hide = get_post_meta( $page_id, 'ark_meta_show_widget_bottom', true );
+			$is_hide = get_post_meta( $page_id, 'ark_meta_hide_widget_bottom', true );
 			if ( '1' === $is_hide || ! is_active_sidebar( 'single-bottom' ) ) return;
 
 			echo '<div class="w-single-bottom">';

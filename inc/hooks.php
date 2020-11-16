@@ -11,7 +11,7 @@ add_filter( 'pre_term_description', 'wp_kses_post' );
 /**
  * ドロワーメニューの拡張
  */
-add_action( 'arkhe_root_attrs', '\Arkhe_Toolkit\hook_root_attrs' );
+add_filter( 'arkhe_root_attrs', '\Arkhe_Toolkit\hook_root_attrs' );
 function hook_root_attrs( $attrs ) {
 
 	// ドロワーの展開方法
@@ -28,7 +28,7 @@ function hook_root_attrs( $attrs ) {
 /**
  * ヘッダーの属性
  */
-add_action( 'arkhe_header_attrs', '\Arkhe_Toolkit\hook_header_attrs' );
+add_filter( 'arkhe_header_attrs', '\Arkhe_Toolkit\hook_header_attrs' );
 function hook_header_attrs( $attrs ) {
 
 	// ヘッダーがブロック化されていなければカスタマイザーデータ反映
@@ -44,30 +44,77 @@ function hook_header_attrs( $attrs ) {
 /**
  * ページタイトルにサブタイトル追加
  */
-add_action( 'arkhe_page_subtitle', function ( $page_id ) {
-	$subtitle = get_post_meta( $page_id, 'ark_meta_subttl', true );
-	if ( ! $subtitle ) return;
-
-	echo '<span class="c-pageTitle__subtitle">' . esc_html( $subtitle ) . '</span>';
-} );
+add_filter( 'arkhe_page_subtitle', '\Arkhe_Toolkit\hook_page_subtitle', 10, 2 );
+function hook_page_subtitle( $subtitle, $page_id ) {
+	$meta_subtitle = get_post_meta( $page_id, 'ark_meta_subttl', true ) ?: '';
+	if ( $meta_subtitle ) return $meta_subtitle;
+	return $subtitle;
+}
 
 
 /**
  * タイトル背景画像
  */
-add_filter( 'arkhe_ttlbg_img_id', function ( $img_id, $page_id ) {
+add_filter( 'arkhe_ttlbg_img_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 );
+function hook_ttlbg_img_id( $img_id, $page_id ) {
 	$meta = get_post_meta( $page_id, 'ark_meta_ttlbg', true );
 	if ( ! $meta ) return $img_id;
 	return $meta;
-}, 10, 2 );
+}
+
+
+/**
+ * 上部タイトルエリアに表示する抜粋分
+*/
+add_filter( 'arkhe_top_area_excerpt', '\Arkhe_Toolkit\hook_top_area_excerpt', 10, 2 );
+function hook_top_area_excerpt( $excerpt, $the_id ) {
+	$meta = get_post_meta( $the_id, 'ark_meta_show_excerpt', true ) ?: false;
+	if ( $meta ) {
+		$post_data = get_post( $the_id );
+		$excerpt   = ! empty( $post_data ) ? $post_data->post_excerpt : '';
+	};
+	return $excerpt;
+}
+
+
+/**
+ * その他、各ページへの処理（フックさせるかどうかを先に分岐させるもの）
+ */
+add_action( 'wp', function () {
+
+	// ユーザー情報
+	$extension = \Arkhe_Toolkit::get_data( 'extension' );
+	if ( $extension['use_user_position'] ) {
+		add_action( 'arkhe_after_author_name', '\Arkhe_Toolkit\hook_after_author_name' );
+	}
+	if ( $extension['use_user_urls'] ) {
+		add_action( 'arkhe_author_links', '\Arkhe_Toolkit\hook_author_links' );
+	}
+
+	// 投稿関連
+	if ( is_single() ) {
+		$the_id     = get_queried_object_id();
+		$customizer = \Arkhe_Toolkit::get_data( 'customizer' );
+
+		// シェアボタン
+		$show_sharebtns = apply_filters( 'arkhe_toolkit_show_sharebtns', true, $the_id );
+		if ( $show_sharebtns && $customizer['show_sharebtns_top'] ) {
+			add_action( 'arkhe_before_entry_content', '\Arkhe_Toolkit\hook_before_entry_content', 9 );
+		}
+		if ( $show_sharebtns && $customizer['show_sharebtns_bottom'] ) {
+			add_action( 'arkhe_after_entry_content', '\Arkhe_Toolkit\hook_after_entry_content', 9 );
+		}
+	}
+
+} );
+
 
 
 /**
  * 著者情報に「役職」追加
  */
-add_action( 'arkhe_after_author_name', function( $author_id ) {
+function hook_after_author_name( $author_id ) {
 	if ( ! $author_id ) return;
-	if ( ! \Arkhe_Toolkit::get_data( 'extension', 'use_user_position' ) ) return;
 
 	$position = get_the_author_meta( 'position', $author_id ) ?: '';
 
@@ -75,15 +122,14 @@ add_action( 'arkhe_after_author_name', function( $author_id ) {
 	?>
 		<span class="p-authorBox__position u-color-thin"><?php echo esc_html( $position ); ?></span>
 	<?php
-} );
+}
 
 
 /**
  * 著者情報にSNSアイコンリンク追加
  */
-add_action( 'arkhe_author_links', function ( $author_id ) {
+function hook_author_links( $author_id ) {
 	if ( ! $author_id ) return;
-	if ( ! \Arkhe_Toolkit::get_data( 'extension', 'use_user_urls' ) ) return;
 
 	$icon_links              = [];
 	$icon_links['facebook']  = get_the_author_meta( 'facebook_url', $author_id ) ?: '';
@@ -117,15 +163,14 @@ add_action( 'arkhe_author_links', function ( $author_id ) {
 		</ul>
 	</div>
 	<?php
-} );
+}
 
 
 /**
  * シェアボタン追加
  */
-add_action( 'arkhe_before_entry_content', function( $the_id ) {
+function hook_before_entry_content( $the_id ) {
 	if ( ! $the_id ) return;
-	if ( ! \Arkhe_Toolkit::get_data( 'customizer', 'show_sharebtns_top' ) ) return;
 
 	\Arkhe::$ex_parts_path = ARKHE_TOOLKIT_PATH;
 	\Arkhe::get_part( 'share_btns', [
@@ -133,11 +178,9 @@ add_action( 'arkhe_before_entry_content', function( $the_id ) {
 		'position' => 'top',
 	] );
 	\Arkhe::$ex_parts_path = '';
-}, 9 );
-
-add_action( 'arkhe_after_entry_content', function( $the_id ) {
+}
+function hook_after_entry_content( $the_id ) {
 	if ( ! $the_id ) return;
-	if ( ! \Arkhe_Toolkit::get_data( 'customizer', 'show_sharebtns_bottom' ) ) return;
 
 	\Arkhe::$ex_parts_path = ARKHE_TOOLKIT_PATH;
 	\Arkhe::get_part( 'share_btns', [
@@ -145,4 +188,4 @@ add_action( 'arkhe_after_entry_content', function( $the_id ) {
 		'position' => 'bottom',
 	] );
 	\Arkhe::$ex_parts_path = '';
-}, 9 );
+}

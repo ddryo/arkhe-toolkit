@@ -33,7 +33,10 @@ function cb_post_meta( $post ) {
 	$the_id    = $post->ID;
 	$post_type = $post->post_type;
 	$home_id   = (int) get_option( 'page_for_posts' );
-	$is_home   = $home_id === $the_id
+	$is_home   = $home_id === $the_id;
+
+	// "この設定はタイトル位置が「コンテンツ上部」の時のみ有効です。" のテキスト
+	$text_only_topttl = __( 'This is valid only when the title position is "Above the content".', 'arkhe-toolkit' );
 ?>
 	<div id="arkhe_post_meta" class="ark-meta -side">
 		<?php if ( 'page' === $post_type ) : ?>
@@ -47,7 +50,7 @@ function cb_post_meta( $post ) {
 					<?php \Arkhe_Toolkit::media_btns( 'ark_meta_ttlbg', $meta_val ); ?>
 				</div>
 				<p class="ark-meta__desc">
-					<?=esc_html__( 'This is valid only when the title position is "Above the content".', 'arkhe-toolkit' )?>
+					<?=esc_html( $text_only_topttl )?>
 				</p>
 			</div>
 
@@ -130,19 +133,37 @@ function cb_post_meta( $post ) {
 				$meta_checkboxes = [];
 
 				if ( ! $is_home ) :
-					$meta_checkboxes['ark_meta_show_widget_top']    = __( 'Hide top-widget', 'arkhe-toolkit' );
-					$meta_checkboxes['ark_meta_show_widget_bottom'] = __( 'Hide bottom-widget', 'arkhe-toolkit' );
+					$meta_checkboxes['ark_meta_hide_widget_top']    = [
+						'label' => __( 'Hide top-widget', 'arkhe-toolkit' ),
+					];
+					$meta_checkboxes['ark_meta_hide_widget_bottom'] = [
+						'label' => __( 'Hide bottom-widget', 'arkhe-toolkit' ),
+					];
 				endif;
 
-				// if ( 'post' === $post_type ) :
-				// 	$meta_checkboxes['ark_meta_hide_sharebtn'] = __( 'Hide share buttons', 'arkhe-toolkit' );
-				// endif;
+				if ( 'page' === $post_type ) :
+					$meta_checkboxes['ark_meta_show_excerpt'] = [
+						'label'       => __( 'Show page "excerpt"', 'arkhe-toolkit' ),
+						'description' => $text_only_topttl,
+					];
+				// elseif ( 'post' === $post_type ) :
+					// $meta_checkboxes['ark_meta_show_sharebtns'] = [
+					// 	'label' => __( 'Hide share buttons', 'arkhe-toolkit' ),
+					// ];
+				endif;
 
-				foreach ( $meta_checkboxes as $key => $label ) :
+				foreach ( $meta_checkboxes as $key => $data ) :
 					$meta_val = get_post_meta( $the_id, $key, true );
 				?>
 					<div class="ark-meta__field">
-						<?php \Arkhe_Toolkit::meta_checkbox( $key, $label, $meta_val ); ?>
+						<?php
+							\Arkhe_Toolkit::meta_checkbox( $key, $data['label'], $meta_val );
+
+							if ( isset( $data['description'] ) ) :
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							echo '<p class="ark-meta__desc">' . $data['description'] . '</p>';
+							endif;
+						?>
 					</div>
 				<?php
 				endforeach;
@@ -168,8 +189,9 @@ function hook_save_post( $post_id ) {
 		'ark_meta_show_thumb',
 		'ark_meta_show_related',
 		'ark_meta_show_author',
-		'ark_meta_show_widget_top',
-		'ark_meta_show_widget_bottom',
+		'ark_meta_hide_widget_top',
+		'ark_meta_hide_widget_bottom',
+		'ark_meta_show_excerpt',
 		// 'ark_meta_hide_sharebtn',
 		// 'ark_meta_show_toc',
 	];
