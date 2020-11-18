@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-11-16 19:56+0900\n"
-"PO-Revision-Date: 2020-11-16 19:58+0900\n"
+"POT-Creation-Date: 2020-11-16 22:47+0900\n"
+"PO-Revision-Date: 2020-11-16 22:47+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -364,10 +364,6 @@ msgid "Hide bottom-widget"
 msgstr "下部ウィジェットを非表示にする"
 
 #: inc/post_meta.php:146
-msgid "Hide share buttons"
-msgstr ""
-
-#: inc/post_meta.php:150
 msgid "Show page \"excerpt\""
 msgstr "ページの「抜粋」を表示する"
 
