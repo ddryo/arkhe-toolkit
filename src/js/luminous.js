@@ -45,7 +45,7 @@ const setLuminous = () => {
 	});
 
 	// 残った普通の画像
-	const contentImgs = document.querySelectorAll('.c-postContent img:not(.-no-lb)');
+	const contentImgs = document.querySelectorAll('.c-postContent img:not(.u-lb-off)');
 
 	// 画像が一枚もなければreturn
 	if (1 > contentImgs.length) {
