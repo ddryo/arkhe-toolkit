@@ -45,7 +45,10 @@ const setLuminous = () => {
 	});
 
 	// 残った普通の画像
-	const contentImgs = document.querySelectorAll('.c-postContent img:not(.u-lb-off)');
+	// const contentImgs = document.querySelectorAll('.c-postContent img:not(.u-lb-off)');
+	const contentImgs = document.querySelectorAll(
+		'.c-postContent .wp-block-image:not(.u-lb-off) img, .c-postContent img.u-lb-on'
+	);
 
 	// 画像が一枚もなければreturn
 	if (1 > contentImgs.length) {
