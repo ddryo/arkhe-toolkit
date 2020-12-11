@@ -3,7 +3,7 @@
  * Plugin Name: Arkhe Toolkit
  * Plugin URI: https://arkhe-theme.com
  * Description: A plugin that extends Arkhe more conveniently
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: LOOS,Inc.
  * Author URI: https://loos.co.jp/
  * License: GPL2 or later
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * 定数定義
  */
-define( 'ARKHE_TOOLKIT_VER', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date_i18n( 'mdGis' ) : '1.2.1' );
+define( 'ARKHE_TOOLKIT_VER', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date_i18n( 'mdGis' ) : '1.2.2' );
 define( 'ARKHE_TOOLKIT_URL', plugins_url( '/', __FILE__ ) );
 define( 'ARKHE_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -68,8 +68,11 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		if ( ! IS_ARKHE_THEME ) return;
 
 		// 翻訳ファイルを登録
-		$locale = apply_filters( 'plugin_locale', determine_locale(), 'arkhe-toolkit' );
-		load_textdomain( 'arkhe-toolkit', ARKHE_TOOLKIT_PATH . 'languages/arkhe-toolkit-' . $locale . '.mo' );
+		if ( 'ja' === determine_locale() ) {
+			load_textdomain( 'arkhe-toolkit', ARKHE_TOOLKIT_PATH . 'languages/arkhe-toolkit-ja.mo' );
+		} else {
+			load_plugin_textdomain( 'arkhe-toolkit' );
+		}
 
 		// データセット
 		self::init();

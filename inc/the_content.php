@@ -66,9 +66,8 @@ function add_lazyload( $content ) {
 				return $matches[0];
 			}
 
-			// インライン画像の場合は u-lb-off つけるだけ
+			// インライン画像の場合は何もしない : インライン画像 は style を持っている
 			if ( 'img' === $tag && strpos( $props, 'style=' ) !== false ) {
-				$props = str_replace( ' class="', ' class="u-lb-off ', $props );
 				return '<' . $tag . $props . '>';
 			}
 
