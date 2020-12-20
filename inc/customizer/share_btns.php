@@ -5,7 +5,7 @@ use \Arkhe_Theme\Customizer;
 
 $arkhe_section = 'arkhe_section_single';
 
-// ヘッダーのボタン配置
+// シェアボタン
 Customizer::big_title(
 	$arkhe_section,
 	'share_btn_settings',
