@@ -80,7 +80,7 @@ function add_ex_widgets() {
 	// 追尾サイドバー
 	$use_fix_sidebar = apply_filters( 'arkhe_toolkit_use_fix_sidebar', \Arkhe_Toolkit::get_data( 'extension', 'use_fix_sidebar' ) );
 	if ( $use_fix_sidebar ) {
-		add_action( 'arkhe_after_sidebar_content', function () {
+		add_action( 'arkhe_end_sidebar', function () {
 			if ( ! is_active_sidebar( 'fix-sidebar' ) ) return;
 
 			echo '<div id="fix_sidebar" class="w-fix-sidebar">';

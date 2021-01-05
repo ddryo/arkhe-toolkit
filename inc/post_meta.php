@@ -35,7 +35,6 @@ function cb_post_meta( $post ) {
 	$home_id   = (int) get_option( 'page_for_posts' );
 	$is_home   = $home_id === $the_id;
 
-	// "この設定はタイトル位置が「コンテンツ上部」の時のみ有効です。" のテキスト
 	$text_only_topttl = __( 'This is valid only when the title position is "Above the content".', 'arkhe-toolkit' );
 ?>
 	<div id="arkhe_post_meta" class="ark-meta -side">
@@ -60,9 +59,8 @@ function cb_post_meta( $post ) {
 				</div>
 				<?php
 					$field_args = [
-						'id'          => 'ark_meta_subttl',
-						// 'title'       => __( 'Subtitle', 'arkhe-toolkit' ),
-						'meta'        => get_post_meta( $the_id, 'ark_meta_subttl', true ),
+						'id'   => 'ark_meta_subttl',
+						'meta' => get_post_meta( $the_id, 'ark_meta_subttl', true ),
 					];
 					\Arkhe_Toolkit::meta_text_input( $field_args );
 				?>
@@ -89,6 +87,7 @@ function cb_post_meta( $post ) {
 						'options' => [
 							'top'   => __( 'Above the content', 'arkhe-toolkit' ),
 							'inner' => __( 'Inside the content', 'arkhe-toolkit' ),
+							// 'none'  => __( 'None', 'arkhe-toolkit' ),
 						],
 					];
 				elseif ( 'post' === $post_type ) :
