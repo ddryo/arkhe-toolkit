@@ -47,6 +47,29 @@ function remove_empty_p( $content ) {
 
 
 /**
+ * classに lazyload 追加する処理
+ */
+function add_lazyload_class( $props = '' ) {
+	if ( strpos( $props, 'class=' ) === false ) {
+		// class自体がまだない時
+		$props .= ' class="lazyload" ';
+
+	} else {
+		// クラスがある時
+		$props = preg_replace_callback( '/class="([^"]*)"/', function( $class_match ) {
+			$class_value = $class_match[1];
+			// クラスにまだ 'lazyload' が付与されていなければ
+			if ( strpos( $class_value, 'lazyload' ) === false ) {
+				return 'class="' . $class_value . ' lazyload"';
+			}
+			return $class_match[0];
+		}, $props );
+	}
+	return $props;
+}
+
+
+/**
  * lazyloadを追加
  */
 function add_lazyload( $content ) {
@@ -54,8 +77,27 @@ function add_lazyload( $content ) {
 	// サーバーサイドレンダー, wp-json/wp/v2 からはフック通さない
 	if ( defined( 'REST_REQUEST' )  ) return $content;
 
+	// iframe
+	$content = preg_replace_callback( '/<iframe([^>]*)>/', function( $matches ) {
+		$props = rtrim( $matches[1], '/' );
+
+		// すでにlazyload設定が済んでいれば何もせず返す
+		if ( strpos( $props, ' data-src=' ) !== false ) {
+			return $matches[0];
+		}
+
+		// src を data-srcへ
+		$props = str_replace( ' src=', ' data-src=', $props );
+
+		// lazyloadクラスの追加
+		$props = \Arkhe_Toolkit\add_lazyload_class( $props );
+
+		return '<iframe' . $props . '>';
+	}, $content );
+
+	// img, video
 	$content = preg_replace_callback(
-		'/<(img|video|iframe)([^>]*)>/',
+		'/<(img|video)([^>]*)>/',
 		function( $matches ) {
 
 			$tag   = $matches[1];
@@ -74,7 +116,11 @@ function add_lazyload( $content ) {
 			// srcを取得
 			preg_match( '/\ssrc="([^"]*)"/', $props, $src_matches );
 			$src = ( $src_matches ) ? $src_matches[1] : '';
-			if ( ! $src ) return $matches[0]; // srcなければ何もせず返す
+
+			// srcなければ何もせず返す
+			if ( ! $src ) {
+				return $matches[0];
+			}
 
 			// src を data-srcへ
 			$props = str_replace( ' src=', ' src="' . ARKHE_PLACEHOLDER . '" data-src=', $props );
@@ -105,26 +151,8 @@ function add_lazyload( $content ) {
 				}
 			}
 
-			// クラスの追加
-			if ( strpos( $props, 'class=' ) === false ) {
-				// class自体がまだがなければ
-				$props .= ' class="lazyload" ';
-			} else {
-				// クラスの中身を調べる
-				$props = preg_replace_callback(
-					'/class="([^"]*)"/',
-					function( $class_match ) {
-						$class_value = $class_match[1];
-						// クラスにまだ 'lazyload' が付与されていなければ
-						if ( strpos( $class_value, 'lazyload' ) === false ) {
-							return 'class="' . $class_value . ' lazyload"';
-						}
-						return $class_match[0];
-						},
-					$props
-				);
-				// $props = preg_replace( '/class="([^"]*)"/', 'class="$1 lazyload"', $props );
-			}
+			// lazyloadクラスの追加
+			$props = \Arkhe_Toolkit\add_lazyload_class( $props );
 
 			return '<' . $tag . $props . '>';
 		},
