@@ -37,8 +37,6 @@ add_shortcode( 'icon', '\Arkhe_Toolkit\Shortcode\icon' );
  */
 function echo_wp_block( $args ) {
 
-	// $content = SWELL_FUNC::get_blog_parts_content( $args );
-
 	$reuse_id = isset( $args['id'] ) ? (int) $args['id'] : 0;
 	$class    = isset( $args['class'] ) ? $args['class'] : '';
 

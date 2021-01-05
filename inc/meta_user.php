@@ -1,10 +1,10 @@
 <?php
-namespace Arkhe_Toolkit;
+namespace Arkhe_Toolkit\Meta;
 
 /**
  * ユーザーメタの追加
  */
-add_filter( 'user_contactmethods', '\Arkhe_Toolkit\add_user_meta' );
+add_filter( 'user_contactmethods', '\Arkhe_Toolkit\Meta\add_user_meta' );
 function add_user_meta( $prof_items ) {
 	if ( \Arkhe_Toolkit::get_data( 'extension', 'use_user_position' ) ) {
 		$prof_items['position'] = __( 'Job title / position', 'arkhe-toolkit' );

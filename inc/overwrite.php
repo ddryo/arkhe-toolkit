@@ -5,6 +5,18 @@
 namespace Arkhe_Toolkit;
 
 /**
+ * タームページのリストレイアウト
+ */
+add_filter( 'arkhe_list_type_on_term', function( $layout, $term_id ) {
+	$meta = get_term_meta( $term_id, 'ark_meta_list_type', true );
+	if ( '' !== $meta ) {
+		return $meta;
+	}
+	return $layout;
+}, 10, 2 );
+
+
+/**
  * アイキャッチ画像
  */
 add_filter( 'arkhe_show_entry_thumb', function( $show, $page_id ) {

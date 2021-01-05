@@ -84,9 +84,6 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_menu.php';
 		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_toolbar.php';
 
-		// ユーザーメタの追加
-		require_once ARKHE_TOOLKIT_PATH . 'inc/user_meta.php';
-
 		// ファイルの読み込み
 		require_once ARKHE_TOOLKIT_PATH . 'inc/enqueue_scripts.php';
 
@@ -114,7 +111,9 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		require_once ARKHE_TOOLKIT_PATH . 'inc/ajax.php';
 
 		// カスタムフィールド
-		require_once ARKHE_TOOLKIT_PATH . 'inc/post_meta.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/meta_post.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/meta_term.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/meta_user.php';
 
 		// コンテンツフック
 		require_once ARKHE_TOOLKIT_PATH . 'inc/the_content.php';

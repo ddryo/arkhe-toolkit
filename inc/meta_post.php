@@ -1,12 +1,10 @@
 <?php
-namespace Arkhe_Toolkit\Post_Meta;
-
-use \SWELL_THEME\Parts\Setting_Field as Field;
+namespace Arkhe_Toolkit\Meta;
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'add_meta_boxes', '\Arkhe_Toolkit\Post_Meta\hook_add_meta_box', 5 );
-add_action( 'save_post', '\Arkhe_Toolkit\Post_Meta\hook_save_post' );
+add_action( 'add_meta_boxes', '\Arkhe_Toolkit\Meta\hook_add_meta_box', 5 );
+add_action( 'save_post', '\Arkhe_Toolkit\Meta\hook_save_post' );
 
 
 /**
@@ -16,7 +14,7 @@ function hook_add_meta_box() {
 	add_meta_box(
 		'arkhe_meta_for_post',
 		__( 'Arkhe Settings', 'arkhe-toolkit' ),
-		'\Arkhe_Toolkit\Post_Meta\cb_post_meta',
+		'\Arkhe_Toolkit\Meta\cb_post_meta',
 		['post', 'page' ],
 		'side',
 		'default',
