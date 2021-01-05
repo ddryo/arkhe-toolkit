@@ -66,7 +66,7 @@ add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 	if ( ! \Arkhe::get_plugin_data( 'added_toolbar_to_pro' ) && ! \Arkhe::$has_pro_licence ) {
 		\Arkhe::set_plugin_data( 'added_toolbar_to_pro', 1 );
 
-		$licence_shop_url = \Arkhe::$is_ja ? '/ja/product/arkhe-licence/' : '/product/arkhe-licence/';
+		$licence_shop_url = \Arkhe::$is_ja ? '/ja/product/arkhe-licence/' : '/ja/product/arkhe-licence/'; // 英語ページ用意できたら変更
 
 		// 親メニュー
 		$wp_admin_bar->add_menu(

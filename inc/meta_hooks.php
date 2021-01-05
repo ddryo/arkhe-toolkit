@@ -30,8 +30,7 @@ function hook_page_subtitle( $subtitle, $page_id ) {
 /**
  * タイトル背景画像
  */
-add_filter( 'arkhe_ttlbg_img_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 ); // 旧
-add_filter( 'arkhe_ttlbg_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 );
+add_filter( 'arkhe_ttlbg_img_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 );
 function hook_ttlbg_img_id( $img_id, $page_id ) {
 	if ( is_category() || is_tag() || is_tax() ) {
 		$meta = get_term_meta( $page_id, 'ark_meta_ttlbg', true );
