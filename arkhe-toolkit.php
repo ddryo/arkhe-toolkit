@@ -126,7 +126,7 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 
 		// その他、フック処理
 		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
-		require_once ARKHE_TOOLKIT_PATH . 'inc/overwrite.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/meta_hooks.php';
 
 		// アップデートチェック
 		if ( is_admin() ) {

@@ -48,7 +48,7 @@
 
 			// プレビューエリアを更新
 			// previewArea.empty();
-			previewArea.html('<img style="max-width:100%;" src="' + theImage.url + '" />');
+			previewArea.html('<img src="' + theImage.url + '" alt="" />');
 
 			// クローズ
 			// $('.media-modal-close').click();

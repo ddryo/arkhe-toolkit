@@ -17,6 +17,48 @@ add_filter( 'arkhe_list_type_on_term', function( $layout, $term_id ) {
 
 
 /**
+ * ページタイトルにサブタイトル追加
+ */
+add_filter( 'arkhe_page_subtitle', '\Arkhe_Toolkit\hook_page_subtitle', 10, 2 );
+function hook_page_subtitle( $subtitle, $page_id ) {
+	$meta_subtitle = get_post_meta( $page_id, 'ark_meta_subttl', true ) ?: '';
+	if ( $meta_subtitle ) return $meta_subtitle;
+	return $subtitle;
+}
+
+
+/**
+ * タイトル背景画像
+ */
+add_filter( 'arkhe_ttlbg_img_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 ); // 旧
+add_filter( 'arkhe_ttlbg_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 );
+function hook_ttlbg_img_id( $img_id, $page_id ) {
+	if ( is_category() || is_tag() || is_tax() ) {
+		$meta = get_term_meta( $page_id, 'ark_meta_ttlbg', true );
+	} else {
+		$meta = get_post_meta( $page_id, 'ark_meta_ttlbg', true );
+	}
+
+	if ( ! $meta ) return $img_id;
+	return $meta;
+}
+
+
+/**
+ * 上部タイトルエリアに表示する抜粋分
+*/
+add_filter( 'arkhe_top_area_excerpt', '\Arkhe_Toolkit\hook_top_area_excerpt', 10, 2 );
+function hook_top_area_excerpt( $excerpt, $the_id ) {
+	$meta = get_post_meta( $the_id, 'ark_meta_show_excerpt', true ) ?: false;
+	if ( $meta ) {
+		$post_data = get_post( $the_id );
+		$excerpt   = ! empty( $post_data ) ? $post_data->post_excerpt : '';
+	};
+	return $excerpt;
+}
+
+
+/**
  * アイキャッチ画像
  */
 add_filter( 'arkhe_show_entry_thumb', function( $show, $page_id ) {
@@ -68,35 +110,33 @@ add_action( 'wp', function() {
 
 	$the_id = get_queried_object_id();
 
-	\Arkhe_Toolkit\set_show_sidebar( $the_id );
 	\Arkhe_Toolkit\set_ttlpos( $the_id );
 
 	// タームの説明文を表示するかどうか
 	if ( is_category() || is_tag() || is_tax() ) {
-		$meta_show_desc = get_term_meta( $the_id, 'ark_meta_show_desc', true );
-		if ( '' !== $meta_show_desc && ! $meta_show_desc ) {
-			add_filter( 'arkhe_show_term_description', '__return_false' );
-		}
+		\Arkhe_Toolkit\set_term_page( $the_id );
 	}
-
 } );
+
 
 /**
  * サイドバーの設定
  * トップページも上書き設定可能に。
  */
-function set_show_sidebar( $the_id ) {
+function set_term_page( $term_id ) {
 
-	$meta = '';
-	if ( is_single() || is_page() || is_home() ) {
-		$meta = get_post_meta( $the_id, 'ark_meta_show_sidebar', true );
-	} elseif ( is_category() || is_tag() || is_tax() ) {
-		$meta = get_term_meta( $the_id, 'ark_term_meta_show_sidebar', true );
+	// タームの説明文を表示するかどうか
+	$meta_show_desc = get_term_meta( $term_id, 'ark_meta_show_desc', true );
+	if ( '' !== $meta_show_desc && ! $meta_show_desc ) {
+		add_filter( 'arkhe_show_term_description', '__return_false' );
 	}
 
-	if ( 'show' === $meta ) {
+	// サイドバーを表示するかどうか
+	$meta_show_sidebar = get_term_meta( $term_id, 'ark_meta_show_sidebar', true );
+
+	if ( 'show' === $meta_show_sidebar ) {
 		add_filter( 'arkhe_is_show_sidebar', '__return_true' );
-	} elseif ( 'hide' === $meta ) {
+	} elseif ( 'hide' === $meta_show_sidebar ) {
 		add_filter( 'arkhe_is_show_sidebar', '__return_false' );
 	}
 }

@@ -42,42 +42,6 @@ function hook_header_attrs( $attrs ) {
 
 
 /**
- * ページタイトルにサブタイトル追加
- */
-add_filter( 'arkhe_page_subtitle', '\Arkhe_Toolkit\hook_page_subtitle', 10, 2 );
-function hook_page_subtitle( $subtitle, $page_id ) {
-	$meta_subtitle = get_post_meta( $page_id, 'ark_meta_subttl', true ) ?: '';
-	if ( $meta_subtitle ) return $meta_subtitle;
-	return $subtitle;
-}
-
-
-/**
- * タイトル背景画像
- */
-add_filter( 'arkhe_ttlbg_img_id', '\Arkhe_Toolkit\hook_ttlbg_img_id', 10, 2 );
-function hook_ttlbg_img_id( $img_id, $page_id ) {
-	$meta = get_post_meta( $page_id, 'ark_meta_ttlbg', true );
-	if ( ! $meta ) return $img_id;
-	return $meta;
-}
-
-
-/**
- * 上部タイトルエリアに表示する抜粋分
-*/
-add_filter( 'arkhe_top_area_excerpt', '\Arkhe_Toolkit\hook_top_area_excerpt', 10, 2 );
-function hook_top_area_excerpt( $excerpt, $the_id ) {
-	$meta = get_post_meta( $the_id, 'ark_meta_show_excerpt', true ) ?: false;
-	if ( $meta ) {
-		$post_data = get_post( $the_id );
-		$excerpt   = ! empty( $post_data ) ? $post_data->post_excerpt : '';
-	};
-	return $excerpt;
-}
-
-
-/**
  * その他、各ページへの処理（フックさせるかどうかを先に分岐させるもの）
  */
 add_action( 'wp', function () {

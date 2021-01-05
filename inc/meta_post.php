@@ -57,13 +57,15 @@ function cb_post_meta( $post ) {
 				<div class="ark-meta__subttl">
 					<?=esc_html__( 'Subtitle', 'arkhe-toolkit' )?>
 				</div>
-				<?php
-					$field_args = [
-						'id'   => 'ark_meta_subttl',
-						'meta' => get_post_meta( $the_id, 'ark_meta_subttl', true ),
-					];
-					\Arkhe_Toolkit::meta_text_input( $field_args );
-				?>
+				<div class="ark-meta__field">
+					<?php
+						$field_args = [
+							'id'   => 'ark_meta_subttl',
+							'meta' => get_post_meta( $the_id, 'ark_meta_subttl', true ),
+						];
+						\Arkhe_Toolkit::meta_text_input( $field_args );
+					?>
+				</div>
 			</div>
 		<?php elseif ( 'post' === $post_type ) : ?>
 
@@ -105,11 +107,11 @@ function cb_post_meta( $post ) {
 					];
 				endif;
 
-				$meta_items['ark_meta_show_sidebar'] = [
-					'title'       => __( 'Sidebar', 'arkhe-toolkit' ),
-					'options'     => $show_or_hide_options,
-					'description' => '※ ' . __( 'Only valid with the default template.', 'arkhe-toolkit' ),
-				];
+				// $meta_items['ark_meta_show_sidebar'] = [
+				// 	'title'       => __( 'Sidebar', 'arkhe-toolkit' ),
+				// 	'options'     => $show_or_hide_options,
+				// 	'description' => '※ ' . __( 'Only valid with the default template.', 'arkhe-toolkit' ),
+				// ];
 
 				foreach ( $meta_items as $key => $data ) :
 					$meta_val = get_post_meta( $the_id, $key, true );
@@ -184,7 +186,7 @@ function hook_save_post( $post_id ) {
 		'ark_meta_subttl',
 		'ark_meta_ttlbg',
 		'ark_meta_ttlpos',
-		'ark_meta_show_sidebar',
+		// 'ark_meta_show_sidebar',
 		'ark_meta_show_thumb',
 		'ark_meta_show_related',
 		'ark_meta_show_author',

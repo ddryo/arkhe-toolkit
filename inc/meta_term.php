@@ -35,7 +35,7 @@ function add_term_metas( $term ) {
 				<th></th><td>※ <?=esc_html__( 'Please update the version of "Arkhe".', 'arkhe-toolkit' )?></td>
 			</tr>
 	<?php
-			return;
+		return;
 		endif;
 	?>
 	<tr class="form-field">
@@ -62,6 +62,19 @@ function add_term_metas( $term ) {
 		</td>
 	</tr>
 	<tr class="form-field">
+		<th><?=esc_html__( 'Sidebar', 'arkhe-toolkit' )?></th>
+		<td>
+			<?php
+				$meta_val             = get_term_meta( $the_term_id, 'ark_meta_show_sidebar', 1 );
+				$show_or_hide_options = [
+					'show' => _x( 'Show', 'show', 'arkhe-toolkit' ),
+					'hide' => _x( 'Hide', 'show', 'arkhe-toolkit' ),
+				];
+				\Arkhe_Toolkit::meta_select( 'ark_meta_show_sidebar', $show_or_hide_options, $meta_val, $default );
+			?>
+		</td>
+	</tr>
+	<tr class="form-field">
 		<th><?=esc_html__( 'Title position', 'arkhe-toolkit' )?></th>
 		<td>
 			<?php
@@ -75,6 +88,15 @@ function add_term_metas( $term ) {
 			?>
 		</td>
 	</tr>
+	<tr class="form-field">
+		<th><?=esc_html__( 'Background image for title', 'arkhe-toolkit' )?></th>
+		<td>
+			<?php
+				$meta_val = get_term_meta( $the_term_id, 'ark_meta_ttlbg', 1 );
+				\Arkhe_Toolkit::media_btns( 'ark_meta_ttlbg', $meta_val );
+			?>
+		</td>
+	</tr>
 <?php
 
 }
@@ -85,9 +107,11 @@ function save_term_metas( $term_id ) {
 	if ( ! \Arkhe_Toolkit::save_meta_check( $post_id, 'arkhe_nonce_term_meta' ) ) return;
 
 	$meta_keys = [
+		'ark_meta_show_desc',
 		'ark_meta_list_type',
 		'ark_meta_ttlpos',
-		'ark_meta_show_desc',
+		'ark_meta_ttlbg',
+		'ark_meta_show_sidebar',
 	];
 
 	// @codingStandardsIgnoreStart

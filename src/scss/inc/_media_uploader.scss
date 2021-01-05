@@ -1,0 +1,19 @@
+.ark-media-uploader {
+
+	.ark-media-uploader__preview {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 300px;
+		margin-bottom: 8px;
+		padding: 8px;
+		border: 1px dashed #ccc;
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+	.ark-media-uploader__btns{
+
+	}
+}
