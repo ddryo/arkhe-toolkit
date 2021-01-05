@@ -14,6 +14,7 @@ trait Output_Menu_Field {
 			'db'    => '',
 			'label' => '',
 			'key'   => '',
+			'desc'  => '',
 		], $args ) );
 
 		$name = \Arkhe_Toolkit::DB_NAMES[ $db ] . '[' . $key . ']';
@@ -24,6 +25,9 @@ trait Output_Menu_Field {
 			<input type="hidden" name="<?=esc_attr( $name )?>" value="">
 			<input type="checkbox" id="<?=esc_attr( $key )?>" name="<?=esc_attr( $name )?>" value="1" <?php checked( $val, '1' ); ?> />
 			<label for="<?=esc_attr( $key )?>"><?=esc_html( $label )?></label>
+			<?php if ( $desc ) : ?>
+				<p class="arkhe-menu__description"><?=wp_kses_post( $desc )?></p>
+			<?php endif; ?>
 		</div>
 		<?php
 	}

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2020-11-16 22:47+0900\n"
-"PO-Revision-Date: 2020-11-16 22:47+0900\n"
+"POT-Creation-Date: 2021-01-05 11:52+0900\n"
+"PO-Revision-Date: 2021-01-05 11:53+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -83,6 +83,10 @@ msgid "Speed-up function"
 msgstr "高速化機能"
 
 #: inc/admin_menu/tabs/extension.php:38
+msgid "Structured Data"
+msgstr "構造化データ"
+
+#: inc/admin_menu/tabs/extension.php:46
 msgid "Extension of user profile information"
 msgstr "ユーザープロフィール情報の拡張"
 
@@ -121,6 +125,18 @@ msgstr "画像・動画・iframeをスクリプトで遅延読み込みさせる
 #: inc/admin_menu/tabs/section/content.php:8
 msgid "Automatically remove empty p tags"
 msgstr "空のpタグを自動除去する"
+
+#: inc/admin_menu/tabs/section/json_ld.php:6
+msgid "Automatically generate JSON-LD"
+msgstr "JSON-LDを自動生成する"
+
+#: inc/admin_menu/tabs/section/json_ld.php:7
+msgid "Include global navigation structure in JSON-LD"
+msgstr "グローバルナビの構造をJSON-LDに含める"
+
+#: inc/admin_menu/tabs/section/json_ld.php:8
+msgid "Include breadcrumbs structure in JSON-LD"
+msgstr "パンくずリストの構造をJSON-LDに含める"
 
 #: inc/admin_menu/tabs/section/remove_core.php:6
 msgid "Stop outputting WordPress version"
@@ -297,73 +313,73 @@ msgstr "URLコピーボタン"
 msgid "Will you really reset it?"
 msgstr "本当にリセットしますか？"
 
-#: inc/post_meta.php:39
+#: inc/post_meta.php:38
 msgid "This is valid only when the title position is \"Above the content\"."
 msgstr "タイトル位置が「コンテンツ上部」のページで、有効です。"
 
-#: inc/post_meta.php:47
+#: inc/post_meta.php:46
 msgid "Background image for title"
 msgstr "タイトル背景画像"
 
-#: inc/post_meta.php:59
+#: inc/post_meta.php:58
 msgid "Subtitle"
 msgstr "サブタイトル"
 
-#: inc/post_meta.php:76
+#: inc/post_meta.php:74
 msgid "Display settings"
 msgstr "表示設定"
 
-#: inc/post_meta.php:80
+#: inc/post_meta.php:78
 msgctxt "show"
 msgid "Show"
 msgstr "表示"
 
-#: inc/post_meta.php:81
+#: inc/post_meta.php:79
 msgctxt "show"
 msgid "Hide"
 msgstr "非表示"
 
-#: inc/post_meta.php:88
+#: inc/post_meta.php:86
 msgid "Title position"
 msgstr "タイトル位置"
 
-#: inc/post_meta.php:90
+#: inc/post_meta.php:88
 msgid "Above the content"
 msgstr "コンテンツ上部"
 
-#: inc/post_meta.php:91
+#: inc/post_meta.php:89
 msgid "Inside the content"
 msgstr "コンテンツ内部"
 
-#: inc/post_meta.php:96 inc/wp_posts_table.php:24
+#: inc/post_meta.php:95 inc/wp_posts_table.php:24
 msgid "Featured image"
 msgstr "アイキャッチ画像"
 
-#: inc/post_meta.php:100
+#: inc/post_meta.php:99
 msgid "Author data"
 msgstr "著者情報"
 
-#: inc/post_meta.php:104
+#: inc/post_meta.php:103
 msgid "Related posts"
 msgstr "関連記事"
 
-#: inc/post_meta.php:110
+#: inc/post_meta.php:109
 msgid "Sidebar"
 msgstr "サイドバー"
 
-#: inc/post_meta.php:112
+#: inc/post_meta.php:111
 msgid "Only valid with the default template."
 msgstr "デフォルトテンプレートでのみ有効です。"
 
-#: inc/post_meta.php:137
+#: inc/post_meta.php:136
 msgid "Hide top-widget"
 msgstr "上部ウィジェットを非表示にする"
 
-#: inc/post_meta.php:140
+#: inc/post_meta.php:139
 msgid "Hide bottom-widget"
 msgstr "下部ウィジェットを非表示にする"
 
-#: inc/post_meta.php:146
+#: inc/post_meta.php:145
 msgid "Show page \"excerpt\""
 msgstr "ページの「抜粋」を表示する"
 

@@ -143,11 +143,15 @@ class Data {
 			'use_lazysizes'         => '1',
 			'remove_emp_p'          => '1',
 
-			'use_user_urls'         => '1',
-			'use_user_position'     => '1',
-
 			'use_prefetch'          => '',
 			'prefetch_prevent_keys' => '',
+
+			'use_jsonld'            => '1',
+			'use_gnav_json'         => '1',
+			'use_bread_json'        => '1',
+
+			'use_user_urls'         => '1',
+			'use_user_position'     => '1',
 		];
 
 		self::$defaults['cache'] = [

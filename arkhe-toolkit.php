@@ -119,6 +119,12 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		// コンテンツフック
 		require_once ARKHE_TOOLKIT_PATH . 'inc/the_content.php';
 
+		// JSON-LD
+		require_once ARKHE_TOOLKIT_PATH . 'inc/json_ld.php';
+
+		// 出力系
+		// require_once ARKHE_TOOLKIT_PATH . 'inc/output.php';
+
 		// その他、フック処理
 		require_once ARKHE_TOOLKIT_PATH . 'inc/hooks.php';
 		require_once ARKHE_TOOLKIT_PATH . 'inc/overwrite.php';

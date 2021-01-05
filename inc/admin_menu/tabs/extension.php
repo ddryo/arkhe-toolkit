@@ -33,6 +33,14 @@ $page_name = 'arkhe_menu_page_extension';
 	'db'        => 'extension',
 ] );
 
+// 構造化データ
+\Arkhe_Toolkit::add_menu_section( [
+	'title'     => __( 'Structured Data', 'arkhe-toolkit' ),
+	'key'       => 'json_ld',
+	'page_name' => $page_name,
+	'db'        => 'extension',
+] );
+
 // ユーザー情報の追加
 \Arkhe_Toolkit::add_menu_section( [
 	'title'     => __( 'Extension of user profile information', 'arkhe-toolkit' ),
