@@ -103,7 +103,7 @@ trait Utility {
 	public static function check_ajax_nonce( $request_key = 'nonce', $nonce_key = 'arkhe-toolkit-ajax-nonce' ) {
 		if ( ! isset( $_POST[ $request_key ] ) ) return false;
 
-		$nonce = $_POST[ $request_key ];
+		$nonce = $_POST[ $request_key ]; // phpcs:ignore
 
 		if ( wp_verify_nonce( $nonce, $nonce_key ) ) {
 			return true;
@@ -133,11 +133,12 @@ trait Utility {
 	}
 
 	/**
-	 * meta保存時のチェック
+	 * meta保存時の nonceチェックなど
 	 */
 	public static function save_meta_check( $post_id, $nonce = '' ) {
 		// @codingStandardsIgnoreStart
 
+		// $_POSTチェック
 		if ( empty( $_POST ) || ! isset( $_POST[ $nonce ] ) ) return false;
 
 		// nonceキーチェック
@@ -147,9 +148,11 @@ trait Utility {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return false;
 
 		// 現在のユーザーに投稿の編集権限があるかのチェック （投稿 : 'edit_post' / 固定ページ : 'edit_page')
-		$post_type = isset( $_POST['post_type'] ) ? $_POST['post_type'] : '';
-		$check_can = ( 'post' === $post_type ) ? 'edit_post' : 'edit_page';
-		if ( ! current_user_can( $check_can, $post_id ) ) return false;
+		// $post_type = isset( $_POST['post_type'] ) ? $_POST['post_type'] : '';
+		// $check_can = ( 'post' === $post_type ) ? 'edit_post' : 'edit_page';
+		// if ( ! current_user_can( $check_can, $post_id ) ) return false;
+
+		// @codingStandardsIgnoreEnd
 
 		// OK
 		return true;
@@ -160,26 +163,26 @@ trait Utility {
 	 * ファイルURLから縦横サイズを取得
 	 */
 	public static function get_media_px_size( $file_url ) {
-		
+
 		// ファイル名にサイズがあればそれを返す
-		preg_match('/-([0-9]*)x([0-9]*)\./', $file_url, $matches );
+		preg_match( '/-([0-9]*)x([0-9]*)\./', $file_url, $matches );
 		if ( ! empty( $matches ) ) {
-			 return [
-				'width' => $matches[1],
+			return [
+				'width'  => $matches[1],
 				'height' => $matches[2],
 			];
 		}
-		
+
 		// フルサイズの時
-		$file_id = attachment_url_to_postid( $file_url );
+		$file_id   = attachment_url_to_postid( $file_url );
 		$file_data = wp_get_attachment_metadata( $file_id );
 		if ( ! empty( $file_data ) ) {
 			return [
-				'width' => $file_data['width'],
+				'width'  => $file_data['width'],
 				'height' => $file_data['height'],
 			];
 		}
-		
+
 		// サイズが取得できなかった場合
 		return false;
 	}

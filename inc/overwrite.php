@@ -62,14 +62,22 @@ add_filter( 'arkhe_show_related_posts', function( $show, $page_id ) {
 
 
 /**
- * その他、フィルターフックに id が渡されていないもの
+ * その他、フィルターフック自体に id が渡されていないものなど
  */
 add_action( 'wp', function() {
 
-	$page_id = get_queried_object_id();
+	$the_id = get_queried_object_id();
 
-	\Arkhe_Toolkit\set_show_sidebar( $page_id );
-	\Arkhe_Toolkit\set_show_ttlpos( $page_id );
+	\Arkhe_Toolkit\set_show_sidebar( $the_id );
+	\Arkhe_Toolkit\set_ttlpos( $the_id );
+
+	// タームの説明文を表示するかどうか
+	if ( is_category() || is_tag() || is_tax() ) {
+		$meta_show_desc = get_term_meta( $the_id, 'ark_meta_show_desc', true );
+		if ( '' !== $meta_show_desc && ! $meta_show_desc ) {
+			add_filter( 'arkhe_show_term_description', '__return_false' );
+		}
+	}
 
 } );
 
@@ -77,13 +85,13 @@ add_action( 'wp', function() {
  * サイドバーの設定
  * トップページも上書き設定可能に。
  */
-function set_show_sidebar( $page_id ) {
+function set_show_sidebar( $the_id ) {
 
 	$meta = '';
 	if ( is_single() || is_page() || is_home() ) {
-		$meta = get_post_meta( $page_id, 'ark_meta_show_sidebar', true );
+		$meta = get_post_meta( $the_id, 'ark_meta_show_sidebar', true );
 	} elseif ( is_category() || is_tag() || is_tax() ) {
-		$meta = get_term_meta( $page_id, 'ark_term_meta_show_sidebar', true );
+		$meta = get_term_meta( $the_id, 'ark_term_meta_show_sidebar', true );
 	}
 
 	if ( 'show' === $meta ) {
@@ -97,16 +105,21 @@ function set_show_sidebar( $page_id ) {
 /**
  * タイトル表示位置
  */
-function set_show_ttlpos( $page_id ) {
+function set_ttlpos( $page_id ) {
 
 	$meta = '';
 	if ( is_single() || is_page() || is_home() ) {
 		$meta = get_post_meta( $page_id, 'ark_meta_ttlpos', true );
 	} elseif ( is_category() || is_tag() || is_tax() ) {
-		$meta = get_term_meta( $page_id, 'ark_term_meta_ttlpos', true );
+		$meta = get_term_meta( $page_id, 'ark_meta_ttlpos', true );
 	}
 
-	if ( 'top' === $meta ) {
+	if ( 'none' === $meta ) {
+		add_filter( 'arkhe_is_show_ttltop', '__return_false' );
+		add_filter( 'arkhe_part_cache__page/head', function() {
+			return '<!-- The title is hidden -->';
+		} );
+	} elseif ( 'top' === $meta ) {
 		add_filter( 'arkhe_is_show_ttltop', '__return_true' );
 	} elseif ( 'inner' === $meta ) {
 		add_filter( 'arkhe_is_show_ttltop', '__return_false' );

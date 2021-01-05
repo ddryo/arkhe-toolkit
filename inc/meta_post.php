@@ -13,7 +13,7 @@ add_action( 'save_post', '\Arkhe_Toolkit\Meta\hook_save_post' );
 function hook_add_meta_box() {
 	add_meta_box(
 		'arkhe_meta_for_post',
-		__( 'Arkhe Settings', 'arkhe-toolkit' ),
+		\Arkhe_Toolkit::get_svg_icon( 'arkhe' ) . __( 'Arkhe Settings', 'arkhe-toolkit' ),
 		'\Arkhe_Toolkit\Meta\cb_post_meta',
 		['post', 'page' ],
 		'side',
@@ -27,11 +27,13 @@ function hook_add_meta_box() {
  * 【Arkhe設定】
  */
 function cb_post_meta( $post ) {
-	wp_nonce_field( 'arkhe_nonce_post_meta', 'arkhe_nonce_post_meta' );
 	$the_id    = $post->ID;
 	$post_type = $post->post_type;
 	$home_id   = (int) get_option( 'page_for_posts' );
 	$is_home   = $home_id === $the_id;
+
+	// nonce
+	wp_nonce_field( 'arkhe_nonce_post_meta', 'arkhe_nonce_post_meta' );
 
 	$text_only_topttl = __( 'This is valid only when the title position is "Above the content".', 'arkhe-toolkit' );
 ?>
@@ -81,11 +83,11 @@ function cb_post_meta( $post ) {
 
 				if ( 'page' === $post_type ) :
 					$meta_items['ark_meta_ttlpos'] = [
-						'title'   => __( 'Title position', 'arkhe-toolkit' ),
+						'title'   => __( 'Title display', 'arkhe-toolkit' ),
 						'options' => [
 							'top'   => __( 'Above the content', 'arkhe-toolkit' ),
 							'inner' => __( 'Inside the content', 'arkhe-toolkit' ),
-							// 'none'  => __( 'None', 'arkhe-toolkit' ),
+							'none'  => __( 'Don\'t show', 'arkhe-toolkit' ),
 						],
 					];
 				elseif ( 'post' === $post_type ) :

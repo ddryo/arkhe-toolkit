@@ -4,7 +4,12 @@
 #arkhe_meta_for_post {
 
 	h2.ui-sortable-handle {
+		justify-content: flex-start;
 		border-bottom: none !important;
+
+		svg {
+			margin-right: 4px;
+		}
 	}
 }
 

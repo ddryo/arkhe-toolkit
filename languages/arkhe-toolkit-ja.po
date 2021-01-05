@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2021-01-05 12:46+0900\n"
-"PO-Revision-Date: 2021-01-05 12:46+0900\n"
+"POT-Creation-Date: 2021-01-05 18:29+0900\n"
+"PO-Revision-Date: 2021-01-05 18:29+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Show"
 msgstr "表示"
 
-#: class/Output_Meta_Field.php:19
+#: class/Output_Meta_Field.php:19 inc/meta_post.php:90
 msgid "Don't show"
 msgstr "非表示"
 
@@ -62,7 +62,7 @@ msgstr "停止させる機能"
 msgid "Your settings have been saved."
 msgstr "設定を保存しました。"
 
-#: inc/admin_menu/menu_page.php:27 inc/meta_post.php:16 inc/meta_term.php:19
+#: inc/admin_menu/menu_page.php:27 inc/meta_post.php:16 inc/meta_term.php:27
 msgid "Arkhe Settings"
 msgstr "Arkhe設定"
 
@@ -313,87 +313,95 @@ msgstr "URLコピーボタン"
 msgid "Will you really reset it?"
 msgstr "本当にリセットしますか？"
 
-#: inc/meta_post.php:36
+#: inc/meta_post.php:38
 msgid "This is valid only when the title position is \"Above the content\"."
 msgstr "タイトル位置が「コンテンツ上部」のページで、有効です。"
 
-#: inc/meta_post.php:44
+#: inc/meta_post.php:46
 msgid "Background image for title"
 msgstr "タイトル背景画像"
 
-#: inc/meta_post.php:56
+#: inc/meta_post.php:58
 msgid "Subtitle"
 msgstr "サブタイトル"
 
-#: inc/meta_post.php:72
+#: inc/meta_post.php:74
 msgid "Display settings"
 msgstr "表示設定"
 
-#: inc/meta_post.php:76
+#: inc/meta_post.php:78
 msgctxt "show"
 msgid "Show"
 msgstr "表示"
 
-#: inc/meta_post.php:77
+#: inc/meta_post.php:79
 msgctxt "show"
 msgid "Hide"
 msgstr "非表示"
 
-#: inc/meta_post.php:84
-msgid "Title position"
-msgstr "タイトル位置"
-
 #: inc/meta_post.php:86
+msgid "Title display"
+msgstr "タイトル表示"
+
+#: inc/meta_post.php:88 inc/meta_term.php:70
 msgid "Above the content"
 msgstr "コンテンツ上部"
 
-#: inc/meta_post.php:87
+#: inc/meta_post.php:89 inc/meta_term.php:71
 msgid "Inside the content"
 msgstr "コンテンツ内部"
 
-#: inc/meta_post.php:93 inc/wp_posts_table.php:24
+#: inc/meta_post.php:95 inc/wp_posts_table.php:24
 msgid "Featured image"
 msgstr "アイキャッチ画像"
 
-#: inc/meta_post.php:97
+#: inc/meta_post.php:99
 msgid "Author data"
 msgstr "著者情報"
 
-#: inc/meta_post.php:101
+#: inc/meta_post.php:103
 msgid "Related posts"
 msgstr "関連記事"
 
-#: inc/meta_post.php:107
+#: inc/meta_post.php:109
 msgid "Sidebar"
 msgstr "サイドバー"
 
-#: inc/meta_post.php:109
+#: inc/meta_post.php:111
 msgid "Only valid with the default template."
 msgstr "デフォルトテンプレートでのみ有効です。"
 
-#: inc/meta_post.php:134
+#: inc/meta_post.php:136
 msgid "Hide top-widget"
 msgstr "上部ウィジェットを非表示にする"
 
-#: inc/meta_post.php:137
+#: inc/meta_post.php:139
 msgid "Hide bottom-widget"
 msgstr "下部ウィジェットを非表示にする"
 
-#: inc/meta_post.php:143
+#: inc/meta_post.php:145
 msgid "Show page \"excerpt\""
 msgstr "ページの「抜粋」を表示する"
 
-#: inc/meta_term.php:23
+#: inc/meta_term.php:35
+msgid "Please update the version of \"Arkhe\"."
+msgstr "\"Arkhe\"のバージョンを更新してください。"
+
+#: inc/meta_term.php:45
+msgid "Show \"Description\""
+msgstr "「説明」を表示する"
+
+#: inc/meta_term.php:55
 msgid "List layout"
 msgstr "リストレイアウト"
 
-#: inc/meta_term.php:26
+#: inc/meta_term.php:58
 msgid "Follow base settings"
 msgstr "ベース設定に従う"
 
-#: inc/meta_term.php:31
-msgid "Please update the version of \"Arkhe\"."
-msgstr "\"Arkhe\"のバージョンを更新してください。"
+#: inc/meta_term.php:65
+msgid "Title position"
+msgstr "タイトル表示位置"
 
 #: inc/meta_user.php:10
 msgid "Job title / position"
