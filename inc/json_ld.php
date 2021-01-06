@@ -52,12 +52,12 @@ function get_json_ld() {
 	}
 
 	// グローバルナビ（SiteNavigationElement）
-	if ( \Arkhe_Toolkit::get_data( 'extension', 'use_gnav_json' ) ) {
-		$gnav_json = \Arkhe_Toolkit\get_gnav_json_data();
-		if ( $gnav_json ) {
-			$json_lds['SiteNavigationElement'] = $gnav_json;
-		}
-	}
+	// if ( \Arkhe_Toolkit::get_data( 'extension', 'use_gnav_json' ) ) {
+	// 	$gnav_json = \Arkhe_Toolkit\get_gnav_json_data();
+	// 	if ( $gnav_json ) {
+	// 		$json_lds['SiteNavigationElement'] = $gnav_json;
+	// 	}
+	// }
 
 	// パンくずリスト（BreadcrumbList）
 
