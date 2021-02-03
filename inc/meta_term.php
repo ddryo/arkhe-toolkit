@@ -45,7 +45,7 @@ function add_term_metas( $term ) {
 				$label    = __( 'Show "Description"', 'arkhe-toolkit' );
 				$meta_val = get_term_meta( $the_term_id, 'ark_meta_show_desc', 1 );
 				if ( '' === $meta_val ) {
-				$meta_val = '1';
+					$meta_val = '1';
 				}
 				\Arkhe_Toolkit::meta_checkbox( 'ark_meta_show_desc', $label, $meta_val, true );
 			?>

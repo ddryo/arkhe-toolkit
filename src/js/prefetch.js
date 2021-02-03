@@ -198,7 +198,7 @@ function setPrefetch() {
 
 // ignorePrefetchKeys を定義(PHPからの受け取り)
 let ignorePrefetchKeys = window.arkhePrefetchVars.ignorePrefetchKeys || [];
-if (ignorePrefetchKeys !== []) {
+if (ignorePrefetchKeys.length > 0) {
 	// 各要素に trim()
 	ignorePrefetchKeys = ignorePrefetchKeys.split(',').map(function (value, index, array) {
 		return value.trim();
