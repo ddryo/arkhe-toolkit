@@ -5,34 +5,6 @@ use \Arkhe_Theme\Customizer;
 
 $arkhe_section = 'arkhe_section_header';
 
-// ヘッダーのボタン配置
-Customizer::big_title(
-	$arkhe_section,
-	'header_btn_layout',
-	[
-		'label'       => __( 'Button layout in the header', 'arkhe-toolkit' ),
-		'classname'   => '-toolkit',
-	]
-);
-// ボタンレイアウト
-Customizer::add(
-	$arkhe_section,
-	'header_btn_layout',
-	[
-		'classname'   => '-toolkit -btn-layout',
-		'type'        => 'radio',
-		'choices'     => [
-			'l-r'    => 'L-R',
-			'r-l'    => 'R-L',
-			'rl-rr'  => 'RL-RR',
-			'rr-rl'  => 'RR-RL',
-		],
-		'db'          => \Arkhe_Toolkit::DB_NAMES['customizer'],
-		'default'     => \Arkhe_Toolkit::get_default_data( 'customizer', 'header_btn_layout' ),
-	]
-);
-
-
 // ドロワーメニューの展開方式
 Customizer::big_title(
 	$arkhe_section,
@@ -59,6 +31,7 @@ Customizer::add(
 );
 
 
+// ヘッダーより下に表示する
 Customizer::add(
 	$arkhe_section,
 	'header_above_drawer',

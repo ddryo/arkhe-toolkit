@@ -119,7 +119,6 @@ class Data {
 
 		self::$defaults['customizer'] = [
 			'drawer_move'           => 'fade',
-			'header_btn_layout'     => 'l-r',
 			'header_above_drawer'   => false,
 
 			// シェアボタン
@@ -143,13 +142,16 @@ class Data {
 			'use_lazysizes'         => '1',
 			'remove_emp_p'          => '1',
 
+			// 遷移高速化
 			'use_prefetch'          => '',
 			'prefetch_prevent_keys' => '',
 
+			// json-ld
 			'use_jsonld'            => '1',
 			// 'use_gnav_json'         => '1',
 			'use_bread_json'        => '1',
 
+			// user設定
 			'use_user_urls'         => '1',
 			'use_user_position'     => '1',
 		];

@@ -86,8 +86,6 @@ trait Output_Menu_Field {
 	}
 
 
-	// echo '';
-
 	/**
 	 * ラジオボタン
 	 */

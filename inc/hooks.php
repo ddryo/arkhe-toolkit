@@ -26,22 +26,6 @@ function hook_root_attrs( $attrs ) {
 
 
 /**
- * ヘッダーの属性
- */
-add_filter( 'arkhe_header_attrs', '\Arkhe_Toolkit\hook_header_attrs' );
-function hook_header_attrs( $attrs ) {
-
-	// ヘッダーがブロック化されていなければカスタマイザーデータ反映
-	if ( ! \Arkhe::get_plugin_data( 'use_temlate_block' ) ) {
-		// ボタンレイアウト
-		$attrs['data-btns'] = \Arkhe_Toolkit::get_data( 'customizer', 'header_btn_layout' );
-	}
-
-	return $attrs;
-}
-
-
-/**
  * その他、各ページへの処理（フックさせるかどうかを先に分岐させるもの）
  */
 add_action( 'wp', function () {
@@ -69,9 +53,7 @@ add_action( 'wp', function () {
 			add_action( 'arkhe_after_entry_content', '\Arkhe_Toolkit\hook_after_entry_content', 9 );
 		}
 	}
-
 } );
-
 
 
 /**
