@@ -14,8 +14,11 @@ add_action( 'wp', function() {
 		add_filter( 'the_content', [ $wp_embed, 'autoembed' ], 12 ); // 再利用ブロックでも埋め込みを有効化する
 		if ( \Arkhe_Toolkit::get_data( 'extension', 'use_lazysizes' ) ) {
 			add_filter( 'wp_lazy_loading_enabled', '__return_false' );
+		}
+		if ( \Arkhe_Toolkit::get_data( 'extension', 'remove_emp_p' ) ) {
 			add_filter( 'the_content', '\Arkhe_Toolkit\remove_empty_p', 12 );
 		}
+
 		if ( $use_lazysizes ) {
 			add_filter( 'the_content', '\Arkhe_Toolkit\add_lazyload', 12 );
 		}
