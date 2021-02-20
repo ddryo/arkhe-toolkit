@@ -11,10 +11,10 @@ function output_json_ld() {
 
 	// JSON LD
 	if ( \Arkhe_Toolkit::get_data( 'extension', 'use_jsonld' ) ) {
-		$json_ld = apply_filters( 'arkhe_toolkit_json_ld', \Arkhe_Toolkit\get_json_ld() );
-		if ( ! empty( $json_ld ) ) {
+		$json_lds = \Arkhe_Toolkit\get_json_ld_data();
+		if ( ! empty( $json_lds ) ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<script type="application/ld+json">[' . implode( ',', $json_ld ) . ']</script>' . PHP_EOL;
+			echo '<script type="application/ld+json">[' . implode( ',', $json_lds ) . ']</script>' . PHP_EOL;
 		}
 	}
 }
@@ -22,7 +22,7 @@ function output_json_ld() {
 /**
  * JSON-LDの生成
  */
-function get_json_ld() {
+function get_json_ld_data() {
 
 	$json_lds = [];
 
@@ -68,7 +68,7 @@ function get_json_ld() {
 		}
 	}
 
-	return $json_lds;
+	return apply_filters( 'arkhe_toolkit_json_ld', $json_lds );
 }
 
 
@@ -80,11 +80,12 @@ function get_article_json_data() {
 	$post_data = get_queried_object();
 	if ( empty( $post_data ) ) return '';
 
-	$the_id         = $post_data->ID;
-	$title          = wp_strip_all_tags( get_the_title( $the_id ) );
-	$url            = get_permalink( $the_id );
-	$publisher_name = get_option( 'blogname' );
-	$author_data    = get_userdata( $post_data->post_author );
+	$the_id      = $post_data->ID;
+	$author_data = get_userdata( $post_data->post_author );
+
+	// サイトロゴ
+	$logo_id  = get_theme_mod( 'custom_logo' ) ?: 0;
+	$logo_url = wp_get_attachment_image_url( $logo_id, 'large' ) ?: '';
 
 	$description = '';
 	if ( class_exists( '\SSP_Output' ) && method_exists( '\SSP_Output', 'get_meta_data' ) ) {
@@ -95,40 +96,48 @@ function get_article_json_data() {
 		$description = mb_substr( $description, 0, 120 );
 	}
 
-	$thumb    = get_the_post_thumbnail_url( $the_id, 'large' ) ?: ARKHE_NOIMG_URL;
-	$logo_id  = get_theme_mod( 'custom_logo' ) ?: 0;
-	$logo_url = wp_get_attachment_image_url( $logo_id, 'large' ) ?: '';
+	// フックで調整可能にするデータ群
+	$data = [
+		'url'                => get_permalink( $the_id ) ?: '',
+		'headline'           => wp_strip_all_tags( get_the_title( $the_id ) ) ?: '',
+		'image_url'          => get_the_post_thumbnail_url( $the_id, 'large' ) ?: ARKHE_NOIMG_URL,
+		'author_name'        => $author_data->display_name ?: '',
+		'publisher_name'     => get_option( 'blogname' ) ?: '',
+		'publisher_logo_url' => $logo_url,
+		'description'        => $description,
+	];
+	$data = apply_filters( 'arkhe_toolkit_json_ld_article', $data, $the_id );
 
 	// publisher の logo が必須値なので、なければ出力しない。
-	if ( ! $logo_url ) return '';
+	if ( ! $data['publisher_logo_url'] ) return '';
 
 	$json = '{
 		"@context": "http://schema.org",
 		"@type": "Article",
 		"mainEntityOfPage":{
 			"@type":"WebPage",
-			"@id":"' . esc_url( $url ) . '"
+			"@id":"' . esc_url( $data['url'] ) . '"
 		},
-		"headline":"' . esc_js( $title ) . '",
+		"headline":"' . esc_js( $data['headline'] ) . '",
 		"image": {
 			"@type": "ImageObject",
-			"url": "' . esc_url( $thumb ) . '"
+			"url": "' . esc_url( $data['image_url'] ) . '"
 		},
 		"datePublished": "' . esc_js( $post_data->post_date ) . '",
 		"dateModified": "' . esc_js( $post_data->post_modified ) . '",
 		"author": {
 			"@type": "Person",
-			"name": "' . esc_js( $author_data->display_name ) . '"
+			"name": "' . esc_js( $data['author_name'] ) . '"
 		},
 		"publisher": {
 			"@type": "Organization",
-			"name": "' . esc_js( $publisher_name ) . '",
+			"name": "' . esc_js( $data['publisher_name'] ) . '",
 			"logo": {
 				"@type": "ImageObject",
-				"url": "' . esc_url( $logo_url ) . '"
+				"url": "' . esc_url( $data['publisher_logo_url'] ) . '"
 			}
 		},
-		"description": "' . esc_js( $description ) . '"
+		"description": "' . esc_js( $data['description'] ) . '"
 	}';
 
 	return $json;
@@ -185,7 +194,7 @@ function get_bread_json_data() {
 		'"@type": "ListItem","position": ' . $pos . ',' .
 		'"item": {' .
 			'"@id": "' . esc_url( $data['url'] ) . '",' .
-			'"name": "' . esc_html( wp_strip_all_tags( $data['name'] ) ) . '"' .
+			'"name": "' . esc_js( wp_strip_all_tags( $data['name'] ) ) . '"' .
 			'}' .
 		'},';
 		++$pos;
