@@ -1,5 +1,5 @@
 <?php
-namespace Arkhe_Toolkit;
+namespace Arkhe_Toolkit\Menu;
 
 /**
  * 「リセット」タブの中身

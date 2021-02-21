@@ -1,6 +1,6 @@
 <?php
 /**
- * 「拡張機能」タブ > ウィジェットエリアセクション
+ * ウィジェットエリアセクション
  */
 $remove_settings = [
 	'use_page_widget'  => __( 'Add widget area for "Page"', 'arkhe-toolkit' ),

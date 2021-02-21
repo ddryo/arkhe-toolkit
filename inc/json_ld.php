@@ -36,7 +36,7 @@ function get_json_ld_data() {
 			"url": "' . esc_url( $home_url ) . '",
 			"potentialAction": {
 			"@type": "SearchAction",
-			"target": "' . esc_js( $home_url ) . '?s={s}",
+			"target": "' . esc_html( $home_url ) . '?s={s}",
 			"query-input": "name=s required"
 			}
 		}';
@@ -118,26 +118,26 @@ function get_article_json_data() {
 			"@type":"WebPage",
 			"@id":"' . esc_url( $data['url'] ) . '"
 		},
-		"headline":"' . esc_js( $data['headline'] ) . '",
+		"headline":"' . esc_html( $data['headline'] ) . '",
 		"image": {
 			"@type": "ImageObject",
 			"url": "' . esc_url( $data['image_url'] ) . '"
 		},
-		"datePublished": "' . esc_js( $post_data->post_date ) . '",
-		"dateModified": "' . esc_js( $post_data->post_modified ) . '",
+		"datePublished": "' . esc_html( $post_data->post_date ) . '",
+		"dateModified": "' . esc_html( $post_data->post_modified ) . '",
 		"author": {
 			"@type": "Person",
-			"name": "' . esc_js( $data['author_name'] ) . '"
+			"name": "' . esc_html( $data['author_name'] ) . '"
 		},
 		"publisher": {
 			"@type": "Organization",
-			"name": "' . esc_js( $data['publisher_name'] ) . '",
+			"name": "' . esc_html( $data['publisher_name'] ) . '",
 			"logo": {
 				"@type": "ImageObject",
 				"url": "' . esc_url( $data['publisher_logo_url'] ) . '"
 			}
 		},
-		"description": "' . esc_js( $data['description'] ) . '"
+		"description": "' . esc_html( $data['description'] ) . '"
 	}';
 
 	return $json;
@@ -163,7 +163,7 @@ function get_gnav_json_data() {
 	$gnav_urls  = '';
 	foreach ( $gnav_items as $key => $menu_item ) {
 		$menu_title  = wp_strip_all_tags( strip_shortcodes( $menu_item->title ) );
-		$gnav_names .= '"' . esc_js( $menu_title ) . '",'; // esc_はここでやらないと " が &quot; になる
+		$gnav_names .= '"' . esc_html( $menu_title ) . '",'; // esc_はここでやらないと " が &quot; になる
 		$gnav_urls  .= '"' . esc_url( $menu_item->url ) . '",';
 	}
 
@@ -194,7 +194,7 @@ function get_bread_json_data() {
 		'"@type": "ListItem","position": ' . $pos . ',' .
 		'"item": {' .
 			'"@id": "' . esc_url( $data['url'] ) . '",' .
-			'"name": "' . esc_js( wp_strip_all_tags( $data['name'] ) ) . '"' .
+			'"name": "' . esc_html( wp_strip_all_tags( $data['name'] ) ) . '"' .
 			'}' .
 		'},';
 		++$pos;

@@ -1,6 +1,6 @@
 <?php
 /**
- * 「拡張機能」タブ > ユーザーメタセクション
+ * ユーザーメタセクション
  */
 $remove_settings = [
 	'use_user_position' => __( 'Add user position setting field', 'arkhe-toolkit' ),

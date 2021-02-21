@@ -64,20 +64,24 @@ trait Output_Menu_Field {
 	 */
 	public static function output_textarea( $args ) {
 		extract( array_merge( [
-			'db'    => '',
-			'label' => '',
-			'key'   => '',
-			'rows'  => '4',
-			'desc'  => '',
+			'db'      => '',
+			'label'   => '',
+			'key'     => '',
+			'rows'    => '4',
+			'is_wide' => false,
+			'desc'    => '',
 		], $args ) );
 
 		$name = \Arkhe_Toolkit::DB_NAMES[ $db ] . '[' . $key . ']';
 		$val  = \Arkhe_Toolkit::get_data( $db, $key );
 
+		$textarea_class = $is_wide ? 'large-text' : 'regular-text';
 		?>
 			<div class="arkhe-menu__field -textarea">
-				<span class="arkhe-menu__label"><?=esc_html( $label )?></span>
-				<textarea id="<?=esc_attr( $key )?>" class="regular-text" name="<?=esc_attr( $name )?>" rows="<?=esc_attr( $rows )?>" ><?=esc_html( $val )?></textarea>
+				<?php if ( $label ) : ?>
+					<span class="arkhe-menu__label"><?=esc_html( $label )?></span>
+				<?php endif; ?>
+				<textarea id="<?=esc_attr( $key )?>" class="<?=esc_attr( $textarea_class )?>" name="<?=esc_attr( $name )?>" rows="<?=esc_attr( $rows )?>" ><?=esc_html( $val )?></textarea>
 				<?php if ( $desc ) : ?>
 					<p class="arkhe-menu__description"><?=wp_kses_post( $desc )?></p>
 				<?php endif; ?>

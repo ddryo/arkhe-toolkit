@@ -1,5 +1,5 @@
 <?php
-namespace Arkhe_Toolkit;
+namespace Arkhe_Toolkit\Menu;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -24,7 +24,7 @@ if ( isset( $_REQUEST['settings-updated'] ) && $_REQUEST['settings-updated'] ) {
 
 	<div class="arkhe-menu__head">
 		<h1 class="arkhe-menu__title">
-			<?=esc_html__( 'Arkhe Settings', 'arkhe-toolkit' )?>
+			<?=esc_html__( 'Arkhe Toolkit Settings', 'arkhe-toolkit' )?>
 		</h1>
 
 		<div class="nav-tab-wrapper">

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2021-01-05 18:29+0900\n"
-"PO-Revision-Date: 2021-01-05 18:29+0900\n"
+"POT-Creation-Date: 2021-02-21 18:05+0900\n"
+"PO-Revision-Date: 2021-02-21 18:05+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -16,8 +16,8 @@ msgstr ""
 "X-Poedit-WPHeader: arkhe-toolkit.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
@@ -30,15 +30,15 @@ msgstr ""
 msgid "Show"
 msgstr "表示"
 
-#: class/Output_Meta_Field.php:19 inc/meta_post.php:90
+#: class/Output_Meta_Field.php:19 inc/meta_post.php:92
 msgid "Don't show"
 msgstr "非表示"
 
-#: class/Output_Meta_Field.php:51
+#: class/Output_Meta_Field.php:52
 msgid "Select image"
 msgstr "画像を選択"
 
-#: class/Output_Meta_Field.php:52
+#: class/Output_Meta_Field.php:53
 msgid "Delete image"
 msgstr "画像を削除"
 
@@ -58,175 +58,219 @@ msgstr "キャッシュ設定"
 msgid "Stop functions"
 msgstr "停止させる機能"
 
+#: inc/admin_menu.php:63
+msgid "Add code"
+msgstr "コード追加"
+
 #: inc/admin_menu/menu_page.php:17
 msgid "Your settings have been saved."
 msgstr "設定を保存しました。"
 
-#: inc/admin_menu/menu_page.php:27 inc/meta_post.php:16 inc/meta_term.php:27
-msgid "Arkhe Settings"
-msgstr "Arkhe設定"
+#: inc/admin_menu/menu_page.php:27
+msgid "Arkhe Toolkit Settings"
+msgstr "Arkhe Toolkit 設定"
 
-#: inc/admin_menu/tabs/cache.php:16
+#: inc/admin_menu/tabs/cache.php:17
 msgid "Parts cache"
 msgstr "パーツキャッシュ"
 
-#: inc/admin_menu/tabs/extension.php:14
-msgid "Extension of widget area"
-msgstr "ウィジェットエリアの拡張"
-
-#: inc/admin_menu/tabs/extension.php:22
-msgid "Additional processing to the content"
-msgstr "コンテンツへの追加処理"
-
-#: inc/admin_menu/tabs/extension.php:30
-msgid "Speed-up function"
-msgstr "高速化機能"
-
-#: inc/admin_menu/tabs/extension.php:38
-msgid "Structured Data"
-msgstr "構造化データ"
-
-#: inc/admin_menu/tabs/extension.php:46
-msgid "Extension of user profile information"
-msgstr "ユーザープロフィール情報の拡張"
-
-#: inc/admin_menu/tabs/remove.php:13
-msgid "WordPress features"
-msgstr "WordPressの機能"
-
-#: inc/admin_menu/tabs/reset.php:11
-msgid "Reset setting data"
-msgstr "設定データをリセット"
-
-#: inc/admin_menu/tabs/section/cache.php:6
+#: inc/admin_menu/tabs/cache.php:26
 msgid "Cache header"
 msgstr "ヘッダーをキャッシュする"
 
-#: inc/admin_menu/tabs/section/cache.php:7
+#: inc/admin_menu/tabs/cache.php:27
 msgid "Cache sidebar"
 msgstr "サイドバーをキャッシュする"
 
-#: inc/admin_menu/tabs/section/cache.php:8
+#: inc/admin_menu/tabs/cache.php:28
 msgid "Cache footer"
 msgstr "フッターをキャッシュする"
 
-#: inc/admin_menu/tabs/section/cache.php:20 inc/admin_toolbar.php:60
+#: inc/admin_menu/tabs/cache.php:40 inc/admin_toolbar.php:60
 msgid "Clear Cache"
 msgstr "キャッシュをクリア"
 
-#: inc/admin_menu/tabs/section/content.php:6
+#: inc/admin_menu/tabs/code.php:18
+msgid "Code to output in the &lt;head&gt; tag"
+msgstr "&lt;head&gt;タグ内に出力するコード"
+
+#: inc/admin_menu/tabs/code.php:31
+msgid ""
+"The code entered here will be output in the <code>&lt;head&gt;</code> tag."
+msgstr ""
+"ここに入力したコードは、<code>&lt;head&gt;</code>タグ内に出力されます。"
+
+#: inc/admin_menu/tabs/code.php:32
+msgid "It is output by the<code>wp_head</code>hook."
+msgstr "<code>wp_head</code>フックで出力されます。"
+
+#: inc/admin_menu/tabs/code.php:41
+msgid "Code to output after starting &lt;body&gt; tag"
+msgstr "&lt;body&gt;タグ開始後に出力するコード"
+
+#: inc/admin_menu/tabs/code.php:54
+msgid ""
+"The code entered here will be output after the <code>&lt;body&gt;</code> tag "
+"starts."
+msgstr ""
+"ここに入力したコードは、<code>&lt;body&gt;</code>タグ開始後に出力されます。"
+
+#: inc/admin_menu/tabs/code.php:55
+msgid "It is output by the<code>wp_body_open</code>hook."
+msgstr "<code>wp_body_open</code>フックで出力されます。"
+
+#: inc/admin_menu/tabs/code.php:64
+msgid "Code to output before the end of &lt;/body&gt; tag"
+msgstr "&lt;/body&gt;タグ終了前に出力するコード"
+
+#: inc/admin_menu/tabs/code.php:77
+msgid ""
+"The code entered here will be output before the end of the <code>&lt;/"
+"body&gt;</code> tag."
+msgstr ""
+"ここに入力したコードは、<code>&lt;/body&gt;</code>タグ終了前に出力されます。"
+
+#: inc/admin_menu/tabs/code.php:78
+msgid "It is output by the<code>wp_footer</code>hook."
+msgstr "<code>wp_footer</code>フックで出力されます。"
+
+#: inc/admin_menu/tabs/extension.php:15
+msgid "Extension of widget area"
+msgstr "ウィジェットエリアの拡張"
+
+#: inc/admin_menu/tabs/extension.php:23
+msgid "Additional processing to the content"
+msgstr "コンテンツへの追加処理"
+
+#: inc/admin_menu/tabs/extension.php:31
+msgid "Speed-up function"
+msgstr "高速化機能"
+
+#: inc/admin_menu/tabs/extension.php:39
+msgid "Structured Data"
+msgstr "構造化データ"
+
+#: inc/admin_menu/tabs/extension.php:47
+msgid "Extension of user profile information"
+msgstr "ユーザープロフィール情報の拡張"
+
+#: inc/admin_menu/tabs/extension/content.php:6
 msgid "Allow the image to be enlarged by clicking"
 msgstr "画像をクリックで拡大表示できるようにする"
 
-#: inc/admin_menu/tabs/section/content.php:7
+#: inc/admin_menu/tabs/extension/content.php:7
 msgid "Lazy loading of images / videos / iframes with scripts"
 msgstr "画像・動画・iframeをスクリプトで遅延読み込みさせる"
 
-#: inc/admin_menu/tabs/section/content.php:8
+#: inc/admin_menu/tabs/extension/content.php:8
 msgid "Automatically remove empty p tags"
 msgstr "空のpタグを自動除去する"
 
-#: inc/admin_menu/tabs/section/json_ld.php:6
+#: inc/admin_menu/tabs/extension/json_ld.php:6
 msgid "Automatically generate JSON-LD"
 msgstr "JSON-LDを自動生成する"
 
-#: inc/admin_menu/tabs/section/json_ld.php:7
-msgid "Include global navigation structure in JSON-LD"
-msgstr "グローバルナビの構造をJSON-LDに含める"
-
-#: inc/admin_menu/tabs/section/json_ld.php:8
+#: inc/admin_menu/tabs/extension/json_ld.php:8
 msgid "Include breadcrumbs structure in JSON-LD"
 msgstr "パンくずリストの構造をJSON-LDに含める"
 
-#: inc/admin_menu/tabs/section/remove_core.php:6
-msgid "Stop outputting WordPress version"
-msgstr "WordPressバージョンの出力を停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:7
-msgid "Stop loading scripts for emoji"
-msgstr "絵文字用のスクリプトの読み込みを停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:8
-msgid "Unregister all core block patterns"
-msgstr "コアのブロックパターンの登録を全て解除"
-
-#: inc/admin_menu/tabs/section/remove_core.php:9
-msgid "Stop linking with Windows Live Write"
-msgstr "Windows Live Writeとの連携を停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:10
-msgid "Stop EditURI (RSD Link)"
-msgstr "EditURI(RSD Link)の停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:11
-msgid "Stop self-pingback"
-msgstr "セルフピンバックを停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:12
-msgid "Stop core sitemap functionality"
-msgstr "コアのサイトマップ機能を停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:13
-msgid "Stop outputting link tags for REST API"
-msgstr "REST API用linkタグの出力を停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:14
-msgid "Stop outputting \"srcset\""
-msgstr "“srcset”の出力を停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:15
-msgid "Stop outputting  \"rel = prev / next\""
-msgstr "「rel=prev/next」の出力を停止"
-
-#: inc/admin_menu/tabs/section/remove_core.php:16
-msgid "Stop automatic conversion of symbols (disable wptexturize)"
-msgstr "記号の自動変換を停止(wptexturize無効化)"
-
-#: inc/admin_menu/tabs/section/remove_core.php:17
-msgid "Stop RSS feed"
-msgstr "RSSフィードを停止"
-
-#: inc/admin_menu/tabs/section/speed.php:9
+#: inc/admin_menu/tabs/extension/speed.php:9
 msgid "Enable the Prefetch function"
 msgstr "Prefetch機能を有効化する"
 
-#: inc/admin_menu/tabs/section/speed.php:15
+#: inc/admin_menu/tabs/extension/speed.php:15
 msgid "Keywords for pages not to be prefetched"
 msgstr "Prefetchさせないページのキーワード"
 
-#: inc/admin_menu/tabs/section/speed.php:16
+#: inc/admin_menu/tabs/extension/speed.php:16
 msgid "If there are multiple, separate them with \",\"."
 msgstr "複数の場合は「,」で区切ってください。"
 
-#: inc/admin_menu/tabs/section/speed.php:17
+#: inc/admin_menu/tabs/extension/speed.php:17
 msgid ""
 "All pages containing the specified character string will not be subject to "
 "Prefetch."
 msgstr "指定した文字列を含む全ページが Prefetch の対象外となります。"
 
-#: inc/admin_menu/tabs/section/user_meta.php:6
+#: inc/admin_menu/tabs/extension/user_meta.php:6
 msgid "Add user position setting field"
 msgstr "役職の設定欄を追加"
 
-#: inc/admin_menu/tabs/section/user_meta.php:7
+#: inc/admin_menu/tabs/extension/user_meta.php:7
 msgid "Add SNS URL information"
 msgstr "SNSのURL情報を追加"
 
-#: inc/admin_menu/tabs/section/widget_area.php:6
+#: inc/admin_menu/tabs/extension/widget_area.php:6
 msgid "Add widget area for \"Page\""
 msgstr "「固定ページ」用のウィジェットエリアを追加"
 
-#: inc/admin_menu/tabs/section/widget_area.php:7
+#: inc/admin_menu/tabs/extension/widget_area.php:7
 msgid "Add widget area for \"Post\""
 msgstr "「投稿」用のウィジェットエリアを追加"
 
-#: inc/admin_menu/tabs/section/widget_area.php:8
+#: inc/admin_menu/tabs/extension/widget_area.php:8
 msgid "Add widget area for \"Home\""
 msgstr "「最新の投稿」用のウィジェットエリアを追加"
 
-#: inc/admin_menu/tabs/section/widget_area.php:9
+#: inc/admin_menu/tabs/extension/widget_area.php:9
 msgid "Add widget area for \"Sticky sidebar\""
 msgstr "「追尾サイドバー」用のウィジェットエリアを追加"
+
+#: inc/admin_menu/tabs/remove.php:14
+msgid "WordPress features"
+msgstr "WordPressの機能"
+
+#: inc/admin_menu/tabs/remove.php:23
+msgid "Stop outputting WordPress version"
+msgstr "WordPressバージョンの出力を停止"
+
+#: inc/admin_menu/tabs/remove.php:24
+msgid "Stop loading scripts for emoji"
+msgstr "絵文字用のスクリプトの読み込みを停止"
+
+#: inc/admin_menu/tabs/remove.php:25
+msgid "Unregister all core block patterns"
+msgstr "コアのブロックパターンの登録を全て解除"
+
+#: inc/admin_menu/tabs/remove.php:26
+msgid "Stop linking with Windows Live Write"
+msgstr "Windows Live Writeとの連携を停止"
+
+#: inc/admin_menu/tabs/remove.php:27
+msgid "Stop EditURI (RSD Link)"
+msgstr "EditURI(RSD Link)の停止"
+
+#: inc/admin_menu/tabs/remove.php:28
+msgid "Stop self-pingback"
+msgstr "セルフピンバックを停止"
+
+#: inc/admin_menu/tabs/remove.php:29
+msgid "Stop core sitemap functionality"
+msgstr "コアのサイトマップ機能を停止"
+
+#: inc/admin_menu/tabs/remove.php:30
+msgid "Stop outputting link tags for REST API"
+msgstr "REST API用linkタグの出力を停止"
+
+#: inc/admin_menu/tabs/remove.php:31
+msgid "Stop outputting \"srcset\""
+msgstr "“srcset”の出力を停止"
+
+#: inc/admin_menu/tabs/remove.php:32
+msgid "Stop outputting  \"rel = prev / next\""
+msgstr "「rel=prev/next」の出力を停止"
+
+#: inc/admin_menu/tabs/remove.php:33
+msgid "Stop automatic conversion of symbols (disable wptexturize)"
+msgstr "記号の自動変換を停止(wptexturize無効化)"
+
+#: inc/admin_menu/tabs/remove.php:34
+msgid "Stop RSS feed"
+msgstr "RSSフィードを停止"
+
+#: inc/admin_menu/tabs/reset.php:11
+msgid "Reset setting data"
+msgstr "設定データをリセット"
 
 #: inc/admin_toolbar.php:11
 msgid "Customize"
@@ -262,26 +306,22 @@ msgid "The cache clear is complete."
 msgstr "キャッシュクリアが完了しました。"
 
 #: inc/customizer/ex_header.php:13
-msgid "Button layout in the header"
-msgstr "ヘッダーのボタン配置"
-
-#: inc/customizer/ex_header.php:41
 msgid "How to expand the drawer menu"
 msgstr "ドロワーメニューの展開方式"
 
-#: inc/customizer/ex_header.php:52
+#: inc/customizer/ex_header.php:24
 msgid "Fade-in"
 msgstr "フェードイン"
 
-#: inc/customizer/ex_header.php:53
+#: inc/customizer/ex_header.php:25
 msgid "Slide from left"
 msgstr "左からスライド"
 
-#: inc/customizer/ex_header.php:54
+#: inc/customizer/ex_header.php:26
 msgid "Slide from right"
 msgstr "右からスライド"
 
-#: inc/customizer/ex_header.php:67
+#: inc/customizer/ex_header.php:40
 msgid "Display below the header"
 msgstr "ヘッダーより下に表示する"
 
@@ -309,15 +349,19 @@ msgstr "はてブ"
 msgid "URL copy button"
 msgstr "URLコピーボタン"
 
-#: inc/enqueue_scripts.php:76
+#: inc/enqueue_scripts.php:75
 msgid "Will you really reset it?"
 msgstr "本当にリセットしますか？"
+
+#: inc/meta_post.php:16 inc/meta_term.php:27
+msgid "Arkhe Settings"
+msgstr "Arkhe設定"
 
 #: inc/meta_post.php:38
 msgid "This is valid only when the title position is \"Above the content\"."
 msgstr "タイトル位置が「コンテンツ上部」のページで、有効です。"
 
-#: inc/meta_post.php:46
+#: inc/meta_post.php:46 inc/meta_term.php:92
 msgid "Background image for title"
 msgstr "タイトル背景画像"
 
@@ -325,61 +369,53 @@ msgstr "タイトル背景画像"
 msgid "Subtitle"
 msgstr "サブタイトル"
 
-#: inc/meta_post.php:74
+#: inc/meta_post.php:76
 msgid "Display settings"
 msgstr "表示設定"
 
-#: inc/meta_post.php:78
+#: inc/meta_post.php:80 inc/meta_term.php:70
 msgctxt "show"
 msgid "Show"
 msgstr "表示"
 
-#: inc/meta_post.php:79
+#: inc/meta_post.php:81 inc/meta_term.php:71
 msgctxt "show"
 msgid "Hide"
 msgstr "非表示"
 
-#: inc/meta_post.php:86
+#: inc/meta_post.php:88
 msgid "Title display"
 msgstr "タイトル表示"
 
-#: inc/meta_post.php:88 inc/meta_term.php:70
+#: inc/meta_post.php:90 inc/meta_term.php:83
 msgid "Above the content"
 msgstr "コンテンツ上部"
 
-#: inc/meta_post.php:89 inc/meta_term.php:71
+#: inc/meta_post.php:91 inc/meta_term.php:84
 msgid "Inside the content"
 msgstr "コンテンツ内部"
 
-#: inc/meta_post.php:95 inc/wp_posts_table.php:24
+#: inc/meta_post.php:97 inc/wp_posts_table.php:24
 msgid "Featured image"
 msgstr "アイキャッチ画像"
 
-#: inc/meta_post.php:99
+#: inc/meta_post.php:101
 msgid "Author data"
 msgstr "著者情報"
 
-#: inc/meta_post.php:103
+#: inc/meta_post.php:105
 msgid "Related posts"
 msgstr "関連記事"
 
-#: inc/meta_post.php:109
-msgid "Sidebar"
-msgstr "サイドバー"
-
-#: inc/meta_post.php:111
-msgid "Only valid with the default template."
-msgstr "デフォルトテンプレートでのみ有効です。"
-
-#: inc/meta_post.php:136
+#: inc/meta_post.php:138
 msgid "Hide top-widget"
 msgstr "上部ウィジェットを非表示にする"
 
-#: inc/meta_post.php:139
+#: inc/meta_post.php:141
 msgid "Hide bottom-widget"
 msgstr "下部ウィジェットを非表示にする"
 
-#: inc/meta_post.php:145
+#: inc/meta_post.php:147
 msgid "Show page \"excerpt\""
 msgstr "ページの「抜粋」を表示する"
 
@@ -400,6 +436,10 @@ msgid "Follow base settings"
 msgstr "ベース設定に従う"
 
 #: inc/meta_term.php:65
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: inc/meta_term.php:78
 msgid "Title position"
 msgstr "タイトル表示位置"
 
@@ -495,6 +535,15 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://loos.co.jp/"
 msgstr ""
+
+#~ msgid "Include global navigation structure in JSON-LD"
+#~ msgstr "グローバルナビの構造をJSON-LDに含める"
+
+#~ msgid "Button layout in the header"
+#~ msgstr "ヘッダーのボタン配置"
+
+#~ msgid "Only valid with the default template."
+#~ msgstr "デフォルトテンプレートでのみ有効です。"
 
 #, fuzzy
 #~| msgid "Show"

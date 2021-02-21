@@ -1,6 +1,6 @@
 <?php
 /**
- * 「拡張」タブ > 構造化データ
+ * 構造化データ
  */
 $remove_settings = [
 	'use_jsonld'     => __( 'Automatically generate JSON-LD', 'arkhe-toolkit' ),

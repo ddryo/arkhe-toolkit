@@ -1,6 +1,6 @@
 <?php
 /**
- * 「拡張機能」タブ > コンテンツへの追加処理
+ * コンテンツへの追加処理
  */
 $remove_settings = [
 	'use_luminous'    => __( 'Allow the image to be enlarged by clicking', 'arkhe-toolkit' ),

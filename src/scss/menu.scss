@@ -8,7 +8,6 @@
 @import "mixin/**";
 
 // 設定ページ
-
 $bg: #eff0f3;
 $main: #ff8e3c;
 $headline:#0d0d0d;
@@ -116,6 +115,8 @@ $white: #fffffe;
 }
 
 .arkhe-menu__body {
+	max-width: 1200px;
+	margin: 0 auto;
 	padding: 0 20px;
 }
 
@@ -157,6 +158,10 @@ $white: #fffffe;
 		.arkhe-menu__label {
 			display: block;
 			margin-bottom: 8px;
+		}
+
+		.large-text {
+			max-width: 800px;
 		}
 	}
 

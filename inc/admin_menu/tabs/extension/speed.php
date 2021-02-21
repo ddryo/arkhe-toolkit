@@ -1,6 +1,6 @@
 <?php
 /**
- * 「拡張機能」タブ > 高速化セクション
+ * 高速化セクション
  */
 
 \Arkhe_Toolkit::output_checkbox([

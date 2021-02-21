@@ -20,6 +20,7 @@ class Data {
 		'customizer' => 'arkhe_toolkit_customizer',
 		'extension'  => 'arkhe_toolkit_extension',
 		'cache'      => 'arkhe_toolkit_cache',
+		'code'       => 'arkhe_toolkit_code',
 		'remove'     => 'arkhe_toolkit_remove',
 	];
 
@@ -160,6 +161,12 @@ class Data {
 			'cache_header'       => '',
 			'cache_footer'       => '',
 			'cache_sidebar'      => '',
+		];
+
+		self::$defaults['code'] = [
+			'head_code'       => '',
+			'body_code'       => '',
+			'foot_code'       => '',
 		];
 
 		self::$defaults['remove'] = [

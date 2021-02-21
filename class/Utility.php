@@ -30,7 +30,7 @@ trait Utility {
 
 		// コールバック関数の指定が特になければ、ファイルを読み込む
 		$page_cb = $page_cb ?: function( $cb_args ) {
-			include ARKHE_TOOLKIT_PATH . 'inc/admin_menu/tabs/section/' . $cb_args['filename'] . '.php';
+			include ARKHE_TOOLKIT_PATH . 'inc/admin_menu/tabs/' . $cb_args['db'] . '/' . $cb_args['section_key'] . '.php';
 		};
 
 		add_settings_field(
@@ -40,8 +40,8 @@ trait Utility {
 			$page_name,
 			$section_name,
 			[
-				'db'       => $db,
-				'filename' => $key,
+				'db'          => $db,
+				'section_key' => $key,
 			]
 		);
 	}
