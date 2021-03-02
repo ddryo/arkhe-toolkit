@@ -7,8 +7,8 @@ namespace Arkhe_Toolkit\Menu;
 defined( 'ABSPATH' ) || exit;
 
 // PAGE_NAME
-$page_name = 'arkhe_menu_page_remove';
 $db_name   = 'remove';
+$page_name = \Arkhe_Toolkit::MENU_PAGE_PREFIX . $db_name;
 
 \Arkhe_Toolkit::add_menu_section( [
 	'title'     => __( 'WordPress features', 'arkhe-toolkit' ),

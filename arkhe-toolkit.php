@@ -3,7 +3,7 @@
  * Plugin Name: Arkhe Toolkit
  * Plugin URI: https://arkhe-theme.com
  * Description: A plugin that extends Arkhe more conveniently
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author: LOOS,Inc.
  * Author URI: https://loos.co.jp/
  * License: GPL2 or later
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * 定数定義
  */
-define( 'ARKHE_TOOLKIT_VER', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date_i18n( 'mdGis' ) : '1.4.0' );
+define( 'ARKHE_TOOLKIT_VER', ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? date_i18n( 'mdGis' ) : '1.4.1' );
 define( 'ARKHE_TOOLKIT_URL', plugins_url( '/', __FILE__ ) );
 define( 'ARKHE_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 

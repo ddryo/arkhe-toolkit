@@ -7,8 +7,8 @@ namespace Arkhe_Toolkit\Menu;
 defined( 'ABSPATH' ) || exit;
 
 // PAGE_NAME
-$page_name = 'arkhe_menu_page_extension';
 $db_name   = 'extension';
+$page_name = \Arkhe_Toolkit::MENU_PAGE_PREFIX . $db_name;
 
 // ウィジェットエリアの追加
 \Arkhe_Toolkit::add_menu_section( [

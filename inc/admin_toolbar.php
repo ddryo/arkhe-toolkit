@@ -17,14 +17,14 @@ add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 // Toolkitツールバー
 add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 
-	$arkhe_menu_id = 'arkhe_settings';
+	$arkhe_menu_id = 'arkhe_toolkit';
 
 	// 親メニュー
 	$wp_admin_bar->add_menu(
 		[
 			'id'    => $arkhe_menu_id,
 			'title' => '<span class="ab-icon -arkhe">' . \Arkhe_Toolkit::get_svg_icon( 'arkhe' ) . '</span><span class="ab-label">' . __( 'Arkhe Toolkit', 'arkhe-toolkit' ) . '</span>',
-			'href'  => admin_url( 'admin.php?page=arkhe_settings' ),
+			'href'  => admin_url( 'admin.php?page=' . \Arkhe_Toolkit::MENU_SLUG ),
 			'meta'  => [
 				'class' => 'arkhe-menu',
 			],
@@ -38,7 +38,7 @@ add_filter( 'admin_bar_menu', function ( $wp_admin_bar ) {
 			'id'     => $arkhe_menu_id . '_menu',
 			'meta'   => [],
 			'title'  => __( 'To setting page', 'arkhe-toolkit' ),
-			'href'   => admin_url( 'admin.php?page=arkhe_settings' ),
+			'href'   => admin_url( 'admin.php?page=' . \Arkhe_Toolkit::MENU_SLUG ),
 		]
 	);
 	$wp_admin_bar->add_menu(

@@ -7,8 +7,8 @@ namespace Arkhe_Toolkit\Menu;
 defined( 'ABSPATH' ) || exit;
 
 // PAGE_NAME
-$page_name = 'arkhe_menu_page_cache';
 $db_name   = 'cache';
+$page_name = \Arkhe_Toolkit::MENU_PAGE_PREFIX . $db_name;
 
 /**
  * キャッシュのオン・オフ

@@ -12,7 +12,7 @@ add_action( 'admin_menu', function () {
 	add_menu_page(
 		$arkhe_menu_title, // ページタイトルタグ
 		$arkhe_menu_title, // メニュータイトル
-		'manage_options', // 必要な権限
+		'manage_options',  // 必要な権限
 		\Arkhe_Toolkit::MENU_SLUG, // このメニューを参照するスラッグ名
 		'\Arkhe_Toolkit\Menu\display_setting_page', // 表示内容
 		ARKHE_TOOLKIT_URL . 'assets/img/arkhe-menu-icon.png', // アイコン
@@ -68,7 +68,7 @@ add_action( 'admin_init', function() {
 
 	foreach ( $menu_tabs as $key => $value ) {
 
-		register_setting( 'arkhe_menu_group_' . $key, \Arkhe_Toolkit::DB_NAMES[ $key ] );
+		register_setting( \Arkhe_Toolkit::MENU_GROUP_PREFIX . $key, \Arkhe_Toolkit::DB_NAMES[ $key ] );
 		require_once ARKHE_TOOLKIT_PATH . 'inc/admin_menu/tabs/' . $key . '.php';
 
 	}

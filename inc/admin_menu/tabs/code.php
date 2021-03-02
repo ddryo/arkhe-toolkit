@@ -7,8 +7,8 @@ namespace Arkhe_Toolkit\Menu;
 defined( 'ABSPATH' ) || exit;
 
 // PAGE_NAME
-$page_name = 'arkhe_menu_page_code';
 $db_name   = 'code';
+$page_name = \Arkhe_Toolkit::MENU_PAGE_PREFIX . $db_name;
 
 
 /**

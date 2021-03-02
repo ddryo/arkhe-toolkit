@@ -9,10 +9,8 @@
 
 // 設定ページ
 $bg: #eff0f3;
-$main: #ff8e3c;
 $headline:#0d0d0d;
 $text: #2a2a2a;
-$tertiary: #d9376e;
 $white: #fffffe;
 
 #wpwrap {
@@ -26,17 +24,25 @@ $white: #fffffe;
 
 #arkhe-menu {
 	margin: 0;
+	font-size: 14px;
 
-	.notice {
+	.notice:not(.updated) {
 		margin: 1em 0;
 		padding: 0;
-		// color: $white;
 		background: none;
 		border: none;
 		box-shadow: none;
 	}
 
+	.notice.updated {
+		margin: 1em 0;
+		border: solid 1px #efefef;
+		border-left: solid 3px #00a32a;
+		border-radius: 1px;
+	}
+
 	.nav-tab-wrapper {
+		padding-top: 1em;
 		border-bottom: none;
 	}
 
@@ -54,23 +60,11 @@ $white: #fffffe;
 		}
 	}
 
-	.form-table {
-		padding: 1em;
+	.arkhe-menu__head {
+		padding: 24px 24px 0;
+		color: $text;
 		background: $white;
-		box-shadow: 0 0 8px -2px rgba(0, 0, 0, 0.1);
 	}
-}
-
-.arkhe-menu__head {
-	padding: 24px 24px 0;
-	color: $text;
-	// color: $white;
-	background: $white;
-	// border-top: 2px solid $main;
-}
-
-.arkhe-menu {
-	// color: $text;
 
 	h1.arkhe-menu__title {
 		// color: $headline;
@@ -80,19 +74,13 @@ $white: #fffffe;
 
 	h2 {
 		margin: 2em 0 1em;
-		padding: 8px 12px;
+		padding: 0 12px;
 		color: $headline;
 		font-size: 1.5em;
-		// border-bottom: 1px solid #000;
-		border-left: 4px solid;
+		line-height: 1.5;
+		border-left: 3px solid;
 	}
 
-	// h3 {
-	// 	margin: 2em 0 1em;
-	// 	padding: 4px 12px;
-	// 	font-size: 1.25em;
-	// 	border-left: 4px solid #000;
-	// }
 
 	td > :first-child {
 		margin-top: 0 !important;
@@ -100,6 +88,9 @@ $white: #fffffe;
 
 	.form-table {
 		display: block;
+		padding: 1em;
+		background: $white;
+		box-shadow: 0 0 8px -2px rgba(0, 0, 0, 0.1);
 
 		th {
 			display: none;

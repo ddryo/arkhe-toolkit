@@ -54,7 +54,9 @@ class Data {
 	public static $use_clipboard_js = false;
 
 	// メニューのページスラッグ
-	const MENU_SLUG = 'arkhe_settings';
+	const MENU_SLUG         = 'arkhe_toolkit_settings';
+	const MENU_PAGE_PREFIX  = 'arkt_menu_page_';
+	const MENU_GROUP_PREFIX = 'arkt_menu_group_';
 
 	// メニューの設定タブ
 	public static $menu_tabs = [];

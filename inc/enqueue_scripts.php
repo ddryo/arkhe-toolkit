@@ -53,7 +53,7 @@ function enqueue_front_scripts() {
  */
 function enqueue_admin_scripts( $hook_suffix ) {
 
-	$is_arkhe_page = strpos( $hook_suffix, 'arkhe_' ) !== false;
+	$is_arkhe_page = strpos( $hook_suffix, \Arkhe_Toolkit::MENU_SLUG ) !== false;
 	$is_term_page  = 'term.php';
 	$is_edit_page  = 'edit.php' === $hook_suffix || 'edit-tags.php' === $hook_suffix;
 	$is_post_page  = 'post.php' === $hook_suffix || 'post-new.php' === $hook_suffix;
