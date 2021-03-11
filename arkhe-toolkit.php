@@ -59,7 +59,7 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		if ( ! defined( 'IS_ARKHE_THEME' ) ) {
 			$theme_data     = wp_get_theme();
 			$theme_name     = $theme_data->get( 'Name' );
-			$theme_template = $theme_data->get( 'Template' ); // 子テーマが使われている時、'arkhe' になる
+			$theme_template = $theme_data->get( 'Template' );
 
 			$is_arkhe_theme = ( 'Arkhe' === $theme_name || 'arkhe' === $theme_template );
 			define( 'IS_ARKHE_THEME', $is_arkhe_theme );
