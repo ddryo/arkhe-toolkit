@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Arkhe Toolkit\n"
-"POT-Creation-Date: 2021-02-21 18:05+0900\n"
-"PO-Revision-Date: 2021-02-21 18:05+0900\n"
+"POT-Creation-Date: 2021-03-11 19:37+0900\n"
+"PO-Revision-Date: 2021-03-11 19:37+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -26,19 +26,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: inc/update\n"
 "X-Poedit-SearchPathExcluded-5: src/js/prefetch.js\n"
 
-#: class/Output_Meta_Field.php:18
+#: classes/Output_Meta_Field.php:18
 msgid "Show"
 msgstr "表示"
 
-#: class/Output_Meta_Field.php:19 inc/meta_post.php:92
+#: classes/Output_Meta_Field.php:19 inc/meta_post.php:92
 msgid "Don't show"
 msgstr "非表示"
 
-#: class/Output_Meta_Field.php:52
+#: classes/Output_Meta_Field.php:52
 msgid "Select image"
 msgstr "画像を選択"
 
-#: class/Output_Meta_Field.php:53
+#: classes/Output_Meta_Field.php:53
 msgid "Delete image"
 msgstr "画像を削除"
 
@@ -62,11 +62,11 @@ msgstr "停止させる機能"
 msgid "Add code"
 msgstr "コード追加"
 
-#: inc/admin_menu/menu_page.php:17
+#: inc/admin_menu/menu_page.php:18
 msgid "Your settings have been saved."
 msgstr "設定を保存しました。"
 
-#: inc/admin_menu/menu_page.php:27
+#: inc/admin_menu/menu_page.php:28
 msgid "Arkhe Toolkit Settings"
 msgstr "Arkhe Toolkit 設定"
 

@@ -35,7 +35,7 @@ spl_autoload_register(
 		$classname = str_replace( '\\', '/', $classname );
 		$classname = str_replace( 'Arkhe_Toolkit/', '', $classname );
 
-		$file = ARKHE_TOOLKIT_PATH . 'class/' . $classname . '.php';
+		$file = ARKHE_TOOLKIT_PATH . 'classes/' . $classname . '.php';
 		if ( file_exists( $file ) ) {
 			require $file;
 		}
