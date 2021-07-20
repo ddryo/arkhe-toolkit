@@ -104,7 +104,7 @@ function add_term_metas( $term ) {
 // 保存処理
 function save_term_metas( $term_id ) {
 
-	if ( ! \Arkhe_Toolkit::save_meta_check( $post_id, 'arkhe_nonce_term_meta' ) ) return;
+	if ( ! \Arkhe_Toolkit::save_meta_check( $term_id, 'arkhe_nonce_term_meta' ) ) return;
 
 	$meta_keys = [
 		'ark_meta_show_desc',
