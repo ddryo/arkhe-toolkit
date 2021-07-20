@@ -11,8 +11,9 @@ class Data {
 	protected static $data     = [];
 	protected static $defaults = [];
 
-	// ページ種別判定用のスラッグ(キャッシュキーの取得などに使う)
-	public static $page_type_slug = '';
+	// version
+	public static $version  = '';
+	public static $file_ver = '';
 
 	// DB名
 	// const DB_NAME_OPTIONS = 'arkhe_toolkit_options';
@@ -49,10 +50,6 @@ class Data {
 		// ],
 	];
 
-	// JSの読み込みを制御する変数
-	public static $use_pinterest    = false;
-	public static $use_clipboard_js = false;
-
 	// メニューのページスラッグ
 	const MENU_SLUG         = 'arkhe_toolkit_settings';
 	const MENU_PAGE_PREFIX  = 'arkt_menu_page_';
@@ -61,18 +58,23 @@ class Data {
 	// メニューの設定タブ
 	public static $menu_tabs = [];
 
+
+	// ページ種別判定用のスラッグ(キャッシュキーの取得などに使う)
+	public static $page_type_slug = '';
+
+	// JSの読み込みを制御する変数
+	public static $use_pinterest    = false;
+	public static $use_clipboard_js = false;
+
 	// 外部からインスタンス化させない
 	private function __construct() {}
 
 
 	// init()
 	public static function init() {
-
-		// 設定データセット
 		add_action( 'after_setup_theme', [ '\Arkhe_Toolkit', 'data_init' ], 9 );
 		add_action( 'wp', [ '\Arkhe_Toolkit', 'set_page_type_slug' ] );
 		add_action( 'wp_loaded', [ '\Arkhe_Toolkit', 'customizer_data_init' ] );
-
 	}
 
 

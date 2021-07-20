@@ -22,7 +22,6 @@ function cb_remove_core( $args ) {
 	$remove_settings = [
 		'remove_wpver'         => __( 'Stop outputting WordPress version', 'arkhe-toolkit' ),
 		'remove_emoji'         => __( 'Stop loading scripts for emoji', 'arkhe-toolkit' ),
-		'remove_core_patterns' => __( 'Unregister all core block patterns', 'arkhe-toolkit' ),
 		'remove_wlwmanifest'   => __( 'Stop linking with Windows Live Write', 'arkhe-toolkit' ),
 		'remove_rsd_link'      => __( 'Stop EditURI (RSD Link)', 'arkhe-toolkit' ),
 		'remove_self_ping'     => __( 'Stop self-pingback', 'arkhe-toolkit' ),

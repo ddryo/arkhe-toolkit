@@ -2,24 +2,9 @@
 namespace Arkhe_Toolkit;
 
 /**
- * 不要機能の削除
- */
-add_action( 'init', '\Arkhe_Toolkit\remove_functions', 20 );
-add_action( 'after_setup_theme', '\Arkhe_Toolkit\remove_supports', 10 );
-
-function remove_supports() {
-	if ( ! is_admin() ) return;
-
-	// コアのブロックパターン
-	if ( \Arkhe_Toolkit::get_data( 'remove', 'remove_core_patterns' ) ) {
-		remove_theme_support( 'core-block-patterns' );
-	}
-}
-
-
-/**
  * 設定に合わせて不要な機能・出力を削除
  */
+add_action( 'init', '\Arkhe_Toolkit\remove_functions', 20 );
 function remove_functions() {
 
 	$data = \Arkhe_Toolkit::get_data( 'remove' );
