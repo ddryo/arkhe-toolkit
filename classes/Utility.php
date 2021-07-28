@@ -6,6 +6,21 @@ defined( 'ABSPATH' ) || exit;
 trait Utility {
 
 	/**
+	 * ページ種別判定用のスラッグを取得
+	 */
+	public static function get_page_type() {
+		if ( is_front_page() ) {
+			return 'front';
+		} elseif ( is_page() || is_home() ) {
+			return 'page';
+		} elseif ( is_single() ) {
+			return 'single';
+		}
+		return 'other';
+	}
+
+
+	/**
 	 * 設定メニューの項目を追加
 	 */
 	public static function add_menu_section( $args ) {
@@ -50,7 +65,7 @@ trait Utility {
 	/**
 	 * キャッシュの取得 & 生成
 	 */
-	public static function get_part_cache( $path_key, $include_path, $args, $cache_key = '', $days = 30 ) {
+	public static function cache_the_part( $path_key, $include_path, $args, $cache_key = '', $days = 30 ) {
 
 		if ( '' === $cache_key || is_customize_preview() ) return '';
 
@@ -83,17 +98,26 @@ trait Utility {
 
 		// キャッシュキーの指定がなければ全てのキーを取得
 		if ( [] === $cache_keys ) {
-			foreach ( \Arkhe_Toolkit::CACHE_KEYS as $type => $keys ) {
-				foreach ( $keys as $key ) {
-					$cache_keys[] = $key;
-				}
-			}
+			self::clear_part_cache_all();
 		}
 
 		// 指定されたキャッシュキーを順に削除
 		foreach ( $cache_keys as $key ) {
 			delete_transient( $key );
 		}
+	}
+
+
+	/**
+	 * パーツキャッシュの全削除
+	 */
+	public static function clear_part_cache_all() {
+		global $wpdb;
+		$option_table = "{$wpdb->prefix}options";
+		$prefix       = self::CACHE_PREFIX;
+
+		// phpcs:ignore
+		$wpdb->query( "DELETE FROM $option_table WHERE (`option_name` LIKE '%_transient_{$prefix}_%') OR (`option_name` LIKE '%_transient_timeout_{$prefix}_%')" );
 	}
 
 

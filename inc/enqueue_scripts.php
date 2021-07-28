@@ -1,17 +1,21 @@
 <?php
-namespace Arkhe_Toolkit;
+namespace Arkhe_Toolkit\Scripts;
 
 /**
  * ファイルの読み込み
  */
-add_action( 'wp_enqueue_scripts', '\Arkhe_Toolkit\enqueue_front_scripts', 20 );
-add_action( 'admin_enqueue_scripts', '\Arkhe_Toolkit\enqueue_admin_scripts', 20 );
-add_action( 'wp_footer', '\Arkhe_Toolkit\hook_wp_footer_1', 1 );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_front_scripts', 20 );
+add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\enqueue_admin_scripts', 20 );
+add_action( 'wp_footer', __NAMESPACE__ . '\hook_wp_footer_1', 1 );
 
 /**
  * フロントで読み込むファイル
  */
 function enqueue_front_scripts() {
+
+	// ウジェットプレビュー時は読み込まない
+	if ( defined( 'IFRAME_REQUEST' ) && IFRAME_REQUEST ) return;
+
 	wp_enqueue_style( 'arkhe-toolkit-front', ARKHE_TOOLKIT_URL . 'dist/css/front.css', [], \Arkhe_Toolkit::$file_ver );
 
 	// Luminous 使用するかどうか
@@ -99,15 +103,13 @@ function enqueue_admin_scripts( $hook_suffix ) {
  * wp_footerフック 優先度:1
  */
 function hook_wp_footer_1() {
+
+	// ウジェットプレビュー時は読み込まない
+	if ( defined( 'IFRAME_REQUEST' ) && IFRAME_REQUEST ) return;
+
 	if ( \Arkhe_Toolkit::$use_clipboard_js ) {
 		wp_enqueue_script( 'clipboard' );
-		wp_enqueue_script(
-			'arkhe-toolkit-clipboard',
-			ARKHE_TOOLKIT_URL . 'dist/js/clipboard.js',
-			[ 'clipboard' ],
-			\Arkhe_Toolkit::$file_ver,
-			true
-		);
+		wp_enqueue_script( 'arkhe-toolkit-clipboard', ARKHE_TOOLKIT_URL . 'dist/js/clipboard.js', [ 'clipboard' ], \Arkhe_Toolkit::$file_ver, true );
 	}
 
 	if ( \Arkhe_Toolkit::$use_pinterest ) {

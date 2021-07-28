@@ -3,7 +3,7 @@
  * Plugin Name: Arkhe Toolkit
  * Plugin URI: https://arkhe-theme.com
  * Description: A plugin that extends Arkhe more conveniently
- * Version: 1.4.2
+ * Version: 1.4.3
  * Author: LOOS,Inc.
  * Author URI: https://loos.co.jp/
  * License: GPL2 or later
@@ -108,7 +108,7 @@ class Arkhe_Toolkit extends \Arkhe_Toolkit\Data {
 		require_once ARKHE_TOOLKIT_PATH . 'inc/widget.php';
 
 		// キャッシュ
-		require_once ARKHE_TOOLKIT_PATH . 'inc/cache_create.php';
+		require_once ARKHE_TOOLKIT_PATH . 'inc/cache_parts.php';
 		require_once ARKHE_TOOLKIT_PATH . 'inc/cache_clear.php';
 
 		// ajax

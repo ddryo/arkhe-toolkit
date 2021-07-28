@@ -25,30 +25,8 @@ class Data {
 		'remove'     => 'arkhe_toolkit_remove',
 	];
 
-	// キャッシュキー
-	const CACHE_KEYS = [
-		'header'  => [
-			'front'  => 'arkhe_parts_header_front',
-			'page'   => 'arkhe_parts_header_page',
-			'single' => 'arkhe_parts_header_single',
-			'other'  => 'arkhe_parts_header_other',
-		],
-		'sidebar' => [
-			'front'   => 'arkhe_parts_sidebar_front',
-			'page'    => 'arkhe_parts_sidebar_page',
-			'single'  => 'arkhe_parts_sidebar_single',
-			'other'   => 'arkhe_parts_sidebar_other',
-		],
-		'footer'  => [
-			'front'   => 'arkhe_parts_footer_front',
-			'page'    => 'arkhe_parts_footer_page',
-			'single'  => 'arkhe_parts_footer_single',
-			'other'   => 'arkhe_parts_footer_other',
-		],
-		// 'other' => [
-		// 	'hoge',
-		// ],
-	];
+	// キャッシュキーのプレフィックス
+	const CACHE_PREFIX = 'arkhe_parts';
 
 	// メニューのページスラッグ
 	const MENU_SLUG         = 'arkhe_toolkit_settings';
@@ -58,10 +36,6 @@ class Data {
 	// メニューの設定タブ
 	public static $menu_tabs = [];
 
-
-	// ページ種別判定用のスラッグ(キャッシュキーの取得などに使う)
-	public static $page_type_slug = '';
-
 	// JSの読み込みを制御する変数
 	public static $use_pinterest    = false;
 	public static $use_clipboard_js = false;
@@ -69,12 +43,10 @@ class Data {
 	// 外部からインスタンス化させない
 	private function __construct() {}
 
-
 	// init()
 	public static function init() {
-		add_action( 'after_setup_theme', [ '\Arkhe_Toolkit', 'data_init' ], 9 );
-		add_action( 'wp', [ '\Arkhe_Toolkit', 'set_page_type_slug' ] );
-		add_action( 'wp_loaded', [ '\Arkhe_Toolkit', 'customizer_data_init' ] );
+		add_action( 'after_setup_theme', [ __CLASS__, 'data_init' ], 9 );
+		add_action( 'wp_loaded', [ __CLASS__, 'customizer_data_init' ] );
 	}
 
 
@@ -93,20 +65,6 @@ class Data {
 		}
 	}
 
-	/**
-	 * ページ種別判定用のスラッグをセット
-	 */
-	public static function set_page_type_slug() {
-		if ( is_front_page() ) {
-			self::$page_type_slug = 'front';
-		} elseif ( is_page() || is_home() ) {
-			self::$page_type_slug = 'page';
-		} elseif ( is_single() ) {
-			self::$page_type_slug = 'single';
-		} else {
-			self::$page_type_slug = 'other';
-		}
-	}
 
 	/**
 	 * カスタマイザーデータの初期セット
@@ -153,8 +111,8 @@ class Data {
 
 			// json-ld
 			'use_jsonld'            => '1',
-			// 'use_gnav_json'         => '1',
 			'use_bread_json'        => '1',
+			// 'use_gnav_json'         => '1',
 
 			// user設定
 			'use_user_urls'         => '1',

@@ -155,9 +155,16 @@ function set_ttlpos( $page_id ) {
 
 	if ( 'none' === $meta ) {
 		add_filter( 'arkhe_is_show_ttltop', '__return_false' );
+
+		// for ~arkhe1.4
 		add_filter( 'arkhe_part_cache__page/head', function() {
 			return '<!-- The title is hidden -->';
 		} );
+		// for arkhe1.5~
+		add_filter( 'arkhe_part_cache__page/title', function() {
+			return '<!-- The title is hidden -->';
+		} );
+
 	} elseif ( 'top' === $meta ) {
 		add_filter( 'arkhe_is_show_ttltop', '__return_true' );
 	} elseif ( 'inner' === $meta ) {
