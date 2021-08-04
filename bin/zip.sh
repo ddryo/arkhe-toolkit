@@ -15,4 +15,4 @@ zip -r arkhe-toolkit.zip arkhe-toolkit -x "*/.*" "*/__*" "*/bin*" "*/node_module
 zip --delete arkhe-toolkit.zip  "arkhe-toolkit/composer*" "arkhe-toolkit/webpack*" "arkhe-toolkit/package*"
 
 #zipファイルを移動
-mv arkhe-toolkit.zip ./_version/arkhe-toolkit/arkhe-toolkit-${version}.zip
+mv arkhe-toolkit.zip ./arkhe-cdn/arkhe-toolkit-${version}.zip

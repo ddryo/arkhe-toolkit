@@ -3,7 +3,7 @@
  * Plugin Name: Arkhe Toolkit
  * Plugin URI: https://arkhe-theme.com
  * Description: A plugin that extends Arkhe more conveniently
- * Version: 1.4.3
+ * Version: 1.5.0
  * Author: LOOS,Inc.
  * Author URI: https://loos.co.jp/
  * License: GPL2 or later
